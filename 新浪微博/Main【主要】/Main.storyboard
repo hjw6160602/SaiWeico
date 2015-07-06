@@ -18,7 +18,7 @@
                     <connections>
                         <segue destination="KXE-P5-oRo" kind="relationship" relationship="viewControllers" id="MKM-eb-EsO"/>
                         <segue destination="BZz-ps-hga" kind="relationship" relationship="viewControllers" id="low-1l-c6O"/>
-                        <segue destination="Byn-Qd-JMf" kind="relationship" relationship="viewControllers" id="f6p-Rd-PpP"/>
+                        <segue destination="E9S-L2-nv4" kind="relationship" relationship="viewControllers" id="f6p-Rd-PpP"/>
                         <segue destination="K7l-ud-ez3" kind="relationship" relationship="viewControllers" id="kX5-5C-MQd"/>
                         <segue destination="daZ-e1-3N7" kind="relationship" relationship="viewControllers" id="vcc-dC-Moy"/>
                     </connections>
@@ -54,7 +54,7 @@
             </objects>
             <point key="canvasLocation" x="1512" y="-479"/>
         </scene>
-        <!--Weico Controller-->
+        <!--发微博-->
         <scene sceneID="85C-A5-Upu">
             <objects>
                 <viewController storyboardIdentifier="WeicoController" id="Byn-Qd-JMf" customClass="WeicoController" sceneMemberID="viewController">
@@ -65,38 +65,31 @@
                     <view key="view" contentMode="scaleToFill" id="Ews-4Y-TdH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHd-OY-jss">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="8pU-kA-4le"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="BackOnClick:" destination="Byn-Qd-JMf" eventType="touchUpInside" id="S0r-fg-p5y"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="e2o-Qm-PwX" firstAttribute="top" secondItem="CHd-OY-jss" secondAttribute="bottom" id="ZMq-J4-hsj"/>
-                            <constraint firstItem="CHd-OY-jss" firstAttribute="leading" secondItem="Ews-4Y-TdH" secondAttribute="leading" id="hNV-ka-eEZ"/>
-                            <constraint firstAttribute="trailing" secondItem="CHd-OY-jss" secondAttribute="trailing" id="mFg-Re-k7d"/>
-                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_compose_icon_add" id="qxH-dj-jZl">
-                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="发微博" id="lqK-3L-3LT">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="JST-Ep-I6M">
+                            <color key="tintColor" red="1" green="0.50980392156862742" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancel:" destination="Byn-Qd-JMf" id="RYb-FI-KPF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="发送" id="Zh9-lr-ySO">
+                            <color key="tintColor" red="1" green="0.50980392159999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="send:" destination="Byn-Qd-JMf" id="QNS-f9-iGL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="leftBarButtonItem" destination="JST-Ep-I6M" id="9zk-zu-g4F"/>
+                        <outlet property="rightBarButtonItem" destination="Zh9-lr-ySO" id="Qfb-fZ-ZCb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNR-VQ-uj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14" y="-490"/>
+            <point key="canvasLocation" x="682" y="1615"/>
         </scene>
         <!--讯息-->
         <scene sceneID="Aj0-xK-WI7">
@@ -260,6 +253,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JcH-bS-J1j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700" y="-1153"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nHV-kU-Gba">
+            <objects>
+                <navigationController storyboardIdentifier="Navi" automaticallyAdjustsScrollViewInsets="NO" id="E9S-L2-nv4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_compose_icon_add" id="qxH-dj-jZl">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4hy-Xz-7e3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Byn-Qd-JMf" kind="relationship" relationship="rootViewController" id="5dX-wN-EJf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Jd-O8-IHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14" y="1615"/>
         </scene>
     </scenes>
     <resources>

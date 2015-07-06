@@ -24,9 +24,8 @@
 - (void)tabBarDidClickPlusButton:(TabBar *)tabBar
 {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-
-    WeicoController *weicoController = [storybord instantiateViewControllerWithIdentifier:@"WeicoController"];
-    [self presentViewController:weicoController animated:YES completion:nil];
+    UINavigationController *NaviController = [storybord instantiateViewControllerWithIdentifier:@"Navi"];
+    [self presentViewController:NaviController animated:YES completion:nil];
 }
 
 @end
