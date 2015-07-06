@@ -47,9 +47,10 @@
     [self initNavi];
     // 获得用户信息（昵称）
     [self initUserInfo];
-    [self initControls];
     // 读取所有关注的微博
+#warning 这里的loadNewWeico方法与initControls方法的先后顺序很重要 写反会导致循环加载!
     [self loadNewWeico];
+    [self initControls];
 }
 
 #pragma mark - Init
@@ -102,6 +103,11 @@
     }];
 }
 
+/** 这里的loadNewWeico方法与initControls方法的先后顺序很重要
+  * 因为在添加下拉刷新控件时，为了防止self在block中的循环引用，所以使用了self的弱引用来作为下拉刷新的对象
+  * 然而如果 读取新微博方法 写在添加下拉刷新方法的后面
+  * 导致循环加载
+ */
 - (void)initControls{
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
@@ -120,7 +126,7 @@
     Account *account = [AccountTool account];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = account.access_token;
-    //    params[@"count"] = @10;
+    //params[@"count"] = @20;
     
     // 取出最前面的微博（最新的微博，ID最大的微博）
     WeicoFrame *firstWeicoF = [self.weicoFrames firstObject];
@@ -143,7 +149,6 @@
         NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
         [self.weicoFrames insertObjects:newFrames atIndexes:set];
         
-        //[self.weicoFrames addObjectsFromArray:newFrames];
         // 将最新的微博数据，添加到总数组的最前面
         [self.tableView.header endRefreshing];
         // 刷新表格
@@ -198,8 +203,6 @@
         [self.tableView.footer endRefreshing];
     }];
 }
-
-
 
 /**
  *  将Weico模型转为WeicoFrame模型
