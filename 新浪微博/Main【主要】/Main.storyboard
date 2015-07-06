@@ -88,7 +88,7 @@
                             <constraint firstAttribute="trailing" secondItem="CHd-OY-jss" secondAttribute="trailing" id="mFg-Re-k7d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_compose_icon_add" id="qxH-dj-jZl" customClass="TabBarItem">
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_compose_icon_add" id="qxH-dj-jZl">
                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>

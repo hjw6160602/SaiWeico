@@ -122,6 +122,13 @@
     params[@"access_token"] = account.access_token;
     //    params[@"count"] = @10;
     
+    // 取出最前面的微博（最新的微博，ID最大的微博）
+    WeicoFrame *firstWeicoF = [self.weicoFrames firstObject];
+    if (firstWeicoF) {
+        // 若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0
+        params[@"since_id"] = firstWeicoF.weico.idstr;
+    }
+
     // 3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         // 取得"微博字典"数组
@@ -179,9 +186,9 @@
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         // 将 "微博字典"数组 转为 "微博模型"数组
         NSArray *newWeico = [Weico objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-        
+        NSArray *newFrames = [self weicoFramesWithWeicos:newWeico];
         // 将更多的微博数据，添加到总数组的最后面
-        [self.weicoFrames addObjectsFromArray:newWeico];
+        [self.weicoFrames addObjectsFromArray:newFrames];
         
         // 刷新表格
         [self.tableView reloadData];
@@ -211,7 +218,7 @@
 #pragma mark - TableView Data Source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%lu",(unsigned long)self.weicoFrames.count);
+    NSLog(@"微博总数：%lu",(unsigned long)self.weicoFrames.count);
     return self.weicoFrames.count;
 }
 
@@ -234,35 +241,6 @@
     }
     else return 0;
 }
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    //    scrollView == self.tableView == self.view
-//    // 如果tableView还没有数据，就直接返回
-//    if (self.weicoFrames.count == 0) return;
-//    
-//    CGFloat offsetY = scrollView.contentOffset.y;
-//    
-////    NSLog(@"scrollView.contentSize.height:%f",scrollView.contentSize.height);
-////    NSLog(@"scrollView.contentInset.bottom:%f",scrollView.contentInset.bottom);
-////    NSLog(@"scrollView.height:%f",scrollView.height);
-////    NSLog(@"self.tableView.tableFooterView.height:%f",self.tableView.tableFooterView.height);
-//    
-//    // 当最后一个cell完全显示在眼前时，contentOffset的y值
-//    CGFloat judgeOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-//    if (offsetY >= judgeOffsetY) { // 最后一个cell完全进入视野范围内
-//        
-//        
-//    }
-//    
-//    /*
-//     contentInset：除具体内容以外的边框尺寸
-//     contentSize: 里面的具体内容（header、cell、footer），除掉contentInset以外的尺寸
-//     contentOffset:
-//     1.它可以用来判断scrollView滚动到什么位置
-//     2.指scrollView的内容超出了scrollView顶部的距离（除掉contentInset以外的尺寸）
-//     */
-//}
 
 #pragma mark - Target Selector
 - (void)searchFriend{}

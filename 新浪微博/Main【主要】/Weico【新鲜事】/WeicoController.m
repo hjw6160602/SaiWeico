@@ -7,7 +7,6 @@
 //
 
 #import "WeicoController.h"
-#import "TabBarItem.h"
 
 @interface WeicoController ()
 

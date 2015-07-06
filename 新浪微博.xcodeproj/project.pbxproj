@@ -47,7 +47,6 @@
 		78DCCB381B4393D10061AB3F /* WeicoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB361B4393D10061AB3F /* WeicoCell.m */; };
 		78DCCB3F1B4397360061AB3F /* WeicoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB3E1B4397360061AB3F /* WeicoFrame.m */; };
 		78DCCB431B43B1830061AB3F /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB421B43B1830061AB3F /* TabBar.m */; };
-		78DCCB461B43B6F10061AB3F /* TabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB451B43B6F10061AB3F /* TabBarItem.m */; };
 		78DCCB4A1B43B8D90061AB3F /* WeicoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB491B43B8D90061AB3F /* WeicoController.m */; };
 		78DCCB4D1B43D4BD0061AB3F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB4C1B43D4BD0061AB3F /* Photo.m */; };
 		78DCCB501B43ED9E0061AB3F /* WeicoToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB4F1B43ED9E0061AB3F /* WeicoToolBar.m */; };
@@ -184,8 +183,6 @@
 		78DCCB3E1B4397360061AB3F /* WeicoFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoFrame.m; sourceTree = "<group>"; };
 		78DCCB411B43B1830061AB3F /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
 		78DCCB421B43B1830061AB3F /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
-		78DCCB441B43B6F10061AB3F /* TabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarItem.h; sourceTree = "<group>"; };
-		78DCCB451B43B6F10061AB3F /* TabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarItem.m; sourceTree = "<group>"; };
 		78DCCB481B43B8D90061AB3F /* WeicoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoController.h; sourceTree = "<group>"; };
 		78DCCB491B43B8D90061AB3F /* WeicoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoController.m; sourceTree = "<group>"; };
 		78DCCB4B1B43D4BD0061AB3F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
@@ -551,8 +548,6 @@
 			children = (
 				78DCCB411B43B1830061AB3F /* TabBar.h */,
 				78DCCB421B43B1830061AB3F /* TabBar.m */,
-				78DCCB441B43B6F10061AB3F /* TabBarItem.h */,
-				78DCCB451B43B6F10061AB3F /* TabBarItem.m */,
 			);
 			path = "View【视图】";
 			sourceTree = "<group>";
@@ -814,7 +809,6 @@
 				781C160F1B3B9A1C0036E850 /* HJWTypeEncoding.m in Sources */,
 				781C16111B3B9A1C0036E850 /* NSObject+HJWKeyValue.m in Sources */,
 				78E8FF161B462320003D29E7 /* MJRefreshLegendFooter.m in Sources */,
-				78DCCB461B43B6F10061AB3F /* TabBarItem.m in Sources */,
 				78DCCB4A1B43B8D90061AB3F /* WeicoController.m in Sources */,
 				781C16541B3BD8480036E850 /* MBProgressHUD+HJW.m in Sources */,
 				781C163C1B3BCF470036E850 /* Account.m in Sources */,
