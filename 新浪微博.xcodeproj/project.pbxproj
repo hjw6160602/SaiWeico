@@ -83,6 +83,7 @@
 		78EA0C531B42773D00D7F994 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EA0C521B42773D00D7F994 /* HomeController.m */; };
 		78EA0C571B4277C900D7F994 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EA0C561B4277C900D7F994 /* User.m */; };
 		78EA0C5A1B4277FE00D7F994 /* Weico.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EA0C591B4277FE00D7F994 /* Weico.m */; };
+		78FBBB241B4A1A72005BC650 /* IconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FBBB231B4A1A72005BC650 /* IconView.m */; };
 		78FD8A271B3D50F40010447B /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FD8A261B3D50F40010447B /* UIWindow+Extension.m */; };
 		78FD8A2D1B3D58590010447B /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FD8A2C1B3D58590010447B /* MessageController.m */; };
 		78FD8A301B3D58730010447B /* DiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FD8A2F1B3D58730010447B /* DiscoverController.m */; };
@@ -256,6 +257,8 @@
 		78EA0C561B4277C900D7F994 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		78EA0C581B4277FE00D7F994 /* Weico.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weico.h; sourceTree = "<group>"; };
 		78EA0C591B4277FE00D7F994 /* Weico.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weico.m; sourceTree = "<group>"; };
+		78FBBB221B4A1A72005BC650 /* IconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconView.h; sourceTree = "<group>"; };
+		78FBBB231B4A1A72005BC650 /* IconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconView.m; sourceTree = "<group>"; };
 		78FD8A251B3D50F40010447B /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
 		78FD8A261B3D50F40010447B /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		78FD8A2B1B3D58590010447B /* MessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
@@ -607,6 +610,8 @@
 				7895FFFB1B4539CD00982C95 /* WeicoPhotosView.m */,
 				7895FFFD1B45427A00982C95 /* WeicoPhotoView.h */,
 				7895FFFE1B45427A00982C95 /* WeicoPhotoView.m */,
+				78FBBB221B4A1A72005BC650 /* IconView.h */,
+				78FBBB231B4A1A72005BC650 /* IconView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -819,6 +824,7 @@
 				78EA0C4E1B42757800D7F994 /* UIImageView+WebCache.m in Sources */,
 				781C162F1B3BA8C60036E850 /* AFSecurityPolicy.m in Sources */,
 				78EA0C531B42773D00D7F994 /* HomeController.m in Sources */,
+				78FBBB241B4A1A72005BC650 /* IconView.m in Sources */,
 				781C15F11B3B999B0036E850 /* NavigationController.m in Sources */,
 				781C160A1B3B9A1C0036E850 /* HJWFoundation.m in Sources */,
 				78EA0C401B42757800D7F994 /* MKAnnotationView+WebCache.m in Sources */,

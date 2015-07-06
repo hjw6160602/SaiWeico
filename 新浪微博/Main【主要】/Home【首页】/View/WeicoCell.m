@@ -9,7 +9,6 @@
 #import "User.h"
 #import "WeicoCell.h"
 #import "WeicoFrame.h"
-#import "UIImageView+WebCache.h"
 #import "HJWExtension.h"
 #import "WeicoFrame.h"
 #import "Photo.h"
@@ -17,6 +16,7 @@
 #import "NSString+Extension.h"
 #import "WeicoPhotosView.h"
 #import "UIView+Extension.h"
+#import "IconView.h"
 
 
 @interface WeicoCell()
@@ -24,7 +24,7 @@
 /** 原创微博整体 */
 @property (nonatomic, weak) UIView *originalView;
 /** 头像 */
-@property (nonatomic, weak) UIImageView *iconView;
+@property (nonatomic, weak) IconView *iconView;
 /** 会员图标 */
 @property (nonatomic, weak) UIImageView *vipView;
 /** 配图 */
@@ -88,7 +88,7 @@
     self.originalView = originalView;
     
     /** 头像 */
-    UIImageView *iconView = [[UIImageView alloc] init];
+    IconView *iconView = [[IconView alloc] init];
     
     [originalView addSubview:iconView];
     self.iconView = iconView;
@@ -171,7 +171,7 @@
     
     /** 头像 */
     self.iconView.frame = weicoFrame.iconViewF;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.iconView.user = user;
     
     /** 会员图标 */
     if (user.isVip) {

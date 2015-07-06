@@ -17,6 +17,9 @@
 
 
 @implementation WeicoPhotoView
+
+//gifView的get方法 懒加载
+
 - (UIImageView *)gifView
 {
     if (!_gifView) {
@@ -32,8 +35,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        //        self.backgroundColor = [UIColor redColor];
-        
         /**
          UIViewContentModeScaleToFill : 图片拉伸至填充整个UIImageView（图片可能会变形）
          
@@ -43,7 +44,6 @@
          图片拉伸至 图片的宽度等于UIImageView的宽度 或者 图片的高度等于UIImageView的高度 为止
          
          UIViewContentModeRedraw : 调用了setNeedsDisplay方法时，就会将图片重新渲染
-         
          UIViewContentModeCenter : 居中显示
          UIViewContentModeTop,
          UIViewContentModeBottom,
@@ -73,13 +73,6 @@
     
     // 设置图片
     [self sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-    
-    // 显示\隐藏gif控件
-    //    if ([photo.thumbnail_pic hasSuffix:@"gif"]) {
-    //        self.gifView.hidden = NO;
-    //    } else {
-    //        self.gifView.hidden = YES;
-    //    }
     
     // 判断是够以gif或者GIF结尾
     self.gifView.hidden = ![photo.thumbnail_pic.lowercaseString hasSuffix:@"gif"];
