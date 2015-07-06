@@ -10,7 +10,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="FTM-73-pt5" userLabel="根TabBarController" customClass="TabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="yy0-kU-qoS">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="yy0-kU-qoS" customClass="TabBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -18,6 +18,7 @@
                     <connections>
                         <segue destination="KXE-P5-oRo" kind="relationship" relationship="viewControllers" id="MKM-eb-EsO"/>
                         <segue destination="BZz-ps-hga" kind="relationship" relationship="viewControllers" id="low-1l-c6O"/>
+                        <segue destination="Byn-Qd-JMf" kind="relationship" relationship="viewControllers" id="f6p-Rd-PpP"/>
                         <segue destination="K7l-ud-ez3" kind="relationship" relationship="viewControllers" id="kX5-5C-MQd"/>
                         <segue destination="daZ-e1-3N7" kind="relationship" relationship="viewControllers" id="vcc-dC-Moy"/>
                     </connections>
@@ -56,7 +57,7 @@
         <!--Weico Controller-->
         <scene sceneID="85C-A5-Upu">
             <objects>
-                <viewController id="Byn-Qd-JMf" customClass="WeicoController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeicoController" id="Byn-Qd-JMf" customClass="WeicoController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aVm-rD-rIg"/>
                         <viewControllerLayoutGuide type="bottom" id="e2o-Qm-PwX"/>
@@ -64,9 +65,34 @@
                     <view key="view" contentMode="scaleToFill" id="Ews-4Y-TdH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHd-OY-jss">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="8pU-kA-4le"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackOnClick:" destination="Byn-Qd-JMf" eventType="touchUpInside" id="S0r-fg-p5y"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e2o-Qm-PwX" firstAttribute="top" secondItem="CHd-OY-jss" secondAttribute="bottom" id="ZMq-J4-hsj"/>
+                            <constraint firstItem="CHd-OY-jss" firstAttribute="leading" secondItem="Ews-4Y-TdH" secondAttribute="leading" id="hNV-ka-eEZ"/>
+                            <constraint firstAttribute="trailing" secondItem="CHd-OY-jss" secondAttribute="trailing" id="mFg-Re-k7d"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="qxH-dj-jZl"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_compose_icon_add" id="qxH-dj-jZl" customClass="TabBarItem">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNR-VQ-uj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -217,7 +243,9 @@
         <scene sceneID="K7j-4l-0UY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KXE-P5-oRo" customClass="NavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" image="tabbar_home" id="IZG-z9-SBJ"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="tabbar_home" id="IZG-z9-SBJ">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FmN-lA-Y5t">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -235,6 +263,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tabbar_compose_icon_add" width="25" height="25"/>
         <image name="tabbar_discover" width="30" height="30"/>
         <image name="tabbar_home" width="30" height="30"/>
         <image name="tabbar_message_center" width="30" height="30"/>

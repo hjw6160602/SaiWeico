@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 @class TabBar;
 
-#warning 因为TabBar继承自UITabBar，所以称为TabBar的代理，也必须实现UITabBar的代理协议
 @protocol TabBarDelegate <UITabBarDelegate>
 
 @optional
