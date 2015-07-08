@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Photo : NSObject
+@interface Photo : NSObject <NSCoding>
 
 /** 缩略图地址 */
 @property (nonatomic, copy) NSString *thumbnail_pic;

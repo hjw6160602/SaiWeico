@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
-@interface Weico : NSObject
+@interface Weico : NSObject<NSCoding>
 
 /**	string	字符串型的微博ID*/
 @property (nonatomic, copy) NSString *idstr;

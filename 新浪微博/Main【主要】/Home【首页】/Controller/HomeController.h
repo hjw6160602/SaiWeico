@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#define DOC_PATH [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject]
+#define FILE_NAME  [DOC_PATH stringByAppendingPathComponent:@"tempWeico.archive"]
 
 @interface HomeController : UITableViewController
 

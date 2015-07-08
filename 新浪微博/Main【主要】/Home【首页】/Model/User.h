@@ -20,7 +20,7 @@ typedef enum {
     UserVerifiedDaren = 220 // 微博达人
 } UserVerifiedType;
 
-@interface User : NSObject
+@interface User : NSObject<NSCoding>
 
 /**	string	字符串型的用户UID*/
 @property (nonatomic, copy) NSString *idstr;
