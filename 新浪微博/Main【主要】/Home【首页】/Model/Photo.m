@@ -9,7 +9,12 @@
 #import "Photo.h"
 
 @implementation Photo
-
+- (void)setThumbnail_pic:(NSString *)thumbnail_pic
+{
+    _thumbnail_pic = [thumbnail_pic copy];
+    
+    self.bmiddle_pic = [thumbnail_pic stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+}
 /**
  *  当一个对象要归档进沙盒中时，就会调用这个方法
  *  目的：在这个方法中说明这个对象的哪些属性要存进沙盒
@@ -17,6 +22,7 @@
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.thumbnail_pic forKey:@"thumbnail_pic"];
+    [encoder encodeObject:self.bmiddle_pic forKey:@"bmiddle_pic"];
 }
 
 /**
@@ -27,6 +33,7 @@
 {
     if (self = [super init]) {
         self.thumbnail_pic = [decoder decodeObjectForKey:@"thumbnail_pic"];
+        self.bmiddle_pic = [decoder decodeObjectForKey:@"bmiddle_pic"];
     }
     return self;
 }

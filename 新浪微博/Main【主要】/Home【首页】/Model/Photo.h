@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Photo : NSObject <NSCoding>
 
 /** 缩略图地址 */
 @property (nonatomic, copy) NSString *thumbnail_pic;
-
+@property (nonatomic, copy) NSString *bmiddle_pic;
 @end
