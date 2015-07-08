@@ -9,10 +9,19 @@
 #import "WeicoPhotosView.h"
 #import "WeicoPhotoView.h"
 #import "UIView+Extension.h"
+#import "UIImageView+WebCache.h"
+#import "Photo.h"
 
 #define WeicoPhotoWH 70
 #define WeicoPhotoMargin 10
 #define WeicoPhotoMaxCol(count) ((count==4)?2:3)
+
+@interface WeicoPhotosView()
+
+@property (nonatomic, weak) UIImageView *imageView;
+@property (nonatomic, assign) CGRect lastFrame;
+
+@end
 
 @implementation WeicoPhotosView
 
@@ -45,6 +54,10 @@
         
         if (i < photosCount) { // 显示
             photoView.photo = photos[i];
+            // 添加手势监听器（一个手势监听器 只能 监听对应的一个view）
+            UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] init];
+            [recognizer addTarget:self action:@selector(tapPhoto:)];
+            [photoView addGestureRecognizer:recognizer];
             photoView.hidden = NO;
         } else { // 隐藏
             photoView.hidden = YES;
@@ -88,5 +101,66 @@
     return CGSizeMake(photosW, photosH);
 }
 
+//- (void)setPic_urls:(NSArray *)pic_urls
+//{
+//    _pic_urls = pic_urls;
+//    
+//    for (int i = 0; i<HMStatusPhotosMaxCount; i++) {
+//        HMStatusPhotoView *photoView = self.subviews[i];
+//        
+//        if (i < pic_urls.count) { // 显示图片
+//            photoView.photo = pic_urls[i];
+//            photoView.hidden = NO;
+//        } else { // 隐藏
+//            photoView.hidden = YES;
+//        }
+//    }
+//}
+
+/**
+ *  监听图片的点击
+ */
+- (void)tapPhoto:(UITapGestureRecognizer *)recognizer
+{
+    // 1.添加一个遮盖
+    UIView *cover = [[UIView alloc] init];
+    cover.frame = [UIScreen mainScreen].bounds;
+    cover.backgroundColor = [UIColor blackColor];
+    [cover addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCover:)]];
+    [[UIApplication sharedApplication].keyWindow addSubview:cover];
+    
+    // 2.添加图片到遮盖上
+    WeicoPhotoView *photoView = (WeicoPhotoView *)recognizer.view;
+    UIImageView *imageView = [[UIImageView alloc] init];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:photoView.photo.thumbnail_pic] placeholderImage:photoView.image];
+    //    imageView.image = photoView.image;
+    // 将photoView.frame从self坐标系转为cover坐标系
+    imageView.frame = [cover convertRect:photoView.frame fromView:self];
+    self.lastFrame = imageView.frame;
+    [cover addSubview:imageView];
+    self.imageView = imageView;
+    
+    // 3.放大
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect frame = imageView.frame;
+        frame.size.width = cover.width; // 占据整个屏幕;
+        
+        frame.size.height = frame.size.width * (imageView.image.size.height / imageView.image.size.width);
+        frame.origin.x = 0;
+        frame.origin.y = (cover.height - frame.size.height) * 0.5;
+        imageView.frame = frame;
+    }];
+}
+
+- (void)tapCover:(UITapGestureRecognizer *)recognizer
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        recognizer.view.backgroundColor = [UIColor clearColor];
+        self.imageView.frame = self.lastFrame;
+    } completion:^(BOOL finished) {
+        [recognizer.view removeFromSuperview];
+        self.imageView = nil;
+    }];
+}
 
 @end
