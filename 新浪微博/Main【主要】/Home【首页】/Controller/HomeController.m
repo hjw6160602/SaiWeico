@@ -21,9 +21,6 @@
 #import "MJRefresh.h"
 
 @interface HomeController ()<UITableViewDataSource,UITableViewDelegate>
-{
-
-}
 /**
  *  微博数组（里面放的都是微博字典，一个字典对象就代表一条微博）
  */
@@ -46,17 +43,16 @@
     [self initNavi];
     // 获得用户信息（昵称）
     [self initUserInfo];
-    // 在plist中获取上次读到的微博数据
     [self UnArchiveFromFile];
-    // 读取所有关注的微博
-#warning 这里的loadNewWeico方法与initControls方法的先后顺序很重要 写反会导致循环加载!
-    //[self loadNewWeico];
     [self initControls];
+    //获得未读数
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(initUnreadCount) userInfo:nil repeats:YES];
+    // 主线程也会抽时间处理一下timer（不管主线程是否正在其他事件）
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 #pragma mark - Init
-- (void)initNavi
-{
+- (void)initNavi{
     /* 设置导航栏上面的内容 */
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(searchFriend) image:@"navigationbar_friendsearch" highImage:@"navigationbar_friendsearch_highlighted"];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(POP) image:@"navigationbar_pop" highImage:@"navigationbar_pop_highlighted"];
@@ -74,8 +70,7 @@
 /**
  *  获得用户信息（昵称）
  */
-- (void)initUserInfo
-{
+- (void)initUserInfo{
     // https://api.weibo.com/2/users/show.json
     // access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
     // uid	false	int64	需要查询的用户ID。
@@ -105,13 +100,6 @@
     }];
 }
 
-- (void)UnArchiveFromFile{
-    NSArray *weicoArray = [NSKeyedUnarchiver unarchiveObjectWithFile:FILE_NAME];
-    NSArray *weicoFramesArray = [self weicoFramesWithWeicos:weicoArray];
-    self.weicoFrames = [[NSMutableArray alloc]initWithArray:weicoFramesArray];
-    
-}
-
 /** 这里的loadNewWeico方法与initControls方法的先后顺序很重要
   * 因为在添加下拉刷新控件时，为了防止self在block中的循环引用，所以使用了self的弱引用来作为下拉刷新的对象
   * 然而如果 读取新微博方法 写在添加下拉刷新方法的后面
@@ -121,6 +109,42 @@
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         [weakSelf loadNewWeico];
+    }];
+}
+
+- (void)initUnreadCount
+{
+    //    HWLog(@"setupUnreadCount");
+    //    return;
+    // 1.请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.拼接请求参数
+    Account *account = [AccountTool account];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = account.access_token;
+    params[@"uid"] = account.uid;
+    
+    // 3.发送请求
+    [mgr GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+        // 微博的未读数
+        //        int status = [responseObject[@"status"] intValue];
+        // 设置提醒数字
+        //        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", status];
+        
+        // @20 --> @"20"
+        // NSNumber --> NSString
+        // 设置提醒数字(微博的未读数)
+        NSString *status = [responseObject[@"status"] description];
+        if ([status isEqualToString:@"0"]) { // 如果是0，得清空数字
+            self.tabBarItem.badgeValue = nil;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        } else { // 非0情况
+            self.tabBarItem.badgeValue = status;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = status.intValue;
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        HJWLog(@"请求失败-%@", error);
     }];
 }
 
@@ -146,14 +170,6 @@
     // 3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         
-//        if (self.weicoFrames.count == 0) {
-//            NSFileManager *fm = [NSFileManager defaultManager];
-//            if ([fm createFileAtPath:DOC_PATH contents:nil attributes:nil] ==YES) {
-//                [responseObject writeToFile:FILE_NAME atomically:YES];
-//                NSLog(@"微博数据写入完成");
-//            }
-//        }
-        
         // 取得"微博字典"数组
         // 将 "微博字典"数组 转为 "微博模型"数组
         NSArray *newWeico = [Weico objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
@@ -168,7 +184,8 @@
             
             [self ArchiveToFile];
         }
-        
+        // 显示最新微博的数量
+        [self showNewWeicoCount:newWeico.count];
         // 将最新的微博数据，添加到总数组的最前面
         [self.tableView.header endRefreshing];
         // 刷新表格
@@ -178,7 +195,7 @@
                 [weakSelf loadMoreWeico];
             }];
         }
-
+        
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         HJWLog(@"请求失败-%@", error);
@@ -186,19 +203,6 @@
     }];
 }
 
-- (void)ArchiveToFile{
-    NSInteger maxIndex = 25;
-    NSMutableArray *weicoArray = [NSMutableArray array];
-    if (self.weicoFrames.count < 25) maxIndex = 20;
-    
-    for (int i=0; i<maxIndex; i++) {
-        WeicoFrame* temp_WeicoFrame = self.weicoFrames[i];
-        Weico *temp_Weico = temp_WeicoFrame.weico;
-        [weicoArray addObject:temp_Weico];
-    }
-    
-    [NSKeyedArchiver archiveRootObject:weicoArray toFile:FILE_NAME];
-}
 /**
  *  加载更多的微博数据
  */
@@ -237,20 +241,6 @@
     }];
 }
 
-/**
- *  将Weico模型转为WeicoFrame模型
- */
-- (NSArray *)weicoFramesWithWeicos:(NSArray *)weicoArray
-{
-    NSMutableArray *frames = [NSMutableArray array];
-    for (Weico *weico in weicoArray) {
-        WeicoFrame *f = [[WeicoFrame alloc] init];
-        f.weico = weico;
-        [frames addObject:f];
-    }
-    return frames;
-}
-
 #pragma mark - TableView Data Source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -278,6 +268,89 @@
     else return 0;
 }
 
+#pragma mark - Actions
+/**
+ *  将Weico模型转为WeicoFrame模型
+ */
+- (NSArray *)weicoFramesWithWeicos:(NSArray *)weicoArray{
+    NSMutableArray *frames = [NSMutableArray array];
+    for (Weico *weico in weicoArray) {
+        WeicoFrame *f = [[WeicoFrame alloc] init];
+        f.weico = weico;
+        [frames addObject:f];
+    }
+    return frames;
+}
+
+- (void)ArchiveToFile{
+    NSInteger maxIndex = 25;
+    NSMutableArray *weicoArray = [NSMutableArray array];
+    if (self.weicoFrames.count < 25) maxIndex = 20;
+    
+    for (int i=0; i<maxIndex; i++) {
+        WeicoFrame* temp_WeicoFrame = self.weicoFrames[i];
+        Weico *temp_Weico = temp_WeicoFrame.weico;
+        [weicoArray addObject:temp_Weico];
+    }
+    [NSKeyedArchiver archiveRootObject:weicoArray toFile:FILE_NAME];
+}
+
+- (void)UnArchiveFromFile{
+    NSArray *weicoArray = [NSKeyedUnarchiver unarchiveObjectWithFile:FILE_NAME];
+    NSArray *weicoFramesArray = [self weicoFramesWithWeicos:weicoArray];
+    self.weicoFrames = [[NSMutableArray alloc]initWithArray:weicoFramesArray];
+    if (self.weicoFrames.count == 0) [self loadNewWeico];
+}
+
+/**
+ *  显示最新微博的数量
+ *  @param count 最新微博的数量
+ */
+- (void)showNewWeicoCount:(NSUInteger)count
+{
+    // 刷新成功(清空图标数字)
+    self.tabBarItem.badgeValue = nil;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    // 1.创建label
+    UILabel *label = [[UILabel alloc] init];
+    label.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_new_status_background"]];
+    label.width = [UIScreen mainScreen].bounds.size.width;
+    label.height = 35;
+    
+    // 2.设置其他属性
+    if (count == 0) {
+        label.text = @"已是最新的微博啦~";
+    } else {
+        label.text = [NSString stringWithFormat:@"%zd 条新微博", count];
+    }
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:16];
+    
+    // 3.添加
+    label.y = 64 - label.height;
+    // 将label添加到导航控制器的view中，并且是盖在导航栏下边
+    [self.navigationController.view insertSubview:label belowSubview:self.navigationController.navigationBar];
+    
+    // 4.动画
+    // 先利用1s的时间，让label往下移动一段距离
+    CGFloat duration = 1.0; // 动画的时间
+    [UIView animateWithDuration:duration animations:^{
+        label.transform = CGAffineTransformMakeTranslation(0, label.height);
+    } completion:^(BOOL finished) {
+        // 延迟1s后，再利用1s的时间，让label往上移动一段距离（回到一开始的状态）
+        CGFloat delay = 1.0; // 延迟1s
+        // UIViewAnimationOptionCurveLinear:匀速
+        [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionCurveLinear animations:^{
+            label.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+        }];
+    }];
+    
+    // 如果某个动画执行完毕后，又要回到动画执行前的状态，建议使用transform来做动画
+}
 #pragma mark - Target Selector
 - (void)searchFriend{}
 - (void)POP{ }

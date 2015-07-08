@@ -18,7 +18,12 @@
     
     //如果之前登陆成功过，切换控制器
     if ([AccountTool account]) [self.window switchRootViewController];
-    
+    float sysVersion=[[UIDevice currentDevice]systemVersion].floatValue;
+    if (sysVersion>=8.0) {
+        UIUserNotificationType type = UIUserNotificationTypeBadge;
+        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:type categories:nil];
+        [[UIApplication sharedApplication]registerUserNotificationSettings:setting];
+    }
     return YES;
 }
 

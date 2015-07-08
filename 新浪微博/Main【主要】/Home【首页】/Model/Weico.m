@@ -33,7 +33,7 @@
  2.非今年
  1> xxxx-xx-xx xx:xx
  */
-- (NSString *)created_at
+- (NSString *)show_time
 {
     // _created_at == Thu Oct 16 17:06:25 +0800 2014
     // dateFormat == EEE MMM dd HH:mm:ss Z yyyy
@@ -55,10 +55,11 @@
     
     // 微博的创建日期
     NSDate *createDate = [fmt dateFromString:_created_at];
+
+//    if (!createDate) {
+//        return _created_at;
+//    }
     
-    if (!createDate) {
-        return _created_at;
-    }
     // 当前时间
     NSDate *now = [NSDate date];
     // 日历对象（方便比较两个日期之间的差距）
@@ -73,9 +74,9 @@
             return [fmt stringFromDate:createDate];
         } else if ([createDate isToday]) { // 今天
             if (cmps.hour >= 1) {
-                return [NSString stringWithFormat:@"%lo小时前", cmps.hour];
+                return [NSString stringWithFormat:@"%d小时前", cmps.hour];
             } else if (cmps.minute >= 1) {
-                return [NSString stringWithFormat:@"%lo分钟前", cmps.minute];
+                return [NSString stringWithFormat:@"%d分钟前", cmps.minute];
             } else {
                 return @"刚刚";
             }
@@ -88,7 +89,7 @@
         return [fmt stringFromDate:createDate];
     }
     
-    //return _created_at;
+    return _created_at;
 }
 
 // source == <a href="http://app.weibo.com/t/feed/2llosp" rel="nofollow">OPPO_N1mini</a>

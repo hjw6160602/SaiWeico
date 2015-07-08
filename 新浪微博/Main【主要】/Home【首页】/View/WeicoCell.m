@@ -203,7 +203,7 @@
     self.nameLabel.frame = weicoFrame.nameLabelF;
     
     /** 时间 */
-    NSString *time = weico.created_at;
+    NSString *time = weico.show_time;
     CGFloat timeX = weicoFrame.nameLabelF.origin.x;
     CGFloat timeY = CGRectGetMaxY(weicoFrame.nameLabelF) + 6;
     CGSize timeSize = [time sizeWithFont:WeicoCellTimeFont];

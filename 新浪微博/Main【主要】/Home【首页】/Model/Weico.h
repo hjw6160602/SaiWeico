@@ -23,6 +23,9 @@
 /**	string	微博创建时间*/
 @property (nonatomic, copy) NSString *created_at;
 
+/**	string	微博的显示时间*/
+@property (nonatomic, copy) NSString *show_time;
+
 /**	string	微博来源*/
 @property (nonatomic, copy) NSString *source;
 
