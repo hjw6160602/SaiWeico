@@ -22,11 +22,11 @@
 -(void)viewDidLayoutSubviews
 {
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,20)];
     }
     
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,20)];
     }
 }
 
