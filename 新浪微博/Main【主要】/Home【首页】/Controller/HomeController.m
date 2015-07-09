@@ -43,7 +43,7 @@
     [self initNavi];
     // 获得用户信息（昵称）
     [self initUserInfo];
-    [self UnArchiveFromFile];
+    [self initLastWeicos];
     [self initControls];
     //获得未读数
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(initUnreadCount) userInfo:nil repeats:YES];
@@ -98,6 +98,19 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         HJWLog(@"请求失败-%@", error);
     }];
+}
+
+- (void)initLastWeicos{
+    NSArray *weicoArray = [NSKeyedUnarchiver unarchiveObjectWithFile:FILE_NAME];
+    NSArray *weicoFramesArray = [self weicoFramesWithWeicos:weicoArray];
+    self.weicoFrames = [[NSMutableArray alloc]initWithArray:weicoFramesArray];
+    __weak typeof(self) weakSelf = self;
+    if (self.weicoFrames.count != 0) {
+        [self.tableView addLegendFooterWithRefreshingBlock:^{
+            [weakSelf loadMoreWeico];
+        }];
+    }
+    if (self.weicoFrames.count == 0) [self loadNewWeico];
 }
 
 /** 这里的loadNewWeico方法与initControls方法的先后顺序很重要
@@ -165,10 +178,13 @@
     if (firstWeicoF) {
         // 若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0
         params[@"since_id"] = firstWeicoF.weico.idstr;
+        
     }
 
     // 3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json"
+  parameters:params
+     success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         
         // 取得"微博字典"数组
         // 将 "微博字典"数组 转为 "微博模型"数组
@@ -189,13 +205,6 @@
         // 将最新的微博数据，添加到总数组的最前面
         [self.tableView.header endRefreshing];
         // 刷新表格
-        __weak typeof(self) weakSelf = self;
-        if (self.weicoFrames.count != 0) {
-            [self.tableView addLegendFooterWithRefreshingBlock:^{
-                [weakSelf loadMoreWeico];
-            }];
-        }
-        
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         HJWLog(@"请求失败-%@", error);
@@ -222,6 +231,7 @@
         // 若指定此参数，则返回ID小于或等于max_id的微博，默认为0。
         // id这种数据一般都是比较大的，一般转成整数的话，最好是long long类型
         long long maxId = lastWeicoFrame.weico.idstr.longLongValue - 1;
+        
         params[@"max_id"] = @(maxId);
     }
     
@@ -293,13 +303,6 @@
         [weicoArray addObject:temp_Weico];
     }
     [NSKeyedArchiver archiveRootObject:weicoArray toFile:FILE_NAME];
-}
-
-- (void)UnArchiveFromFile{
-    NSArray *weicoArray = [NSKeyedUnarchiver unarchiveObjectWithFile:FILE_NAME];
-    NSArray *weicoFramesArray = [self weicoFramesWithWeicos:weicoArray];
-    self.weicoFrames = [[NSMutableArray alloc]initWithArray:weicoFramesArray];
-    if (self.weicoFrames.count == 0) [self loadNewWeico];
 }
 
 /**
