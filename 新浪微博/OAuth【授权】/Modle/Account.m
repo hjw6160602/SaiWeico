@@ -44,6 +44,7 @@
         self.expires_in = [decoder decodeObjectForKey:@"expires_in"];
         self.uid = [decoder decodeObjectForKey:@"uid"];
         self.created_time = [decoder decodeObjectForKey:@"created_time"];
+        self.name = [decoder decodeObjectForKey:@"name"];
     }
     return self;
 }

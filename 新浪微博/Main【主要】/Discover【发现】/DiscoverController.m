@@ -16,22 +16,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.rowHeight = 44.0f;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"DiscoverCell"];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DiscoverCell" forIndexPath:indexPath];
+-(void)viewDidLayoutSubviews
+{
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
     
-    return cell;
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
 }
 
-
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section != 0){
+        if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+            [cell setSeparatorInset:UIEdgeInsetsZero];
+        }
+        
+        if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+            [cell setLayoutMargins:UIEdgeInsetsZero];
+        }
+    }
+}
 
 @end

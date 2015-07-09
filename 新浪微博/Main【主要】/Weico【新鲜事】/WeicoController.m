@@ -28,8 +28,7 @@
 
 - (void)initNavi{
     self.rightBarButtonItem.enabled = NO;
-    
-    NSString *name = @"愿逐月华流照君_____";
+    NSString *name = [AccountTool account].name;
     
     NSString *prefix = @"发微博";
     if (name) {
