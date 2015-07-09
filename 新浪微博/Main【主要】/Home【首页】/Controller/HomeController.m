@@ -19,6 +19,7 @@
 #import "WeicoFrame.h"
 #import "WeicoCell.h"
 #import "MJRefresh.h"
+#import "API.h"
 
 @interface HomeController ()<UITableViewDataSource,UITableViewDelegate>
 /**
@@ -71,7 +72,6 @@
  *  获得用户信息（昵称）
  */
 - (void)initUserInfo{
-    // https://api.weibo.com/2/users/show.json
     // access_token	false	string	采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
     // uid	false	int64	需要查询的用户ID。
     // 1.请求管理者
@@ -84,7 +84,7 @@
     params[@"uid"] = account.uid;
     
     // 3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [mgr GET:GET_USERINFO parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         UIButton *titleButton = (UIButton *)self.navigationItem.titleView;
         [responseObject writeToFile:@"tempWeico.plist" atomically:YES];
         // 设置名字
@@ -100,7 +100,7 @@
     }];
 }
 
-- (void)initLastWeicos{
+- (void)initLastWeicos{//UnArchiveFrom.archive
     NSArray *weicoArray = [NSKeyedUnarchiver unarchiveObjectWithFile:FILE_NAME];
     NSArray *weicoFramesArray = [self weicoFramesWithWeicos:weicoArray];
     self.weicoFrames = [[NSMutableArray alloc]initWithArray:weicoFramesArray];
@@ -127,8 +127,6 @@
 
 - (void)initUnreadCount
 {
-    //    HWLog(@"setupUnreadCount");
-    //    return;
     // 1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
@@ -139,20 +137,15 @@
     params[@"uid"] = account.uid;
     
     // 3.发送请求
-    [mgr GET:@"https://rm.api.weibo.com/2/remind/unread_count.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    
+    [mgr GET:GET_REMIND_UNREAD parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         // 微博的未读数
-        //        int status = [responseObject[@"status"] intValue];
-        // 设置提醒数字
-        //        self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d", status];
-        
-        // @20 --> @"20"
-        // NSNumber --> NSString
-        // 设置提醒数字(微博的未读数)
         NSString *status = [responseObject[@"status"] description];
         if ([status isEqualToString:@"0"]) { // 如果是0，得清空数字
             self.tabBarItem.badgeValue = nil;
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         } else { // 非0情况
+            // 设置提醒数字
             self.tabBarItem.badgeValue = status;
             [UIApplication sharedApplication].applicationIconBadgeNumber = status.intValue;
         }
@@ -182,9 +175,7 @@
     }
 
     // 3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json"
-  parameters:params
-     success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [mgr GET:GET_FRIENDS_TIMELINE_WEICO parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         
         // 取得"微博字典"数组
         // 将 "微博字典"数组 转为 "微博模型"数组
@@ -236,7 +227,7 @@
     }
     
     // 3.发送请求
-    [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [mgr GET:GET_FRIENDS_TIMELINE_WEICO parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         // 将 "微博字典"数组 转为 "微博模型"数组
         NSArray *newWeico = [Weico objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
         NSArray *newFrames = [self weicoFramesWithWeicos:newWeico];

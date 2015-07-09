@@ -277,6 +277,8 @@
 		78EA0C561B4277C900D7F994 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		78EA0C581B4277FE00D7F994 /* Weico.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weico.h; sourceTree = "<group>"; };
 		78EA0C591B4277FE00D7F994 /* Weico.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weico.m; sourceTree = "<group>"; };
+		78FAFD161B4E0F2400B4A01C /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		78FAFD181B4E0FC900B4A01C /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		78FBBB221B4A1A72005BC650 /* IconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconView.h; sourceTree = "<group>"; };
 		78FBBB231B4A1A72005BC650 /* IconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconView.m; sourceTree = "<group>"; };
 		78FD8A251B3D50F40010447B /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			children = (
 				78DCCB401B43B15D0061AB3F /* View【视图】 */,
 				781C15EE1B3B999B0036E850 /* Controller【控制器】 */,
+				78FAFD161B4E0F2400B4A01C /* Const.h */,
 			);
 			path = "Common【通用】";
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 		781C15E81B3B95B50036E850 /* Other【其他】 */ = {
 			isa = PBXGroup;
 			children = (
+				78FAFD171B4E0FBA00B4A01C /* HTTPRequest */,
 				781C15F21B3B9A1C0036E850 /* Libs【库】 */,
 				781C15E91B3B95B50036E850 /* AppDelegate.h */,
 				781C15EA1B3B95B50036E850 /* AppDelegate.m */,
@@ -719,6 +723,14 @@
 				78DCCB4C1B43D4BD0061AB3F /* Photo.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		78FAFD171B4E0FBA00B4A01C /* HTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				78FAFD181B4E0FC900B4A01C /* API.h */,
+			);
+			path = HTTPRequest;
 			sourceTree = "<group>";
 		};
 		78FD8A241B3D50B10010447B /* Category【分类】 */ = {
