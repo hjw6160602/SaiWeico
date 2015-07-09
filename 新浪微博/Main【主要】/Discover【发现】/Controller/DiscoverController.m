@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.rowHeight = 44.0f;
+    //self.tableView.rowHeight = 44.0f;
 }
 
 -(void)viewDidLayoutSubviews
