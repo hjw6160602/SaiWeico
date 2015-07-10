@@ -47,9 +47,9 @@
     [self initLastWeicos];
     [self initControls];
     //获得未读数
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(initUnreadCount) userInfo:nil repeats:YES];
+    //NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(initUnreadCount) userInfo:nil repeats:YES];
     // 主线程也会抽时间处理一下timer（不管主线程是否正在其他事件）
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    //[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 #pragma mark - Init

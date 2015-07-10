@@ -20,12 +20,12 @@
     if ([AccountTool account]) [self.window switchRootViewController];
     
     //IOS8下注册Badge
-    float sysVersion=[[UIDevice currentDevice]systemVersion].floatValue;
-    if (sysVersion>=8.0) {
-        UIUserNotificationType type = UIUserNotificationTypeBadge;
-        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:type categories:nil];
-        [[UIApplication sharedApplication]registerUserNotificationSettings:setting];
-    }
+//    float sysVersion=[[UIDevice currentDevice]systemVersion].floatValue;
+//    if (sysVersion>=8.0) {
+//        UIUserNotificationType type = UIUserNotificationTypeBadge;
+//        UIUserNotificationSettings *setting = [UIUserNotificationSettings settingsForTypes:type categories:nil];
+//        [[UIApplication sharedApplication]registerUserNotificationSettings:setting];
+//    }
     return YES;
 }
 

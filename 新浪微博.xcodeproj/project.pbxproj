@@ -439,9 +439,9 @@
 		781C15E71B3B95B50036E850 /* Profile【我】 */ = {
 			isa = PBXGroup;
 			children = (
-				78FAFD5A1B4E786F00B4A01C /* Controller */,
 				78FAFD5D1B4E786F00B4A01C /* Model */,
 				78FAFD5E1B4E786F00B4A01C /* View */,
+				78FAFD5A1B4E786F00B4A01C /* Controller */,
 			);
 			path = "Profile【我】";
 			sourceTree = "<group>";

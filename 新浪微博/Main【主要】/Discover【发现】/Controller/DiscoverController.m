@@ -16,10 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.tableView.rowHeight = 44.0f;
+    [self initControls];
 }
 
--(void)viewDidLayoutSubviews
+- (void)initControls{
+    self.tableView.rowHeight = 44.0f;
+    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
+}
+
+- (void)viewDidLayoutSubviews
 {
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,20)];
@@ -30,7 +35,7 @@
     }
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section != 0){
         if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
