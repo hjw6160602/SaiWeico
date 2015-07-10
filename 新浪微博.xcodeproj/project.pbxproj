@@ -52,6 +52,7 @@
 		7895FFF61B4530DD00982C95 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFF51B4530DD00982C95 /* NSString+Extension.m */; };
 		7895FFFC1B4539CD00982C95 /* WeicoPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFFB1B4539CD00982C95 /* WeicoPhotosView.m */; };
 		7895FFFF1B45427A00982C95 /* WeicoPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFFE1B45427A00982C95 /* WeicoPhotoView.m */; };
+		78A4A3851B4F92F400EA24E9 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3841B4F92F400EA24E9 /* TextView.m */; };
 		78DCCB381B4393D10061AB3F /* WeicoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB361B4393D10061AB3F /* WeicoCell.m */; };
 		78DCCB3F1B4397360061AB3F /* WeicoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB3E1B4397360061AB3F /* WeicoFrame.m */; };
 		78DCCB431B43B1830061AB3F /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB421B43B1830061AB3F /* TabBar.m */; };
@@ -201,6 +202,8 @@
 		7895FFFB1B4539CD00982C95 /* WeicoPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoPhotosView.m; sourceTree = "<group>"; };
 		7895FFFD1B45427A00982C95 /* WeicoPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoPhotoView.h; sourceTree = "<group>"; };
 		7895FFFE1B45427A00982C95 /* WeicoPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoPhotoView.m; sourceTree = "<group>"; };
+		78A4A3831B4F92F400EA24E9 /* TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
+		78A4A3841B4F92F400EA24E9 /* TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
 		78DCCB351B4393D10061AB3F /* WeicoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoCell.h; sourceTree = "<group>"; };
 		78DCCB361B4393D10061AB3F /* WeicoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoCell.m; sourceTree = "<group>"; };
 		78DCCB3D1B4397360061AB3F /* WeicoFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoFrame.h; sourceTree = "<group>"; };
@@ -603,6 +606,8 @@
 			children = (
 				78DCCB411B43B1830061AB3F /* TabBar.h */,
 				78DCCB421B43B1830061AB3F /* TabBar.m */,
+				78A4A3831B4F92F400EA24E9 /* TextView.h */,
+				78A4A3841B4F92F400EA24E9 /* TextView.m */,
 			);
 			path = "View【视图】";
 			sourceTree = "<group>";
@@ -929,6 +934,7 @@
 				781C162C1B3BA8C60036E850 /* AFHTTPRequestOperationManager.m in Sources */,
 				7888B8D81B4D065B0030B4A7 /* MJPhotoBrowser.m in Sources */,
 				781C16091B3B9A1C0036E850 /* HJWArgument.m in Sources */,
+				78A4A3851B4F92F400EA24E9 /* TextView.m in Sources */,
 				78EA0C471B42757800D7F994 /* SDWebImageManager.m in Sources */,
 				78EA0C4E1B42757800D7F994 /* UIImageView+WebCache.m in Sources */,
 				781C162F1B3BA8C60036E850 /* AFSecurityPolicy.m in Sources */,

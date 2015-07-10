@@ -10,11 +10,14 @@
 #import "UIView+Extension.h"
 #import "AccountTool.h"
 #import "HJWExtension.h"
+#import "TextView.h"
+#import "Const.h"
 
 @interface WeicoController ()
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
+@property (strong,nonatomic) TextView *textView;
 
 @end
 
@@ -27,9 +30,8 @@
 }
 
 - (void)initNavi{
-    self.rightBarButtonItem.enabled = NO;
-    NSString *name = [AccountTool account].name;
     
+    NSString *name = [AccountTool account].name;
     NSString *prefix = @"发微博";
     if (name) {
         UILabel *titleView = [[UILabel alloc] init];
@@ -59,7 +61,16 @@
 }
 
 - (void)initControls{
-   
+    // 在这个控制器中，textView的contentInset.top默认会等于64
+    TextView *textView = [[TextView alloc] init];
+    textView.frame = self.view.bounds;
+    textView.font = [UIFont systemFontOfSize:15];
+    textView.placeholder = @"有话好好说 别发自拍...";
+    [self.view addSubview:textView];
+    self.textView = textView;
+    
+    // 监听通知
+    [HJWNotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
 }
 
 - (IBAction)cancel:(id)sender {
@@ -68,6 +79,14 @@
 
 - (IBAction)send:(id)sender {
     NSLog(@"发送微博");
+}
+
+/**
+ * 监听文字改变
+ */
+- (void)textDidChange
+{
+    self.navigationItem.rightBarButtonItem.enabled = self.textView.hasText;
 }
 
 @end

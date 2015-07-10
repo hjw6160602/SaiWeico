@@ -166,9 +166,9 @@
 	int firstIndex = (int)floorf((CGRectGetMinX(visibleBounds)+kPadding*2) / CGRectGetWidth(visibleBounds));
 	int lastIndex  = (int)floorf((CGRectGetMaxX(visibleBounds)-kPadding*2-1) / CGRectGetWidth(visibleBounds));
     if (firstIndex < 0) firstIndex = 0;
-    if (firstIndex >= _photos.count) firstIndex = _photos.count - 1;
+    if (firstIndex >= _photos.count) firstIndex = (int)_photos.count - 1;
     if (lastIndex < 0) lastIndex = 0;
-    if (lastIndex >= _photos.count) lastIndex = _photos.count - 1;
+    if (lastIndex >= _photos.count) lastIndex = (int)_photos.count - 1;
 	
 	// 回收不再显示的ImageView
     NSInteger photoViewIndex;
@@ -193,7 +193,7 @@
 }
 
 #pragma mark 显示一个图片view
-- (void)showPhotoViewAtIndex:(int)index
+- (void)showPhotoViewAtIndex:(NSUInteger)index
 {
     MJPhotoView *photoView = [self dequeueReusablePhotoView];
     if (!photoView) { // 添加新的图片view
@@ -219,7 +219,7 @@
 }
 
 #pragma mark 加载index附近的图片
-- (void)loadImageNearIndex:(int)index
+- (void)loadImageNearIndex:(NSUInteger)index
 {
     if (index > 0) {
         MJPhoto *photo = _photos[index - 1];

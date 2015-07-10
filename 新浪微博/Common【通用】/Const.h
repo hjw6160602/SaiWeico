@@ -20,6 +20,9 @@
 #define HJWLog(...)
 #endif
 
+// 通知中心
+#define HJWNotificationCenter [NSNotificationCenter defaultCenter]
+
 // 颜色
 #define HJWColor(R, G, B) [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0]
 

@@ -14,7 +14,7 @@
 @end
 
 @implementation TabBar
-
+@dynamic delegate;
 //- (id)initWithFrame:(CGRect)frame
 //{
 //    self = [super initWithFrame:frame];
