@@ -365,9 +365,9 @@
 		781C15AC1B3B92280036E850 = {
 			isa = PBXGroup;
 			children = (
-				78A4A3AD1B4FCFDA00EA24E9 /* libicucore.dylib */,
 				781C15B71B3B92280036E850 /* 新浪微博 */,
 				781C15D11B3B92280036E850 /* 新浪微博Tests */,
+				782E36891B53C46C003C84AB /* Framework */,
 				781C15B61B3B92280036E850 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -617,6 +617,14 @@
 				781C164E1B3BD6EE0036E850 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		782E36891B53C46C003C84AB /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				78A4A3AD1B4FCFDA00EA24E9 /* libicucore.dylib */,
+			);
+			name = Framework;
 			sourceTree = "<group>";
 		};
 		7888B8C61B4D065B0030B4A7 /* MJPhotoBrowser */ = {

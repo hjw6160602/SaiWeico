@@ -224,7 +224,7 @@
     
     /** 被转发的微博 */
     if (weico.retweeted_status) {
-        
+        //将转发微博的正文赋值为 用户名 + 正文
         NSString *retweet_text = weico.retweeted_status.text;
         weico.retweeted_status.text = [NSString stringWithFormat:@"@%@:%@",weico.retweeted_status.user.name,retweet_text];
         
@@ -239,6 +239,8 @@
         //user.name
         
         NSAttributedString *retweetContent = retweeted_weico.attributedText;
+        
+        //将转发正文重新赋值为原始的text
         weico.retweeted_status.text = retweet_text;
         self.retweetContentLabel.attributedText = retweetContent;
         self.retweetContentLabel.frame = weicoFrame.retweetContentLabelF;

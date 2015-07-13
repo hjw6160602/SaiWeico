@@ -14,6 +14,7 @@
 #import "EmotionTool.h"
 #import "EmotionAttachment.h"
 #import "Const.h"
+#import <CoreText/CoreText.h>
 
 @implementation Weico
 
@@ -212,10 +213,17 @@
     }];
     
     // 设置字体
-    [attributedText addAttribute:NSFontAttributeName value:WeicoRichTextFont range:NSMakeRange(0, attributedText.length)];
+//    [attributedText addAttribute:NSFontAttributeName value:WeicoRichTextFont range:NSMakeRange(0, attributedText.length)];
+    //value必须是一个CTFontRef
+    [attributedText addAttribute:(NSString *)kCTFontAttributeName
+                           value:(id)CFBridgingRelease(
+                                                       CTFontCreateWithName((CFStringRef)[UIFont italicSystemFontOfSize:14].fontName,14,NULL))
+                           range:NSMakeRange(0, attributedText.length)];
+    
+
+
     
     self.attributedText = attributedText;
-    
 }
 
 /**
