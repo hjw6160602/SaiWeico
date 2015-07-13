@@ -79,7 +79,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="thS-5i-C7B" id="Rrd-Qn-UVY">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="onm-9D-7D1">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="like_orange" translatesAutoresizingMaskIntoConstraints="NO" id="onm-9D-7D1">
                                                     <rect key="frame" x="16" y="3" width="47" height="47"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="赞" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjK-Am-mkc">
@@ -945,7 +945,8 @@
         <image name="find_people" width="24" height="24"/>
         <image name="game_center" width="24" height="24"/>
         <image name="hot_status" width="24" height="24"/>
-        <image name="like" width="47" height="46"/>
+        <image name="like" width="24" height="24"/>
+        <image name="like_orange" width="47" height="46"/>
         <image name="message" width="47" height="46"/>
         <image name="more" width="24" height="24"/>
         <image name="movie" width="24" height="24"/>

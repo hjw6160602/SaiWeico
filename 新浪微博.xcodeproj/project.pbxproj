@@ -103,7 +103,6 @@
 		78F5F5C31B535E4F00F6A701 /* default in Resources */ = {isa = PBXBuildFile; fileRef = 78F5F5C01B535E4F00F6A701 /* default */; };
 		78F5F5C41B535E4F00F6A701 /* emoji in Resources */ = {isa = PBXBuildFile; fileRef = 78F5F5C11B535E4F00F6A701 /* emoji */; };
 		78F5F5C51B535E4F00F6A701 /* lxh in Resources */ = {isa = PBXBuildFile; fileRef = 78F5F5C21B535E4F00F6A701 /* lxh */; };
-		78F5F5C91B535F3E00F6A701 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78F5F5C81B535F3E00F6A701 /* Info.plist */; };
 		78FAFD561B4E782E00B4A01C /* DiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FAFD531B4E782E00B4A01C /* DiscoverController.m */; };
 		78FAFD5F1B4E786F00B4A01C /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FAFD5C1B4E786F00B4A01C /* ProfileController.m */; };
 		78FAFD621B4E78E900B4A01C /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FAFD611B4E78E900B4A01C /* HeadView.m */; };
@@ -191,6 +190,7 @@
 		781C164E1B3BD6EE0036E850 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		781C16521B3BD8480036E850 /* MBProgressHUD+HJW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HJW.h"; sourceTree = "<group>"; };
 		781C16531B3BD8480036E850 /* MBProgressHUD+HJW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HJW.m"; sourceTree = "<group>"; };
+		782E36871B53BE3E003C84AB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "新浪微博/Info.plist"; sourceTree = SOURCE_ROOT; };
 		7888B8C71B4D065B0030B4A7 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
 		7888B8C81B4D065B0030B4A7 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
 		7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
@@ -313,7 +313,6 @@
 		78F5F5C01B535E4F00F6A701 /* default */ = {isa = PBXFileReference; lastKnownFileType = folder; path = default; sourceTree = "<group>"; };
 		78F5F5C11B535E4F00F6A701 /* emoji */ = {isa = PBXFileReference; lastKnownFileType = folder; path = emoji; sourceTree = "<group>"; };
 		78F5F5C21B535E4F00F6A701 /* lxh */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lxh; sourceTree = "<group>"; };
-		78F5F5C81B535F3E00F6A701 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "新浪微博/Info.plist"; sourceTree = SOURCE_ROOT; };
 		78FAFD161B4E0F2400B4A01C /* Const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
 		78FAFD181B4E0FC900B4A01C /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		78FAFD521B4E782E00B4A01C /* DiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverController.h; sourceTree = "<group>"; };
@@ -402,7 +401,7 @@
 				78F5F5C01B535E4F00F6A701 /* default */,
 				78F5F5C11B535E4F00F6A701 /* emoji */,
 				78F5F5C21B535E4F00F6A701 /* lxh */,
-				78F5F5C81B535F3E00F6A701 /* Info.plist */,
+				782E36871B53BE3E003C84AB /* Info.plist */,
 				781C15BA1B3B92280036E850 /* main.m */,
 			);
 			path = "Supporting Files";
@@ -992,7 +991,6 @@
 				781C16501B3BD6EE0036E850 /* MBProgressHUD.bundle in Resources */,
 				781C16351B3BA9CB0036E850 /* OAuth.storyboard in Resources */,
 				78E8FF0F1B462320003D29E7 /* MJRefresh.bundle in Resources */,
-				78F5F5C91B535F3E00F6A701 /* Info.plist in Resources */,
 				781C15ED1B3B97B00036E850 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
