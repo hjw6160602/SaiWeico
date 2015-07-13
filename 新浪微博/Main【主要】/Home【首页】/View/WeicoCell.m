@@ -224,16 +224,23 @@
     
     /** 被转发的微博 */
     if (weico.retweeted_status) {
+        
+        NSString *retweet_text = weico.retweeted_status.text;
+        weico.retweeted_status.text = [NSString stringWithFormat:@"@%@:%@",weico.retweeted_status.user.name,retweet_text];
+        
         Weico *retweeted_weico = weico.retweeted_status;
-        User *retweeted_weico_user = retweeted_weico.user;
+        //User *retweeted_weico_user = retweeted_weico.user;
         
         self.retweetView.hidden = NO;
         /** 被转发的微博整体 */
         self.retweetView.frame = weicoFrame.retweetViewF;
         
         /** 被转发的微博正文 */
-        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_weico_user.name, retweeted_weico.attributedText];
-        self.retweetContentLabel.text = retweetContent;
+        //user.name
+        
+        NSAttributedString *retweetContent = retweeted_weico.attributedText;
+        weico.retweeted_status.text = retweet_text;
+        self.retweetContentLabel.attributedText = retweetContent;
         self.retweetContentLabel.frame = weicoFrame.retweetContentLabelF;
         
         /** 被转发的微博配图 */

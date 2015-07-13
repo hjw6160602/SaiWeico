@@ -164,7 +164,7 @@
 - (void)setText:(NSString *)text
 {
     _text = [text copy];
-    
+
     // 链接、@提到、#话题#
     
     // 1.匹配字符串
