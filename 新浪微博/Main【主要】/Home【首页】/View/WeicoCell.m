@@ -218,7 +218,8 @@
     self.sourceLabel.text = weico.source;
     
     /** 正文 */
-    self.contentLabel.text = weico.text;
+    self.contentLabel.attributedText = weico.attributedText;
+    //self.contentLabel.text = weico.text;
     self.contentLabel.frame = weicoFrame.contentLabelF;
     
     /** 被转发的微博 */
@@ -231,7 +232,7 @@
         self.retweetView.frame = weicoFrame.retweetViewF;
         
         /** 被转发的微博正文 */
-        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_weico_user.name, retweeted_weico.text];
+        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_weico_user.name, retweeted_weico.attributedText];
         self.retweetContentLabel.text = retweetContent;
         self.retweetContentLabel.frame = weicoFrame.retweetContentLabelF;
         

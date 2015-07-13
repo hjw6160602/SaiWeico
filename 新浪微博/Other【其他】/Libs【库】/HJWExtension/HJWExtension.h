@@ -26,7 +26,7 @@
 #define HJWColor(R, G, B) [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0]
 
 // 全局颜色
-#define HJW_GLOBLE_BG [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:0.3]
+#define HJW_GLOBLE_BG [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:0.3]
 
 
 // 随机色
@@ -37,7 +37,7 @@
 if ((condition) == NO) { \
     NSString *file = [NSString stringWithUTF8String:__FILE__]; \
     HJWLog(@"\n警告文件：%@\n警告行数：第%d行\n警告方法：%s\n警告描述：%@", file, __LINE__,  __FUNCTION__, desc); \
-    HJWLog(@"\n如果不想看到警告信息，可以删掉HJWExtension.h中的第30、第31行"); \
+    HJWLog(@"\n如果不想看到警告信息，可以删掉HJWExtension.h中的第39、第40行"); \
     return returnValue; \
 }
 

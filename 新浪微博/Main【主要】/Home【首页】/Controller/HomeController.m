@@ -245,7 +245,7 @@
 #pragma mark - TableView Data Source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"微博总数：%lu",self.weicoFrames.count);
+    NSLog(@"微博总数：%d",(int)self.weicoFrames.count);
     return self.weicoFrames.count;
 }
 

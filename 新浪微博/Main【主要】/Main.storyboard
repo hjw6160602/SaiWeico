@@ -161,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNR-VQ-uj0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180.80000000000001" y="889.63"/>
+            <point key="canvasLocation" x="391" y="1923"/>
         </scene>
         <!--讯息Navi-->
         <scene sceneID="Aj0-xK-WI7">
@@ -266,7 +266,7 @@
                             </tableViewSection>
                             <tableViewSection id="z9P-z0-D2X">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscoverCell" id="pC6-PN-2mr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DiscoverCell" id="pC6-PN-2mr" userLabel="热门微博">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pC6-PN-2mr" id="Ccv-Tj-8d8">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -282,8 +282,11 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="w3O-WR-4bA" kind="push" id="Spa-g1-7B5"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscoverCell" id="F0z-v4-SOl">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DiscoverCell" id="F0z-v4-SOl" userLabel="找人">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F0z-v4-SOl" id="daU-aV-ldF">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -299,6 +302,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="tzw-2i-fwP" kind="push" id="7Xh-nA-qCM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -505,12 +511,49 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="发现" id="Ffu-LZ-URp"/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ux8-Ih-iNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="147"/>
+            <point key="canvasLocation" x="1030" y="313"/>
+        </scene>
+        <!--热门微博-->
+        <scene sceneID="LLm-Lw-l8Q">
+            <objects>
+                <viewController id="w3O-WR-4bA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wGC-gr-uhJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tsc-0r-BNA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JvZ-9z-Xdh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="热门微博" id="jfA-JV-ZpJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="33A-wM-5uJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1474" y="-179"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mLZ-xt-edt">
+            <objects>
+                <viewController id="tzw-2i-fwP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WHl-xY-E0O"/>
+                        <viewControllerLayoutGuide type="bottom" id="zTF-FR-4s4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uEF-um-VDY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dce-Ev-RWK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J7f-aq-A0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="16"/>
         </scene>
         <!--发现 Navi-->
         <scene sceneID="BKn-Fg-OoU">
@@ -530,7 +573,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7x-8w-Bhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596.79999999999995" y="147.68000000000001"/>
+            <point key="canvasLocation" x="596" y="313"/>
         </scene>
         <!--我-->
         <scene sceneID="Gsz-j7-egz">
@@ -793,7 +836,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3m-3s-O8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="768"/>
+            <point key="canvasLocation" x="1030" y="1210"/>
         </scene>
         <!--我 Navi-->
         <scene sceneID="54N-a0-v7u">
@@ -813,7 +856,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ygH-M3-Q4i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596.79999999999995" y="768.22000000000003"/>
+            <point key="canvasLocation" x="596" y="1210"/>
         </scene>
         <!--首页-->
         <scene sceneID="coa-Sx-GUZ">
@@ -884,7 +927,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Jd-O8-IHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-218.40000000000001" y="889.63"/>
+            <point key="canvasLocation" x="-8" y="1923"/>
         </scene>
     </scenes>
     <resources>

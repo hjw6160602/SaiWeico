@@ -12,6 +12,9 @@
 #import "HJWExtension.h"
 #import "TextView.h"
 #import "Const.h"
+#import "AFNetworking.h"
+#import "MBProgressHUD+HJW.h"
+#import "API.h"
 
 @interface WeicoController ()
 
@@ -30,7 +33,6 @@
 }
 
 - (void)initNavi{
-    
     NSString *name = [AccountTool account].name;
     NSString *prefix = @"发微博";
     if (name) {
@@ -78,7 +80,26 @@
 }
 
 - (IBAction)send:(id)sender {
-    NSLog(@"发送微博");
+    /**	status true string 要发布的微博文本内容，必须做URLencode，内容不超过140个汉字。*/
+    /**	pic false binary 微博的配图。*/
+    /**	access_token true string*/
+    
+    // 1.请求管理者
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.拼接请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [AccountTool account].access_token;
+    params[@"status"] = self.textView.text;
+    
+    // 3.发送请求
+    [mgr POST:POST_WEICO parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+        [MBProgressHUD showSuccess:@"发送成功"];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [MBProgressHUD showError:@"发送失败"];
+    }];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /**

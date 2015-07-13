@@ -27,10 +27,67 @@
 #define HJWColor(R, G, B) [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0]
 
 // 全局颜色
-#define HJW_GLOBLE_BG [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:0.3]
+//#define HJW_GLOBLE_BG [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:0.3]
 
 
 // 随机色
 #define HJWRandomColor HJWColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+// 是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+// 是否为4inch
+#define FourInch ([UIScreen mainScreen].bounds.size.height == 568.0)
+
+// 导航栏标题的字体
+#define NavigationTitleFont [UIFont boldSystemFontOfSize:20]
+
+// 应用信息
+#define AppKey @"1566588143"
+#define AppSecret @"dafb97bdaecbcfd993f7d81b4edd5603"
+
+
+// cell的计算参数
+// cell之间的间距
+#define WeicoCellMargin 10
+
+// cell的内边距
+#define WeicoCellInset 10
+
+// 原创微博昵称字体
+#define WeicoOrginalNameFont [UIFont systemFontOfSize:13]
+// 原创微博时间字体
+#define WeicoOrginalTimeFont [UIFont systemFontOfSize:11]
+// 原创微博来源字体
+#define WeicoOrginalSourceFont WeicoOrginalTimeFont
+// 原创微博正文字体
+#define WeicoOrginalTextFont [UIFont systemFontOfSize:14]
+// 富文本字体
+#define WeicoRichTextFont [UIFont systemFontOfSize:13]
+
+// 转发微博昵称字体
+#define WeicoRetweetedNameFont WeicoOrginalNameFont
+// 转发微博正文字体
+#define WeicoRetweetedTextFont WeicoOrginalTextFont
+
+
+// 转发微博正文字体
+#define WeicoHighTextColor HJWColor(88, 161, 253)
+
+/** 表情相关 */
+// 表情的最大行数
+#define EmotionMaxRows 3
+// 表情的最大列数
+#define EmotionMaxCols 7
+// 每页最多显示多少个表情
+#define EmotionMaxCountPerPage (EmotionMaxRows * EmotionMaxCols - 1)
+
+// 通知
+// 表情选中的通知
+#define EmotionDidSelectedNotification @"EmotionDidSelectedNotification"
+// 点击删除按钮的通知
+#define EmotionDidDeletedNotification @"EmotionDidDeletedNotification"
+// 通知里面取出表情用的key
+#define SelectedEmotion @"SelectedEmotion"
 
 #endif

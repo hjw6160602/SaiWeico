@@ -13,6 +13,9 @@
 #import "Account.h"
 #import "AccountTool.h"
 #import "UIWindow+Extension.h"
+#import "Const.h"
+#import "API.h"
+
 
 @interface OAuthViewController ()
 
@@ -68,7 +71,7 @@
 - (void)accessTokenWithCode:(NSString *)code
 {
     /*
-     * URL：https://api.weibo.com/oauth2/access_token
+
      * 请求参数：
      * client_id：申请应用时分配的AppKey
      * client_secret：申请应用时分配的AppSecret
@@ -84,14 +87,14 @@
     
     // 2.拼接请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"client_id"] = @"1566588143";
-    params[@"client_secret"] = @"dafb97bdaecbcfd993f7d81b4edd5603";
+    params[@"client_id"] = AppKey;
+    params[@"client_secret"] = AppSecret;
     params[@"grant_type"] = @"authorization_code";
     params[@"redirect_uri"] = @"http://www.baidu.com";
     params[@"code"] = code;
     
     // 3.发送请求
-    [mgr POST:@"https://api.weibo.com/oauth2/access_token" parameters:params
+    [mgr POST:POST_ACCESS_TOKEN parameters:params
       success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
           [MBProgressHUD hideHUD];
           // 将返回的账号字典数据 --> 模型，存进沙盒

@@ -9,6 +9,11 @@
 #import "Weico.h"
 #import "Photo.h"
 #import "NSDate+Extension.h"
+#import "RegexKitLite.h"
+#import "RegExResult.h"
+#import "EmotionTool.h"
+#import "EmotionAttachment.h"
+#import "Const.h"
 
 @implementation Weico
 
@@ -155,5 +160,101 @@
     }
     return self;
 }
+
+- (void)setText:(NSString *)text
+{
+    _text = [text copy];
+    
+    // 链接、@提到、#话题#
+    
+    // 1.匹配字符串
+    NSArray *regexResults = [self regexResultsWithText:text];
+    
+    // 2.根据匹配结果，拼接对应的图片表情和普通文本
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
+    
+    // 遍历
+    [regexResults enumerateObjectsUsingBlock:^(RegExResult *result, NSUInteger idx, BOOL *stop) {
+        if (result.isEmotion) { // 表情
+            // 创建附件对象
+            EmotionAttachment *attach = [[EmotionAttachment alloc] init];
+            
+            // 传递表情
+            attach.emotion = [EmotionTool emotionWithDesc:result.string];
+            attach.bounds = CGRectMake(0, -3, WeicoOrginalTextFont.lineHeight, WeicoOrginalTextFont.lineHeight);
+            
+            // 将附件包装成富文本
+            NSAttributedString *attachString = [NSAttributedString attributedStringWithAttachment:attach];
+            [attributedText appendAttributedString:attachString];
+        } else { // 非表情（直接拼接普通文本）
+            NSMutableAttributedString *substr = [[NSMutableAttributedString alloc] initWithString:result.string];
+            
+            // 匹配#话题#
+            NSString *trendRegex = @"#[a-zA-Z0-9\\u4e00-\\u9fa5]+#";
+            [result.string enumerateStringsMatchedByRegex:trendRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
+            }];
+            
+            // 匹配@提到
+            NSString *mentionRegex = @"@[a-zA-Z0-9\\u4e00-\\u9fa5\\-]+ ?";
+            [result.string enumerateStringsMatchedByRegex:mentionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
+            }];
+            
+            // 匹配超链接
+            NSString *httpRegex = @"http(s)?://([a-zA-Z|\\d]+\\.)+[a-zA-Z|\\d]+(/[a-zA-Z|\\d|\\-|\\+|_./?%&=]*)?";
+            [result.string enumerateStringsMatchedByRegex:httpRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
+            }];
+            
+            [attributedText appendAttributedString:substr];
+        }
+    }];
+    
+    // 设置字体
+    [attributedText addAttribute:NSFontAttributeName value:WeicoRichTextFont range:NSMakeRange(0, attributedText.length)];
+    
+    self.attributedText = attributedText;
+    
+}
+
+/**
+ *  根据字符串计算出所有的匹配结果（已经排好序）
+ *
+ *  @param text 字符串内容
+ */
+- (NSArray *)regexResultsWithText:(NSString *)text
+{
+    // 用来存放所有的匹配结果
+    NSMutableArray *regexResults = [NSMutableArray array];
+    
+    // 匹配表情
+    NSString *emotionRegex = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
+    [text enumerateStringsMatchedByRegex:emotionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        RegExResult *rr = [[RegExResult alloc] init];
+        rr.string = *capturedStrings;
+        rr.range = *capturedRanges;
+        rr.emotion = YES;
+        [regexResults addObject:rr];
+    }];
+    
+    // 匹配非表情
+    [text enumerateStringsSeparatedByRegex:emotionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        RegExResult *rr = [[RegExResult alloc] init];
+        rr.string = *capturedStrings;
+        rr.range = *capturedRanges;
+        rr.emotion = NO;
+        [regexResults addObject:rr];
+    }];
+    
+    // 排序
+    [regexResults sortUsingComparator:^NSComparisonResult(RegExResult *regExResult1, RegExResult *regExResult2) {
+        NSUInteger location1 = regExResult1.range.location;
+        NSUInteger location2 = regExResult2.range.location;
+        return [@(location1) compare:@(location2)];
+    }];
+    return regexResults;
+}
+
 
 @end
