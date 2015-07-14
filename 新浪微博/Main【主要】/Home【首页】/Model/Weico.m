@@ -33,6 +33,7 @@
  */
 - (NSAttributedString *)attributedTextWithText:(NSString *)text
 {
+    
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
     
     // 表情的规则
@@ -84,7 +85,6 @@
         return NSOrderedAscending;
     }];
     
-    UIFont *font = [UIFont systemFontOfSize:15];
     // 按顺序拼接每一段文字
     for (TextPart *part in parts) {
         // 等会需要拼接的子串
@@ -94,7 +94,7 @@
             NSString *name = [EmotionTool emotionWithDesc:part.text].png;
             if (name) { // 能找到对应的图片
                 attch.image = [UIImage imageNamed:name];
-                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
+                attch.bounds = CGRectMake(0, -3, WeicoRichTextFont.lineHeight, WeicoRichTextFont.lineHeight);
                 substr = [NSAttributedString attributedStringWithAttachment:attch];
             } else { // 表情图片不存在
                 substr = [[NSAttributedString alloc] initWithString:part.text];
@@ -108,7 +108,7 @@
     }
     
     // 一定要设置字体,保证计算出来的尺寸是正确的
-    [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
+    [attributedText addAttribute:NSFontAttributeName value:WeicoRichTextFont range:NSMakeRange(0, attributedText.length)];
     //设置正文段落样式
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.lineSpacing = LINE_SPACING;
@@ -139,13 +139,10 @@
  * 1分内： 刚刚
  * 1分~59分内：xx分钟前
  * 大于60分钟：xx小时前
- 
  2> 昨天
  * 昨天 xx:xx
- 
  3> 其他
  * xx-xx xx:xx
- 
  2.非今年
  1> xxxx-xx-xx xx:xx
  */
@@ -271,66 +268,5 @@
     }
     return self;
 }
-
-//- (void)setText:(NSString *)text
-//{
-//    _text = [text copy];
-//    NSLog(@"%@",_text);
-//    // 链接、@提到、#话题#
-//    
-//    // 1.匹配字符串
-//    NSArray *regexResults = [self regexResultsWithText:text];
-//    
-//    // 2.根据匹配结果，拼接对应的图片表情和普通文本
-//    //NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
-//    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:_text];
-//    // 遍历
-////    [regexResults enumerateObjectsUsingBlock:^(RegExResult *result, NSUInteger idx, BOOL *stop) {
-////        if (result.isEmotion) { // 表情
-////            // 创建附件对象
-////            EmotionAttachment *attach = [[EmotionAttachment alloc] init];
-////            
-////            // 传递表情
-////            attach.emotion = [EmotionTool emotionWithDesc:result.string];
-////            attach.bounds = CGRectMake(0, -3, WeicoOrginalTextFont.lineHeight, WeicoOrginalTextFont.lineHeight);
-////            
-////            // 将附件包装成富文本
-////            NSAttributedString *attachString = [NSAttributedString attributedStringWithAttachment:attach];
-////            [attributedText appendAttributedString:attachString];
-////        } else { // 非表情（直接拼接普通文本）
-////            NSMutableAttributedString *substr = [[NSMutableAttributedString alloc] initWithString:result.string];
-////            
-////            // 匹配#话题#
-////            NSString *trendRegex = @"#[a-zA-Z0-9\\u4e00-\\u9fa5]+#";
-////            [result.string enumerateStringsMatchedByRegex:trendRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-////                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
-////            }];
-////            
-////            // 匹配@提到
-////            NSString *mentionRegex = @"@[a-zA-Z0-9\\u4e00-\\u9fa5\\-]+ ?";
-////            [result.string enumerateStringsMatchedByRegex:mentionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-////                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
-////            }];
-////            
-////            // 匹配超链接
-////            NSString *httpRegex = @"http(s)?://([a-zA-Z|\\d]+\\.)+[a-zA-Z|\\d]+(/[a-zA-Z|\\d|\\-|\\+|_./?%&=]*)?";
-////            [result.string enumerateStringsMatchedByRegex:httpRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-////                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
-////            }];
-////            
-////            [attributedText appendAttributedString:substr];
-////        }
-////    }];
-//    [attributedText addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range: NSMakeRange(0, attributedText.length)];
-//    // 设置字体 value必须是一个CTFontRef
-//    [attributedText addAttribute:NSFontAttributeName value:WeicoRichTextFont range:NSMakeRange(0, attributedText.length)];
-//    // 设置正文段落样式
-//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-//    style.lineSpacing = LINE_SPACING;
-//    //style.headIndent = HEAD_INDENT;
-//    [attributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedText.length)];
-//    self.attributedText = attributedText;
-//}
-
 
 @end

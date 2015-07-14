@@ -17,38 +17,6 @@
             endingLineNumber = "141"
             landmarkName = "-initUnreadCount"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HomeController initUnreadCount]"
-                  moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458560964.124261"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "142"
-                  endingLineNumber = "142"
-                  offsetFromSymbolStart = "430">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__33-[HomeController initUnreadCount]_block_invoke"
-                  moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458560964.124676"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "142"
-                  endingLineNumber = "142"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,12 +58,12 @@
                   moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458560964.126986"
+                  timestampString = "458561781.413233"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "153"
                   endingLineNumber = "153"
-                  offsetFromSymbolStart = "624">
+                  offsetFromSymbolStart = "512">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,27 +73,12 @@
                   moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458560964.127294"
+                  timestampString = "458561781.413547"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "153"
                   endingLineNumber = "153"
-                  offsetFromSymbolStart = "632">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__33-[HomeController initUnreadCount]_block_invoke151"
-                  moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458560964.12757"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "50">
+                  offsetFromSymbolStart = "528">
                </Location>
             </Locations>
          </BreakpointContent>

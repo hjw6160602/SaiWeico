@@ -220,6 +220,7 @@
     
     /** 正文 */
     self.contentLabel.attributedText = weico.attributedText;
+    NSLog(@"%@",self.contentLabel.attributedText);
     self.contentLabel.textColor = WEICO_CONTENT_COLOR;
     //self.contentLabel.text = weico.text;
     self.contentLabel.frame = weicoFrame.contentLabelF;
