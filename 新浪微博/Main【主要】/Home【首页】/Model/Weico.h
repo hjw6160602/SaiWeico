@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
+// 段落样式行间距
+#define LINE_SPACING 5
+// 段落样式
+#define HEAD_INDENT 5
+
 @interface Weico : NSObject<NSCoding>
 
 /**	string	字符串型的微博ID*/

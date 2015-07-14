@@ -14,18 +14,9 @@
 //  3.存放着一个数据模型Weico
 // 昵称字体
 
-#define WeicoCellNameFont [UIFont systemFontOfSize:15]
-// 时间字体
-#define WeicoCellTimeFont [UIFont systemFontOfSize:12]
-// 来源字体
-#define WeicoCellSourceFont WeicoCellTimeFont
-// 正文字体
-#define WeicoCellContentFont [UIFont systemFontOfSize:14]
+
 // cell的边框宽度
 #define WeicoCellBorderW 10
-
-// 被转发微博的正文字体
-#define WeicoCellRetweetContentFont [UIFont systemFontOfSize:13]
 
 @class Weico;
 

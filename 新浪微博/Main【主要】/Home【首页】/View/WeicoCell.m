@@ -16,6 +16,7 @@
 #import "NSString+Extension.h"
 #import "WeicoPhotosView.h"
 #import "UIView+Extension.h"
+#import "Const.h"
 #import "IconView.h"
 
 
@@ -106,27 +107,27 @@
     
     /** 昵称 */
     UILabel *nameLabel = [[UILabel alloc] init];
-    nameLabel.font = WeicoCellNameFont;
+    nameLabel.font = WeicoOrginalNameFont;
     [originalView addSubview:nameLabel];
     self.nameLabel = nameLabel;
     
     /** 时间 */
     UILabel *timeLabel = [[UILabel alloc] init];
-    timeLabel.font = WeicoCellTimeFont;
+    timeLabel.font = WeicoOrginalTimeFont;
     timeLabel.textColor = [UIColor lightGrayColor];
     [originalView addSubview:timeLabel];
     self.timeLabel = timeLabel;
     
     /** 来源 */
     UILabel *sourceLabel = [[UILabel alloc] init];
-    sourceLabel.font = WeicoCellSourceFont;
+    sourceLabel.font = WeicoOrginalSourceFont;
     sourceLabel.textColor = [UIColor lightGrayColor];
     [originalView addSubview:sourceLabel];
     self.sourceLabel = sourceLabel;
     
     /** 正文 */
     UILabel *contentLabel = [[UILabel alloc] init];
-    contentLabel.font = WeicoCellContentFont;
+    contentLabel.font = WeicoOrginalTextFont;
     contentLabel.numberOfLines = 0;
     [originalView addSubview:contentLabel];
     self.contentLabel = contentLabel;
@@ -142,7 +143,7 @@
     /** 转发微博正文 + 昵称 */
     UILabel *retweetContentLabel = [[UILabel alloc] init];
     retweetContentLabel.numberOfLines = 0;
-    retweetContentLabel.font = WeicoCellRetweetContentFont;
+    retweetContentLabel.font = WeicoRetweetedTextFont;
     retweetContentLabel.textColor = HJWColor(51, 51, 51);
     [retweetView addSubview:retweetContentLabel];
     self.retweetContentLabel = retweetContentLabel;
@@ -185,7 +186,7 @@
         self.nameLabel.textColor = [UIColor orangeColor];
     } else {
     
-        self.nameLabel.textColor = [UIColor blackColor];
+        self.nameLabel.textColor = WEICO_CONTENT_COLOR;
         self.vipView.hidden = YES;
     }
     
@@ -206,19 +207,20 @@
     NSString *time = weico.show_time;
     CGFloat timeX = weicoFrame.nameLabelF.origin.x;
     CGFloat timeY = CGRectGetMaxY(weicoFrame.nameLabelF) + 6;
-    CGSize timeSize = [time sizeWithFont:WeicoCellTimeFont];
+    CGSize timeSize = [time sizeWithFont:WeicoOrginalTimeFont];
     self.timeLabel.frame = (CGRect){{timeX, timeY}, timeSize};
     self.timeLabel.text = time;
     
     /** 来源 */
     CGFloat sourceX = CGRectGetMaxX(self.timeLabel.frame) + 6;
     CGFloat sourceY = timeY;
-    CGSize sourceSize = [weico.source sizeWithFont:WeicoCellSourceFont];
+    CGSize sourceSize = [weico.source sizeWithFont:WeicoOrginalSourceFont];
     self.sourceLabel.frame = (CGRect){{sourceX, sourceY}, sourceSize};
     self.sourceLabel.text = weico.source;
     
     /** 正文 */
     self.contentLabel.attributedText = weico.attributedText;
+    self.contentLabel.textColor = WEICO_CONTENT_COLOR;
     //self.contentLabel.text = weico.text;
     self.contentLabel.frame = weicoFrame.contentLabelF;
     

@@ -253,7 +253,6 @@
 {
     // 获得cell
     WeicoCell *cell = [WeicoCell cellWithTableView:tableView];
-
     // 给cell传递模型数据
     cell.weicoFrame = self.weicoFrames[indexPath.row];
     return cell;

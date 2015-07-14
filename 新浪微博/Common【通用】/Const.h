@@ -27,7 +27,7 @@
 #define HJWColor(R, G, B) [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:1.0]
 
 // 全局颜色
-//#define HJW_GLOBLE_BG [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:0.3]
+#define WEICO_CONTENT_COLOR [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1]
 
 
 // 随机色
@@ -61,9 +61,9 @@
 // 原创微博来源字体
 #define WeicoOrginalSourceFont WeicoOrginalTimeFont
 // 原创微博正文字体
-#define WeicoOrginalTextFont [UIFont systemFontOfSize:14]
+#define WeicoOrginalTextFont [UIFont systemFontOfSize:16]
 // 富文本字体
-#define WeicoRichTextFont [UIFont systemFontOfSize:13]
+#define WeicoRichTextFont [UIFont systemFontOfSize:15]
 
 // 转发微博昵称字体
 #define WeicoRetweetedNameFont WeicoOrginalNameFont
@@ -72,7 +72,7 @@
 
 
 // 转发微博正文字体
-#define WeicoHighTextColor HJWColor(88, 161, 253)
+#define WeicoHighTextColor HJWColor(255, 126, 157)
 
 /** 表情相关 */
 // 表情的最大行数
