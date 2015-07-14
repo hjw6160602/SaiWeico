@@ -62,7 +62,7 @@
     CGFloat contentX = iconX;
     CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + WeicoCellMargin/2;
     CGFloat maxW = cellW - 2 * contentX;
-    CGSize contentSize = [self sizeWithText:weico.attributedText font:WeicoRichTextFont maxW:maxW];
+    CGSize contentSize = [weico.attributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     self.contentLabelF = (CGRect){{contentX, contentY}, contentSize};
     
     /** 配图 */
@@ -87,14 +87,12 @@
     /* 被转发微博 */
     if (weico.retweeted_status) {
         Weico *retweeted_status = weico.retweeted_status;
-        User *retweeted_status_user = retweeted_status.user;
         
         /** 被转发微博正文 */
         CGFloat retweetContentX = WeicoCellMargin;
         CGFloat retweetContentY = WeicoCellMargin;
-        NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_status_user.name, retweeted_status.text];
-        NSAttributedString *retweetContentAttr = [[NSAttributedString alloc]initWithString:retweetContent];
-        CGSize retweetContentSize = [self sizeWithText:retweetContentAttr font:WeicoRetweetedTextFont maxW:maxW];
+
+        CGSize retweetContentSize = [weico.retweetedAttributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
         self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContentSize};
         
         /** 被转发微博配图 */
@@ -130,14 +128,6 @@
     /* cell的高度 */
     self.cellHeight = CGRectGetMaxY(self.toolbarF);
 
-}
-
-- (CGSize)sizeWithText:(NSAttributedString *)text font:(UIFont *)font maxW:(CGFloat)maxW
-{
-    CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
-    return [text boundingRectWithSize:maxSize
-                              options:NSStringDrawingUsesLineFragmentOrigin
-                              context:nil].size;
 }
 
 - (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font{

@@ -42,6 +42,7 @@
 		781C16541B3BD8480036E850 /* MBProgressHUD+HJW.m in Sources */ = {isa = PBXBuildFile; fileRef = 781C16531B3BD8480036E850 /* MBProgressHUD+HJW.m */; };
 		7879D6FE1B54F9E7006BAFF0 /* WeicoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879D6FC1B54F9E7006BAFF0 /* WeicoDetailController.m */; };
 		7879D6FF1B54F9E7006BAFF0 /* WeicoDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7879D6FD1B54F9E7006BAFF0 /* WeicoDetailController.xib */; };
+		7879D7021B551178006BAFF0 /* TextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879D7011B551178006BAFF0 /* TextPart.m */; };
 		7888B8D61B4D065B0030B4A7 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8C81B4D065B0030B4A7 /* MJPhoto.m */; };
 		7888B8D71B4D065B0030B4A7 /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */; };
 		7888B8D81B4D065B0030B4A7 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8CB1B4D065B0030B4A7 /* MJPhotoBrowser.m */; };
@@ -57,7 +58,6 @@
 		78A4A3851B4F92F400EA24E9 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3841B4F92F400EA24E9 /* TextView.m */; };
 		78A4A38A1B4FAEEA00EA24E9 /* WeicoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3881B4FAEEA00EA24E9 /* WeicoController.m */; };
 		78A4A38D1B4FAFBF00EA24E9 /* ComposeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A38C1B4FAFBF00EA24E9 /* ComposeBar.m */; };
-		78A4A3901B4FC2D900EA24E9 /* RegExResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A38F1B4FC2D900EA24E9 /* RegExResult.m */; };
 		78A4A3941B4FC57E00EA24E9 /* EmotionAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3931B4FC57E00EA24E9 /* EmotionAttachment.m */; };
 		78A4A3971B4FC5D400EA24E9 /* Emotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3961B4FC5D400EA24E9 /* Emotion.m */; };
 		78A4A39A1B4FC61200EA24E9 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3991B4FC61200EA24E9 /* NSString+Emoji.m */; };
@@ -196,6 +196,8 @@
 		7879D6FB1B54F9E7006BAFF0 /* WeicoDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoDetailController.h; sourceTree = "<group>"; };
 		7879D6FC1B54F9E7006BAFF0 /* WeicoDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoDetailController.m; sourceTree = "<group>"; };
 		7879D6FD1B54F9E7006BAFF0 /* WeicoDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeicoDetailController.xib; sourceTree = "<group>"; };
+		7879D7001B551178006BAFF0 /* TextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextPart.h; sourceTree = "<group>"; };
+		7879D7011B551178006BAFF0 /* TextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextPart.m; sourceTree = "<group>"; };
 		7888B8C71B4D065B0030B4A7 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
 		7888B8C81B4D065B0030B4A7 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
 		7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
@@ -225,8 +227,6 @@
 		78A4A3881B4FAEEA00EA24E9 /* WeicoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoController.m; sourceTree = "<group>"; };
 		78A4A38B1B4FAFBF00EA24E9 /* ComposeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeBar.h; sourceTree = "<group>"; };
 		78A4A38C1B4FAFBF00EA24E9 /* ComposeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeBar.m; sourceTree = "<group>"; };
-		78A4A38E1B4FC2D900EA24E9 /* RegExResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExResult.h; sourceTree = "<group>"; };
-		78A4A38F1B4FC2D900EA24E9 /* RegExResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExResult.m; sourceTree = "<group>"; };
 		78A4A3921B4FC57E00EA24E9 /* EmotionAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionAttachment.h; sourceTree = "<group>"; };
 		78A4A3931B4FC57E00EA24E9 /* EmotionAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionAttachment.m; sourceTree = "<group>"; };
 		78A4A3951B4FC5D400EA24E9 /* Emotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emotion.h; sourceTree = "<group>"; };
@@ -834,8 +834,8 @@
 				78DCCB3E1B4397360061AB3F /* WeicoFrame.m */,
 				78DCCB4B1B43D4BD0061AB3F /* Photo.h */,
 				78DCCB4C1B43D4BD0061AB3F /* Photo.m */,
-				78A4A38E1B4FC2D900EA24E9 /* RegExResult.h */,
-				78A4A38F1B4FC2D900EA24E9 /* RegExResult.m */,
+				7879D7001B551178006BAFF0 /* TextPart.h */,
+				7879D7011B551178006BAFF0 /* TextPart.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1029,7 +1029,6 @@
 				78EA0C4D1B42757800D7F994 /* UIImageView+HighlightedWebCache.m in Sources */,
 				781C16121B3B9A1C0036E850 /* NSObject+HJWMember.m in Sources */,
 				7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */,
-				78A4A3901B4FC2D900EA24E9 /* RegExResult.m in Sources */,
 				78A4A38A1B4FAEEA00EA24E9 /* WeicoController.m in Sources */,
 				78EA0C571B4277C900D7F994 /* User.m in Sources */,
 				78DCCB501B43ED9E0061AB3F /* WeicoToolBar.m in Sources */,
@@ -1059,6 +1058,7 @@
 				78A4A38D1B4FAFBF00EA24E9 /* ComposeBar.m in Sources */,
 				78EA0C4E1B42757800D7F994 /* UIImageView+WebCache.m in Sources */,
 				781C162F1B3BA8C60036E850 /* AFSecurityPolicy.m in Sources */,
+				7879D7021B551178006BAFF0 /* TextPart.m in Sources */,
 				78EA0C531B42773D00D7F994 /* HomeController.m in Sources */,
 				78FBBB241B4A1A72005BC650 /* IconView.m in Sources */,
 				781C15F11B3B999B0036E850 /* NavigationController.m in Sources */,

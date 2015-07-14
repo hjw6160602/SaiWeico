@@ -10,10 +10,11 @@
 #import "Photo.h"
 #import "NSDate+Extension.h"
 #import "RegexKitLite.h"
-#import "RegExResult.h"
 #import "EmotionTool.h"
+#import "Emotion.h"
 #import "EmotionAttachment.h"
 #import "Const.h"
+#import "TextPart.h"
 #import <CoreText/CoreText.h>
 
 @implementation Weico
@@ -21,6 +22,115 @@
 - (NSDictionary *)objectClassInArray
 {
     return @{@"pic_urls" : [Photo class]};
+}
+
+/**
+ *  普通文字 --> 属性文字
+ *
+ *  @param text 普通文字
+ *
+ *  @return 属性文字
+ */
+- (NSAttributedString *)attributedTextWithText:(NSString *)text
+{
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
+    
+    // 表情的规则
+    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
+    // @的规则
+    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5-_]+";
+    // #话题#的规则
+    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    // url链接的规则
+    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
+    
+    // 遍历所有的特殊字符串
+    NSMutableArray *parts = [NSMutableArray array];
+    [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        if ((*capturedRanges).length == 0) return;
+        
+        TextPart *part = [[TextPart alloc] init];
+        part.special = YES;
+        part.text = *capturedStrings;
+        part.emotion = [part.text hasPrefix:@"["] && [part.text hasSuffix:@"]"];
+        part.range = *capturedRanges;
+        [parts addObject:part];
+    }];
+    // 遍历所有的非特殊字符
+    [text enumerateStringsSeparatedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+        if ((*capturedRanges).length == 0) return;
+        
+        TextPart *part = [[TextPart alloc] init];
+        part.text = *capturedStrings;
+        part.range = *capturedRanges;
+        [parts addObject:part];
+    }];
+    
+    // 排序
+    // 系统是按照从小 -> 大的顺序排列对象
+    [parts sortUsingComparator:^NSComparisonResult(TextPart *part1, TextPart *part2) {
+        // NSOrderedAscending = -1L, NSOrderedSame, NSOrderedDescending
+        // 返回NSOrderedSame:两个一样大
+        // NSOrderedAscending(升序):part2>part1
+        // NSOrderedDescending(降序):part1>part2
+        if (part1.range.location > part2.range.location) {
+            // part1>part2
+            // part1放后面, part2放前面
+            return NSOrderedDescending;
+        }
+        // part1<part2
+        // part1放前面, part2放后面
+        return NSOrderedAscending;
+    }];
+    
+    UIFont *font = [UIFont systemFontOfSize:15];
+    // 按顺序拼接每一段文字
+    for (TextPart *part in parts) {
+        // 等会需要拼接的子串
+        NSAttributedString *substr = nil;
+        if (part.isEmotion) { // 表情
+            NSTextAttachment *attch = [[NSTextAttachment alloc] init];
+            NSString *name = [EmotionTool emotionWithDesc:part.text].png;
+            if (name) { // 能找到对应的图片
+                attch.image = [UIImage imageNamed:name];
+                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
+                substr = [NSAttributedString attributedStringWithAttachment:attch];
+            } else { // 表情图片不存在
+                substr = [[NSAttributedString alloc] initWithString:part.text];
+            }
+        } else if (part.special) { // 非表情的特殊文字
+            substr = [[NSAttributedString alloc] initWithString:part.text attributes:@{       NSForegroundColorAttributeName: WeicoHighTextColor}];
+        } else { // 非特殊文字
+            substr = [[NSAttributedString alloc] initWithString:part.text];
+        }
+        [attributedText appendAttributedString:substr];
+    }
+    
+    // 一定要设置字体,保证计算出来的尺寸是正确的
+    [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
+    //设置正文段落样式
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = LINE_SPACING;
+    [attributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedText.length)];
+
+    return attributedText;
+}
+
+- (void)setText:(NSString *)text
+{
+    _text = [text copy];
+    
+    // 利用text生成attributedText
+    self.attributedText = [self attributedTextWithText:text];
+}
+
+- (void)setRetweeted_status:(Weico *)retweeted_status
+{
+    _retweeted_status = retweeted_status;
+    
+    NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_status.user.name, retweeted_status.text];
+    self.retweetedAttributedText = [self attributedTextWithText:retweetContent];
 }
 
 /**
@@ -162,103 +272,65 @@
     return self;
 }
 
-- (void)setText:(NSString *)text
-{
-    _text = [text copy];
-    
-    // 链接、@提到、#话题#
-    
-    // 1.匹配字符串
-    NSArray *regexResults = [self regexResultsWithText:text];
-    
-    // 2.根据匹配结果，拼接对应的图片表情和普通文本
-    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
-    
-    // 遍历
-    [regexResults enumerateObjectsUsingBlock:^(RegExResult *result, NSUInteger idx, BOOL *stop) {
-        if (result.isEmotion) { // 表情
-            // 创建附件对象
-            EmotionAttachment *attach = [[EmotionAttachment alloc] init];
-            
-            // 传递表情
-            attach.emotion = [EmotionTool emotionWithDesc:result.string];
-            attach.bounds = CGRectMake(0, -3, WeicoOrginalTextFont.lineHeight, WeicoOrginalTextFont.lineHeight);
-            
-            // 将附件包装成富文本
-            NSAttributedString *attachString = [NSAttributedString attributedStringWithAttachment:attach];
-            [attributedText appendAttributedString:attachString];
-        } else { // 非表情（直接拼接普通文本）
-            NSMutableAttributedString *substr = [[NSMutableAttributedString alloc] initWithString:result.string];
-            
-            // 匹配#话题#
-            NSString *trendRegex = @"#[a-zA-Z0-9\\u4e00-\\u9fa5]+#";
-            [result.string enumerateStringsMatchedByRegex:trendRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
-            }];
-            
-            // 匹配@提到
-            NSString *mentionRegex = @"@[a-zA-Z0-9\\u4e00-\\u9fa5\\-]+ ?";
-            [result.string enumerateStringsMatchedByRegex:mentionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
-            }];
-            
-            // 匹配超链接
-            NSString *httpRegex = @"http(s)?://([a-zA-Z|\\d]+\\.)+[a-zA-Z|\\d]+(/[a-zA-Z|\\d|\\-|\\+|_./?%&=]*)?";
-            [result.string enumerateStringsMatchedByRegex:httpRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
-            }];
-            
-            [attributedText appendAttributedString:substr];
-        }
-    }];
-    
-    // 设置字体 value必须是一个CTFontRef
-    [attributedText addAttribute:NSFontAttributeName value:WeicoRichTextFont range:NSMakeRange(0, attributedText.length)];
-    // 设置正文段落样式
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineSpacing = LINE_SPACING;
-    //style.headIndent = HEAD_INDENT;
-    [attributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedText.length)];
-    self.attributedText = attributedText;
-}
-
-/**
- *  根据字符串计算出所有的匹配结果（已经排好序）
- *
- *  @param text 字符串内容
- */
-- (NSArray *)regexResultsWithText:(NSString *)text
-{
-    // 用来存放所有的匹配结果
-    NSMutableArray *regexResults = [NSMutableArray array];
-    
-    // 匹配表情
-    NSString *emotionRegex = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
-    [text enumerateStringsMatchedByRegex:emotionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-        RegExResult *rr = [[RegExResult alloc] init];
-        rr.string = *capturedStrings;
-        rr.range = *capturedRanges;
-        rr.emotion = YES;
-        [regexResults addObject:rr];
-    }];
-    
-    // 匹配非表情
-    [text enumerateStringsSeparatedByRegex:emotionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
-        RegExResult *rr = [[RegExResult alloc] init];
-        rr.string = *capturedStrings;
-        rr.range = *capturedRanges;
-        rr.emotion = NO;
-        [regexResults addObject:rr];
-    }];
-    
-    // 排序
-    [regexResults sortUsingComparator:^NSComparisonResult(RegExResult *regExResult1, RegExResult *regExResult2) {
-        NSUInteger location1 = regExResult1.range.location;
-        NSUInteger location2 = regExResult2.range.location;
-        return [@(location1) compare:@(location2)];
-    }];
-    return regexResults;
-}
+//- (void)setText:(NSString *)text
+//{
+//    _text = [text copy];
+//    NSLog(@"%@",_text);
+//    // 链接、@提到、#话题#
+//    
+//    // 1.匹配字符串
+//    NSArray *regexResults = [self regexResultsWithText:text];
+//    
+//    // 2.根据匹配结果，拼接对应的图片表情和普通文本
+//    //NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
+//    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:_text];
+//    // 遍历
+////    [regexResults enumerateObjectsUsingBlock:^(RegExResult *result, NSUInteger idx, BOOL *stop) {
+////        if (result.isEmotion) { // 表情
+////            // 创建附件对象
+////            EmotionAttachment *attach = [[EmotionAttachment alloc] init];
+////            
+////            // 传递表情
+////            attach.emotion = [EmotionTool emotionWithDesc:result.string];
+////            attach.bounds = CGRectMake(0, -3, WeicoOrginalTextFont.lineHeight, WeicoOrginalTextFont.lineHeight);
+////            
+////            // 将附件包装成富文本
+////            NSAttributedString *attachString = [NSAttributedString attributedStringWithAttachment:attach];
+////            [attributedText appendAttributedString:attachString];
+////        } else { // 非表情（直接拼接普通文本）
+////            NSMutableAttributedString *substr = [[NSMutableAttributedString alloc] initWithString:result.string];
+////            
+////            // 匹配#话题#
+////            NSString *trendRegex = @"#[a-zA-Z0-9\\u4e00-\\u9fa5]+#";
+////            [result.string enumerateStringsMatchedByRegex:trendRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+////                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
+////            }];
+////            
+////            // 匹配@提到
+////            NSString *mentionRegex = @"@[a-zA-Z0-9\\u4e00-\\u9fa5\\-]+ ?";
+////            [result.string enumerateStringsMatchedByRegex:mentionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+////                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
+////            }];
+////            
+////            // 匹配超链接
+////            NSString *httpRegex = @"http(s)?://([a-zA-Z|\\d]+\\.)+[a-zA-Z|\\d]+(/[a-zA-Z|\\d|\\-|\\+|_./?%&=]*)?";
+////            [result.string enumerateStringsMatchedByRegex:httpRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+////                [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
+////            }];
+////            
+////            [attributedText appendAttributedString:substr];
+////        }
+////    }];
+//    [attributedText addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range: NSMakeRange(0, attributedText.length)];
+//    // 设置字体 value必须是一个CTFontRef
+//    [attributedText addAttribute:NSFontAttributeName value:WeicoRichTextFont range:NSMakeRange(0, attributedText.length)];
+//    // 设置正文段落样式
+//    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+//    style.lineSpacing = LINE_SPACING;
+//    //style.headIndent = HEAD_INDENT;
+//    [attributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedText.length)];
+//    self.attributedText = attributedText;
+//}
 
 
 @end

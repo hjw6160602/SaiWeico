@@ -41,7 +41,7 @@
 
 /** 被转发的原微博信息字段，当该微博为转发微博时返回 */
 @property (nonatomic, strong) Weico *retweeted_status;
-
+@property (nonatomic, copy) NSAttributedString *retweetedAttributedText;
 /**	int	转发数*/
 @property (nonatomic, assign) int reposts_count;
 /**	int	评论数*/
