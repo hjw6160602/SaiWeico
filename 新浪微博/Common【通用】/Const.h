@@ -63,7 +63,7 @@
 // 原创微博正文字体
 #define WeicoOrginalTextFont [UIFont systemFontOfSize:16]
 // 富文本字体
-#define WeicoRichTextFont [UIFont systemFontOfSize:15]
+#define WeicoRichTextFont [UIFont systemFontOfSize:16]
 
 // 转发微博昵称字体
 #define WeicoRetweetedNameFont WeicoOrginalNameFont

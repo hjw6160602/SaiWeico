@@ -179,13 +179,13 @@
         self.vipView.hidden = NO;
         
         self.vipView.frame = weicoFrame.vipViewF;
-
+        
         NSString *vipName = [NSString stringWithFormat:@"common_icon_membership_level%d", user.mbrank];
         self.vipView.image = [UIImage imageNamed:vipName];
         
         self.nameLabel.textColor = [UIColor orangeColor];
     } else {
-    
+        
         self.nameLabel.textColor = WEICO_CONTENT_COLOR;
         self.vipView.hidden = YES;
     }
@@ -220,7 +220,6 @@
     
     /** 正文 */
     self.contentLabel.attributedText = weico.attributedText;
-    NSLog(@"%@",self.contentLabel.attributedText);
     self.contentLabel.textColor = WEICO_CONTENT_COLOR;
     //self.contentLabel.text = weico.text;
     self.contentLabel.frame = weicoFrame.contentLabelF;
@@ -263,7 +262,7 @@
     /** 工具条 */
     self.toolbar.frame = weicoFrame.toolbarF;
     self.toolbar.weico = weico;
-   
+    
 }
 
 @end
