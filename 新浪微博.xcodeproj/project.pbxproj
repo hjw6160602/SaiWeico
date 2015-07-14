@@ -40,6 +40,8 @@
 		781C16501B3BD6EE0036E850 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 781C164C1B3BD6EE0036E850 /* MBProgressHUD.bundle */; };
 		781C16511B3BD6EE0036E850 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 781C164E1B3BD6EE0036E850 /* MBProgressHUD.m */; };
 		781C16541B3BD8480036E850 /* MBProgressHUD+HJW.m in Sources */ = {isa = PBXBuildFile; fileRef = 781C16531B3BD8480036E850 /* MBProgressHUD+HJW.m */; };
+		7879D6FE1B54F9E7006BAFF0 /* WeicoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879D6FC1B54F9E7006BAFF0 /* WeicoDetailController.m */; };
+		7879D6FF1B54F9E7006BAFF0 /* WeicoDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7879D6FD1B54F9E7006BAFF0 /* WeicoDetailController.xib */; };
 		7888B8D61B4D065B0030B4A7 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8C81B4D065B0030B4A7 /* MJPhoto.m */; };
 		7888B8D71B4D065B0030B4A7 /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */; };
 		7888B8D81B4D065B0030B4A7 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8CB1B4D065B0030B4A7 /* MJPhotoBrowser.m */; };
@@ -191,6 +193,9 @@
 		781C16521B3BD8480036E850 /* MBProgressHUD+HJW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HJW.h"; sourceTree = "<group>"; };
 		781C16531B3BD8480036E850 /* MBProgressHUD+HJW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HJW.m"; sourceTree = "<group>"; };
 		782E36871B53BE3E003C84AB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "新浪微博/Info.plist"; sourceTree = SOURCE_ROOT; };
+		7879D6FB1B54F9E7006BAFF0 /* WeicoDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoDetailController.h; sourceTree = "<group>"; };
+		7879D6FC1B54F9E7006BAFF0 /* WeicoDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoDetailController.m; sourceTree = "<group>"; };
+		7879D6FD1B54F9E7006BAFF0 /* WeicoDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeicoDetailController.xib; sourceTree = "<group>"; };
 		7888B8C71B4D065B0030B4A7 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
 		7888B8C81B4D065B0030B4A7 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
 		7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
@@ -811,6 +816,9 @@
 			children = (
 				78EA0C511B42773D00D7F994 /* HomeController.h */,
 				78EA0C521B42773D00D7F994 /* HomeController.m */,
+				7879D6FB1B54F9E7006BAFF0 /* WeicoDetailController.h */,
+				7879D6FC1B54F9E7006BAFF0 /* WeicoDetailController.m */,
+				7879D6FD1B54F9E7006BAFF0 /* WeicoDetailController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -999,6 +1007,7 @@
 				781C16501B3BD6EE0036E850 /* MBProgressHUD.bundle in Resources */,
 				781C16351B3BA9CB0036E850 /* OAuth.storyboard in Resources */,
 				78E8FF0F1B462320003D29E7 /* MJRefresh.bundle in Resources */,
+				7879D6FF1B54F9E7006BAFF0 /* WeicoDetailController.xib in Resources */,
 				781C15ED1B3B97B00036E850 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1030,6 +1039,7 @@
 				781C16321B3BA8C60036E850 /* AFURLResponseSerialization.m in Sources */,
 				78FD8A271B3D50F40010447B /* UIWindow+Extension.m in Sources */,
 				781C16301B3BA8C60036E850 /* AFURLConnectionOperation.m in Sources */,
+				7879D6FE1B54F9E7006BAFF0 /* WeicoDetailController.m in Sources */,
 				78FAFD5F1B4E786F00B4A01C /* ProfileController.m in Sources */,
 				781C160F1B3B9A1C0036E850 /* HJWTypeEncoding.m in Sources */,
 				78A4A39D1B4FC6AC00EA24E9 /* UIImage+Extension.m in Sources */,

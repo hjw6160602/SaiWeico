@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Main&#x3010;&#x4e3b;&#x8981;&#x3011;/Home&#x3010;&#x9996;&#x9875;&#x3011;/Controller/HomeController.m"
-            timestampString = "458185260.951942"
+            timestampString = "458553953.956925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "-initUnreadCount"
             landmarkType = "5">
             <Locations>
@@ -26,11 +26,11 @@
                   moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458553207.830952"
+                  timestampString = "458554561.744786"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
                   offsetFromSymbolStart = "430">
                </Location>
                <Location
@@ -41,11 +41,11 @@
                   moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458553207.832205"
+                  timestampString = "458554561.745213"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
                   offsetFromSymbolStart = "72">
                </Location>
             </Locations>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Main&#x3010;&#x4e3b;&#x8981;&#x3011;/Home&#x3010;&#x9996;&#x9875;&#x3011;/Controller/HomeController.m"
-            timestampString = "458185311.203797"
+            timestampString = "458553953.956925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-initUnreadCount"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Main&#x3010;&#x4e3b;&#x8981;&#x3011;/Home&#x3010;&#x9996;&#x9875;&#x3011;/Controller/HomeController.m"
-            timestampString = "458185326.534181"
+            timestampString = "458553953.956925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-initUnreadCount"
             landmarkType = "5">
             <Locations>
@@ -90,11 +90,11 @@
                   moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458553207.840591"
+                  timestampString = "458554561.747651"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "152"
-                  endingLineNumber = "152"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
                   offsetFromSymbolStart = "624">
                </Location>
                <Location
@@ -105,11 +105,11 @@
                   moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458553207.841092"
+                  timestampString = "458554561.747989"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "152"
-                  endingLineNumber = "152"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
                   offsetFromSymbolStart = "632">
                </Location>
                <Location
@@ -120,11 +120,11 @@
                   moduleName = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shoule/Documents/WorkSapce/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A/Main%E3%80%90%E4%B8%BB%E8%A6%81%E3%80%91/Home%E3%80%90%E9%A6%96%E9%A1%B5%E3%80%91/Controller/HomeController.m"
-                  timestampString = "458553207.841436"
+                  timestampString = "458554561.748297"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "152"
-                  endingLineNumber = "152"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
                   offsetFromSymbolStart = "50">
                </Location>
             </Locations>

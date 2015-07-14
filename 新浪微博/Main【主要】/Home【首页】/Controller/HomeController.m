@@ -19,6 +19,7 @@
 #import "WeicoFrame.h"
 #import "WeicoCell.h"
 #import "MJRefresh.h"
+#import "WeicoDetailController.h"
 #import "API.h"
 
 @interface HomeController ()<UITableViewDataSource,UITableViewDelegate>
@@ -270,7 +271,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    WeicoDetailController *detailVC = [[WeicoDetailController alloc]init];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma mark - Actions
