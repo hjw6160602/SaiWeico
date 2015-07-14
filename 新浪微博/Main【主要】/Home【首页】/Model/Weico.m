@@ -176,6 +176,7 @@
     
     // 遍历
     [regexResults enumerateObjectsUsingBlock:^(RegExResult *result, NSUInteger idx, BOOL *stop) {
+        
         if (result.isEmotion) { // 表情
             // 创建附件对象
             EmotionAttachment *attach = [[EmotionAttachment alloc] init];
@@ -200,6 +201,7 @@
             NSString *mentionRegex = @"@[a-zA-Z0-9\\u4e00-\\u9fa5\\-]+ ?";
             [result.string enumerateStringsMatchedByRegex:mentionRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
                 [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
+                
             }];
             
             // 匹配超链接
@@ -207,7 +209,7 @@
             [result.string enumerateStringsMatchedByRegex:httpRegex usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
                 [substr addAttribute:NSForegroundColorAttributeName value:WeicoHighTextColor range:*capturedRanges];
             }];
-            
+           
             [attributedText appendAttributedString:substr];
         }
     }];
@@ -219,6 +221,7 @@
     style.lineSpacing = LINE_SPACING;
     //style.headIndent = HEAD_INDENT;
     [attributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedText.length)];
+    
     self.attributedText = attributedText;
 }
 

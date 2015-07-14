@@ -14,10 +14,6 @@
 //  3.存放着一个数据模型Weico
 // 昵称字体
 
-
-// cell的边框宽度
-#define WeicoCellBorderW 10
-
 @class Weico;
 
 @interface WeicoFrame : NSObject

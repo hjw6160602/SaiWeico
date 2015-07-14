@@ -243,6 +243,7 @@
 }
 
 #pragma mark - TableView Data Source
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSLog(@"微博总数：%d",(int)self.weicoFrames.count);
@@ -266,6 +267,10 @@
         return frame.cellHeight;
     }
     else return 0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 
 #pragma mark - Actions

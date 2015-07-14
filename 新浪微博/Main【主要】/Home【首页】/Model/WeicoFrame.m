@@ -62,7 +62,7 @@
     CGFloat contentX = iconX;
     CGFloat contentY = MAX(CGRectGetMaxY(self.iconViewF), CGRectGetMaxY(self.timeLabelF)) + WeicoCellMargin/2;
     CGFloat maxW = cellW - 2 * contentX;
-    CGSize contentSize = [self sizeWithText:weico.text font:WeicoRichTextFont maxW:maxW];
+    CGSize contentSize = [self sizeWithText:weico.attributedText font:WeicoRichTextFont maxW:maxW];
     self.contentLabelF = (CGRect){{contentX, contentY}, contentSize};
     
     /** 配图 */
@@ -93,7 +93,8 @@
         CGFloat retweetContentX = WeicoCellMargin;
         CGFloat retweetContentY = WeicoCellMargin;
         NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_status_user.name, retweeted_status.text];
-        CGSize retweetContentSize = [self sizeWithText:retweetContent font:WeicoRetweetedTextFont maxW:maxW];
+        NSAttributedString *retweetContentAttr = [[NSAttributedString alloc]initWithString:retweetContent];
+        CGSize retweetContentSize = [self sizeWithText:retweetContentAttr font:WeicoRetweetedTextFont maxW:maxW];
         self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContentSize};
         
         /** 被转发微博配图 */
@@ -131,19 +132,21 @@
 
 }
 
-- (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxW:(CGFloat)maxW
+- (CGSize)sizeWithText:(NSAttributedString *)text font:(UIFont *)font maxW:(CGFloat)maxW
 {
-    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSFontAttributeName] = font;
     CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
     return [text boundingRectWithSize:maxSize
                               options:NSStringDrawingUsesLineFragmentOrigin
-                           attributes:attrs context:nil].size;
+                              context:nil].size;
 }
 
-- (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font
-{
-    return [self sizeWithText:text font:font maxW:MAXFLOAT];
+- (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font{
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+    attrs[NSFontAttributeName] = font;
+    CGSize maxSize = CGSizeMake(MAXFLOAT, MAXFLOAT);
+    return [text boundingRectWithSize:maxSize
+                              options:NSStringDrawingUsesLineFragmentOrigin
+                           attributes:attrs context:nil].size;
 }
 
 @end

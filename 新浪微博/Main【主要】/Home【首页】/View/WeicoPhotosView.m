@@ -16,7 +16,7 @@
 #import "MJPhoto.h"
 
 #define WeicoPhotoWH 70
-#define WeicoPhotoMargin 10
+#define WeicoPhotoMargin 5
 #define WeicoPhotoMaxCol(count) ((count==4)?2:3)
 
 
