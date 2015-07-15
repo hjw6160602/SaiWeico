@@ -18,7 +18,7 @@
 #import "UIView+Extension.h"
 #import "Const.h"
 #import "IconView.h"
-
+#import "WeicoTextView.h"
 
 @interface WeicoCell()
 /* 原创微博 */
@@ -37,13 +37,13 @@
 /** 来源 */
 @property (nonatomic, weak) UILabel *sourceLabel;
 /** 正文 */
-@property (nonatomic, weak) UILabel *contentLabel;
+@property (nonatomic, weak) WeicoTextView *contentTextView;
 
 /* 转发微博 */
 /** 转发微博整体 */
 @property (nonatomic, weak) UIView *retweetView;
 /** 转发微博正文 + 昵称 */
-@property (nonatomic, weak) UILabel *retweetContentLabel;
+@property (nonatomic, weak) WeicoTextView *retweetContentTextView;
 /** 转发配图 */
 @property (nonatomic, weak) WeicoPhotosView *retweetPhotosView;
 
@@ -126,11 +126,11 @@
     self.sourceLabel = sourceLabel;
     
     /** 正文 */
-    UILabel *contentLabel = [[UILabel alloc] init];
-    contentLabel.font = WeicoOrginalTextFont;
-    contentLabel.numberOfLines = 0;
-    [originalView addSubview:contentLabel];
-    self.contentLabel = contentLabel;
+    WeicoTextView *contentTextView = [[WeicoTextView alloc] init];
+    contentTextView.font = WeicoOrginalTextFont;
+    //contentTextView.numberOfLines = 0;
+    [originalView addSubview:contentTextView];
+    self.contentTextView = contentTextView;
 }
 
 - (void)initRepost{
@@ -141,12 +141,12 @@
     self.retweetView = retweetView;
     
     /** 转发微博正文 + 昵称 */
-    UILabel *retweetContentLabel = [[UILabel alloc] init];
-    retweetContentLabel.numberOfLines = 0;
-    retweetContentLabel.font = WeicoRetweetedTextFont;
-    retweetContentLabel.textColor = HJWColor(51, 51, 51);
-    [retweetView addSubview:retweetContentLabel];
-    self.retweetContentLabel = retweetContentLabel;
+    WeicoTextView *retweetContentTextView = [[WeicoTextView alloc] init];
+    //retweetContentLabel.numberOfLines = 0;
+    retweetContentTextView.font = WeicoRetweetedTextFont;
+    retweetContentTextView.textColor = HJWColor(51, 51, 51);
+    [retweetView addSubview:retweetContentTextView];
+    self.retweetContentTextView = retweetContentTextView;
     
     /** 转发微博配图 */
     WeicoPhotosView *retweetPhotosView = [[WeicoPhotosView alloc] init];
@@ -219,8 +219,8 @@
     self.sourceLabel.text = weico.source;
     
     /** 正文 */
-    self.contentLabel.attributedText = weico.attributedText;
-    self.contentLabel.frame = weicoFrame.contentLabelF;
+    self.contentTextView.attributedText = weico.attributedText;
+    self.contentTextView.frame = weicoFrame.contentLabelF;
     
     /** 被转发的微博 */
     if (weico.retweeted_status) {
@@ -236,8 +236,8 @@
         
         //将转发正文重新赋值为原始的text
         weico.retweeted_status.text = retweet_text;
-        self.retweetContentLabel.attributedText = weico.retweetedAttributedText;
-        self.retweetContentLabel.frame = weicoFrame.retweetContentLabelF;
+        self.retweetContentTextView.attributedText = weico.retweetedAttributedText;
+        self.retweetContentTextView.frame = weicoFrame.retweetContentLabelF;
         
         /** 被转发的微博配图 */
         if (retweeted_weico.pic_urls.count) {

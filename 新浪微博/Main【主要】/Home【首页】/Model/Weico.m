@@ -14,6 +14,7 @@
 #import "Emotion.h"
 #import "Const.h"
 #import "TextPart.h"
+#import "Special.h"
 #import <CoreText/CoreText.h>
 
 @implementation Weico
@@ -84,6 +85,7 @@
         return NSOrderedAscending;
     }];
     
+    NSMutableArray *specials = [NSMutableArray array];
     // 按顺序拼接每一段文字
     for (TextPart *part in parts) {
         // 等会需要拼接的子串
@@ -101,6 +103,15 @@
             }
         } else if (part.special) { // 非表情的特殊文字
             substr = [[NSAttributedString alloc] initWithString:part.text attributes:@{       NSForegroundColorAttributeName: WeicoHighTextColor}];
+            // 创建特殊对象
+            
+            Special *special = [[Special alloc] init];
+            special.text = part.text;
+            NSUInteger loc = attributedText.length;
+            NSUInteger len = part.text.length;
+            special.range = NSMakeRange(loc, len);
+            [specials addObject:special];
+            
         } else { // 非特殊文字
             UIColor *NormalColor = HJWColor(100, 100, 100);
             if (!yes) NormalColor = WEICO_CONTENT_COLOR;
@@ -115,7 +126,7 @@
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.lineSpacing = LINE_SPACING;
     [attributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedText.length)];
-
+    [attributedText addAttribute:@"specials" value:specials range:NSMakeRange(0, 1)];
     return attributedText;
 }
 
@@ -128,6 +139,7 @@
 
 - (void)setRetweeted_status:(Weico *)retweeted_status
 {
+    if (!retweeted_status) return;
     _retweeted_status = retweeted_status;
     
     NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_status.user.name, retweeted_status.text];

@@ -51,6 +51,8 @@
 		7888B8DB1B4D065B0030B4A7 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D11B4D065B0030B4A7 /* MJPhotoToolbar.m */; };
 		7888B8DC1B4D065B0030B4A7 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D31B4D065B0030B4A7 /* MJPhotoView.m */; };
 		7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D51B4D065B0030B4A7 /* SDWebImageManager+MJ.m */; };
+		78931E9E1B56099B0039EB4D /* WeicoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931E9D1B56099B0039EB4D /* WeicoTextView.m */; };
+		78931EA11B560F5C0039EB4D /* Special.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931EA01B560F5C0039EB4D /* Special.m */; };
 		7895FFF31B452A1100982C95 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFF21B452A1100982C95 /* NSDate+Extension.m */; };
 		7895FFF61B4530DD00982C95 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFF51B4530DD00982C95 /* NSString+Extension.m */; };
 		7895FFFC1B4539CD00982C95 /* WeicoPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFFB1B4539CD00982C95 /* WeicoPhotosView.m */; };
@@ -213,6 +215,10 @@
 		7888B8D31B4D065B0030B4A7 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
 		7888B8D41B4D065B0030B4A7 /* SDWebImageManager+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImageManager+MJ.h"; sourceTree = "<group>"; };
 		7888B8D51B4D065B0030B4A7 /* SDWebImageManager+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImageManager+MJ.m"; sourceTree = "<group>"; };
+		78931E9C1B56099B0039EB4D /* WeicoTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoTextView.h; sourceTree = "<group>"; };
+		78931E9D1B56099B0039EB4D /* WeicoTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoTextView.m; sourceTree = "<group>"; };
+		78931E9F1B560F5C0039EB4D /* Special.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special.h; sourceTree = "<group>"; };
+		78931EA01B560F5C0039EB4D /* Special.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special.m; sourceTree = "<group>"; };
 		7895FFF11B452A1100982C95 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		7895FFF21B452A1100982C95 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		7895FFF41B4530DD00982C95 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
@@ -767,6 +773,8 @@
 				7895FFFE1B45427A00982C95 /* WeicoPhotoView.m */,
 				78FBBB221B4A1A72005BC650 /* IconView.h */,
 				78FBBB231B4A1A72005BC650 /* IconView.m */,
+				78931E9C1B56099B0039EB4D /* WeicoTextView.h */,
+				78931E9D1B56099B0039EB4D /* WeicoTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -836,6 +844,8 @@
 				78DCCB4C1B43D4BD0061AB3F /* Photo.m */,
 				7879D7001B551178006BAFF0 /* TextPart.h */,
 				7879D7011B551178006BAFF0 /* TextPart.m */,
+				78931E9F1B560F5C0039EB4D /* Special.h */,
+				78931EA01B560F5C0039EB4D /* Special.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1027,6 +1037,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78EA0C4D1B42757800D7F994 /* UIImageView+HighlightedWebCache.m in Sources */,
+				78931E9E1B56099B0039EB4D /* WeicoTextView.m in Sources */,
 				781C16121B3B9A1C0036E850 /* NSObject+HJWMember.m in Sources */,
 				7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */,
 				78A4A38A1B4FAEEA00EA24E9 /* WeicoController.m in Sources */,
@@ -1098,6 +1109,7 @@
 				7888B8DA1B4D065B0030B4A7 /* MJPhotoProgressView.m in Sources */,
 				7888B8D91B4D065B0030B4A7 /* MJPhotoLoadingView.m in Sources */,
 				7895FFFF1B45427A00982C95 /* WeicoPhotoView.m in Sources */,
+				78931EA11B560F5C0039EB4D /* Special.m in Sources */,
 				78E8FF181B462320003D29E7 /* UIScrollView+MJExtension.m in Sources */,
 				78FAFD561B4E782E00B4A01C /* DiscoverController.m in Sources */,
 				781C162D1B3BA8C60036E850 /* AFHTTPSessionManager.m in Sources */,
