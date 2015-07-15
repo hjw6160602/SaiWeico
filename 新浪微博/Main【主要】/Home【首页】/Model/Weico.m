@@ -30,7 +30,7 @@
  *
  *  @return 属性文字
  */
-- (NSAttributedString *)attributedTextWithText:(NSString *)text
+- (NSAttributedString *)attributedTextWithText:(NSString *)text isRetweet:(BOOL)yes
 {
     
     NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
@@ -102,7 +102,9 @@
         } else if (part.special) { // 非表情的特殊文字
             substr = [[NSAttributedString alloc] initWithString:part.text attributes:@{       NSForegroundColorAttributeName: WeicoHighTextColor}];
         } else { // 非特殊文字
-            substr = [[NSAttributedString alloc] initWithString:part.text];
+            UIColor *NormalColor = HJWColor(100, 100, 100);
+            if (!yes) NormalColor = WEICO_CONTENT_COLOR;
+            substr = [[NSAttributedString alloc] initWithString:part.text attributes:@{       NSForegroundColorAttributeName: NormalColor}];
         }
         [attributedText appendAttributedString:substr];
     }
@@ -120,9 +122,8 @@
 - (void)setText:(NSString *)text
 {
     _text = [text copy];
-    
     // 利用text生成attributedText
-    self.attributedText = [self attributedTextWithText:text];
+    self.attributedText = [self attributedTextWithText:text isRetweet:NO];
 }
 
 - (void)setRetweeted_status:(Weico *)retweeted_status
@@ -130,7 +131,7 @@
     _retweeted_status = retweeted_status;
     
     NSString *retweetContent = [NSString stringWithFormat:@"@%@ : %@", retweeted_status.user.name, retweeted_status.text];
-    self.retweetedAttributedText = [self attributedTextWithText:retweetContent];
+    self.retweetedAttributedText = [self attributedTextWithText:retweetContent isRetweet:YES];
 }
 
 /**
