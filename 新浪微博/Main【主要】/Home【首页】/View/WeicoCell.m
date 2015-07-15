@@ -220,9 +220,6 @@
     
     /** 正文 */
     self.contentLabel.attributedText = weico.attributedText;
-    NSLog(@"%@",self.contentLabel.attributedText);
-    self.contentLabel.textColor = WEICO_CONTENT_COLOR;
-    //self.contentLabel.text = weico.text;
     self.contentLabel.frame = weicoFrame.contentLabelF;
     
     /** 被转发的微博 */
@@ -232,20 +229,14 @@
         weico.retweeted_status.text = [NSString stringWithFormat:@"@%@:%@",weico.retweeted_status.user.name,retweet_text];
         
         Weico *retweeted_weico = weico.retweeted_status;
-        //User *retweeted_weico_user = retweeted_weico.user;
         
         self.retweetView.hidden = NO;
         /** 被转发的微博整体 */
         self.retweetView.frame = weicoFrame.retweetViewF;
         
-        /** 被转发的微博正文 */
-        //user.name
-        
-        NSAttributedString *retweetContent = retweeted_weico.attributedText;
-        
         //将转发正文重新赋值为原始的text
         weico.retweeted_status.text = retweet_text;
-        self.retweetContentLabel.attributedText = retweetContent;
+        self.retweetContentLabel.attributedText = weico.retweetedAttributedText;
         self.retweetContentLabel.frame = weicoFrame.retweetContentLabelF;
         
         /** 被转发的微博配图 */

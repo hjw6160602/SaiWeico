@@ -8,19 +8,19 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "不二80px.png",
+      "filename" : "new_icon80px.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "不二120px.png",
+      "filename" : "new_icon120px.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "不二180px.png",
+      "filename" : "new_icon180px.png",
       "scale" : "3x"
     }
   ],

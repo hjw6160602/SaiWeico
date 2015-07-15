@@ -112,17 +112,17 @@ static NSMutableArray *_recentEmotions;
     return foundEmotion;
 }
 
-+ (Emotion *)emotionWithChs:(NSString *)chs
-{
-    NSArray *defaults = [self defaultEmotions];
-    for (Emotion *emotion in defaults) {
-        if ([emotion.chs isEqualToString:chs]) return emotion;
-    }
-    
-    NSArray *lxhs = [self lxhEmotions];
-    for (Emotion *emotion in lxhs) {
-        if ([emotion.chs isEqualToString:chs]) return emotion;
-    }
-    return nil;
-}
+//+ (Emotion *)emotionWithChs:(NSString *)chs
+//{
+//    NSArray *defaults = [self defaultEmotions];
+//    for (Emotion *emotion in defaults) {
+//        if ([emotion.chs isEqualToString:chs]) return emotion;
+//    }
+//    
+//    NSArray *lxhs = [self lxhEmotions];
+//    for (Emotion *emotion in lxhs) {
+//        if ([emotion.chs isEqualToString:chs]) return emotion;
+//    }
+//    return nil;
+//}
 @end

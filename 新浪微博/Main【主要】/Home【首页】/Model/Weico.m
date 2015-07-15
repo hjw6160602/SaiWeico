@@ -12,7 +12,6 @@
 #import "RegexKitLite.h"
 #import "EmotionTool.h"
 #import "Emotion.h"
-#import "EmotionAttachment.h"
 #import "Const.h"
 #import "TextPart.h"
 #import <CoreText/CoreText.h>
@@ -93,6 +92,7 @@
             NSTextAttachment *attch = [[NSTextAttachment alloc] init];
             NSString *name = [EmotionTool emotionWithDesc:part.text].png;
             if (name) { // 能找到对应的图片
+                //NSLog(@"%@",name);
                 attch.image = [UIImage imageNamed:name];
                 attch.bounds = CGRectMake(0, -3, WeicoRichTextFont.lineHeight, WeicoRichTextFont.lineHeight);
                 substr = [NSAttributedString attributedStringWithAttachment:attch];
