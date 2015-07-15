@@ -24,6 +24,8 @@
     return @{@"pic_urls" : [Photo class]};
 }
 
+
+
 /**
  *  普通文字 --> 属性文字
  *

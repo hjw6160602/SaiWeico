@@ -53,6 +53,8 @@
 		7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D51B4D065B0030B4A7 /* SDWebImageManager+MJ.m */; };
 		78931E9E1B56099B0039EB4D /* WeicoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931E9D1B56099B0039EB4D /* WeicoTextView.m */; };
 		78931EA11B560F5C0039EB4D /* Special.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931EA01B560F5C0039EB4D /* Special.m */; };
+		78931EA51B566DB50039EB4D /* webLinkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931EA31B566DB50039EB4D /* webLinkController.m */; };
+		78931EA61B566DB50039EB4D /* webLinkController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78931EA41B566DB50039EB4D /* webLinkController.xib */; };
 		7895FFF31B452A1100982C95 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFF21B452A1100982C95 /* NSDate+Extension.m */; };
 		7895FFF61B4530DD00982C95 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFF51B4530DD00982C95 /* NSString+Extension.m */; };
 		7895FFFC1B4539CD00982C95 /* WeicoPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7895FFFB1B4539CD00982C95 /* WeicoPhotosView.m */; };
@@ -219,6 +221,9 @@
 		78931E9D1B56099B0039EB4D /* WeicoTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoTextView.m; sourceTree = "<group>"; };
 		78931E9F1B560F5C0039EB4D /* Special.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special.h; sourceTree = "<group>"; };
 		78931EA01B560F5C0039EB4D /* Special.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special.m; sourceTree = "<group>"; };
+		78931EA21B566DB50039EB4D /* webLinkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webLinkController.h; sourceTree = "<group>"; };
+		78931EA31B566DB50039EB4D /* webLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = webLinkController.m; sourceTree = "<group>"; };
+		78931EA41B566DB50039EB4D /* webLinkController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = webLinkController.xib; sourceTree = "<group>"; };
 		7895FFF11B452A1100982C95 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		7895FFF21B452A1100982C95 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		7895FFF41B4530DD00982C95 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
@@ -827,6 +832,9 @@
 				7879D6FB1B54F9E7006BAFF0 /* WeicoDetailController.h */,
 				7879D6FC1B54F9E7006BAFF0 /* WeicoDetailController.m */,
 				7879D6FD1B54F9E7006BAFF0 /* WeicoDetailController.xib */,
+				78931EA21B566DB50039EB4D /* webLinkController.h */,
+				78931EA31B566DB50039EB4D /* webLinkController.m */,
+				78931EA41B566DB50039EB4D /* webLinkController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1015,6 +1023,7 @@
 				781C15C61B3B92280036E850 /* Images.xcassets in Resources */,
 				78F5F5C31B535E4F00F6A701 /* default in Resources */,
 				781C16501B3BD6EE0036E850 /* MBProgressHUD.bundle in Resources */,
+				78931EA61B566DB50039EB4D /* webLinkController.xib in Resources */,
 				781C16351B3BA9CB0036E850 /* OAuth.storyboard in Resources */,
 				78E8FF0F1B462320003D29E7 /* MJRefresh.bundle in Resources */,
 				7879D6FF1B54F9E7006BAFF0 /* WeicoDetailController.xib in Resources */,
@@ -1038,6 +1047,7 @@
 			files = (
 				78EA0C4D1B42757800D7F994 /* UIImageView+HighlightedWebCache.m in Sources */,
 				78931E9E1B56099B0039EB4D /* WeicoTextView.m in Sources */,
+				78931EA51B566DB50039EB4D /* webLinkController.m in Sources */,
 				781C16121B3B9A1C0036E850 /* NSObject+HJWMember.m in Sources */,
 				7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */,
 				78A4A38A1B4FAEEA00EA24E9 /* WeicoController.m in Sources */,

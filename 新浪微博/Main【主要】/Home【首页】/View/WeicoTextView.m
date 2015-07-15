@@ -8,6 +8,7 @@
 
 #import "WeicoTextView.h"
 #import "Special.h"
+#import "Const.h"
 
 #define WeicoTextViewCoverTag 2009
 
@@ -20,56 +21,69 @@
         self.textContainerInset = UIEdgeInsetsMake(0, -5, 0, -5);
         self.scrollEnabled = NO;
         self.editable = NO;
+        self.specialsArray = [NSArray array];
     }
     return self;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // 触摸对象
-    UITouch *touch = [touches anyObject];
-    
-    // 触摸点
-    CGPoint point = [touch locationInView:self];
-    
-    NSArray *specials = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
-    BOOL contains = NO;
-    
-    for (Special *special in specials) {
+/**
+ *  初始化特殊字符数组 只算一次
+ *  算出特殊字符串在整个TextView中所占的矩形框大小
+ */
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    if (frame.size.height==0 || frame.size.height==0) return;
+    self.specialsArray = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
+    NSMutableArray *tempSpecials = [[NSMutableArray alloc]initWithCapacity:self.specialsArray.count];
+    for (Special *special in self.specialsArray) {
         self.selectedRange = special.range;
         // self.selectedRange --影响--> self.selectedTextRange
         // 获得选中范围的矩形框
         NSArray *rects = [self selectionRectsForRange:self.selectedTextRange];
         // 清空选中范围
         self.selectedRange = NSMakeRange(0, 0);
-        
+        NSMutableArray *tempRects= [NSMutableArray array];
         for (UITextSelectionRect *selectionRect in rects) {
             CGRect rect = selectionRect.rect;
             if (rect.size.width == 0 || rect.size.height == 0) continue;
-            
-            if (CGRectContainsPoint(rect, point)) { // 点中了某个特殊字符串
-                contains = YES;
+            [tempRects addObject:[NSValue valueWithCGRect:rect]];
+        }
+        special.CGRects = [tempRects mutableCopy];
+        [tempSpecials addObject:special];
+    }
+    self.specialsArray = tempSpecials;
+}
+
+/**
+ *  @param 给我传入一个CGpoint
+ *  @return 返回一个Special对象
+ */
+- (Special *)specialWhenTouchingWithGGPoint:(CGPoint)point{
+    for (Special *special in self.specialsArray) {
+        for (NSValue *rectValue in special.CGRects) {
+            if (CGRectContainsPoint(rectValue.CGRectValue, point)) { // 点中了某个特殊字符串
+                return special;
                 break;
             }
         }
-        
-        if (contains) {
-            for (UITextSelectionRect *selectionRect in rects) {
-                CGRect rect = selectionRect.rect;
-                if (rect.size.width == 0 || rect.size.height == 0) continue;
-                
-                UIView *cover = [[UIView alloc] init];
-                cover.backgroundColor = [UIColor greenColor];
-                cover.frame = rect;
-                cover.tag = WeicoTextViewCoverTag;
-                cover.layer.cornerRadius = 5;
-                [self insertSubview:cover atIndex:0];
-            }
-            
-            break;
-        }
     }
-    // 在被触摸的特殊字符串后面显示一段高亮的背景
+    return nil;
+}
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // 触摸对象 的 触摸点
+    CGPoint point = [[touches anyObject] locationInView:self];
+    Special *special = [self specialWhenTouchingWithGGPoint:point];
+    for (NSValue *rectValue in special.CGRects) {
+        UIView *cover = [[UIView alloc] init];
+        cover.backgroundColor = WeicoHighBGColor;
+        cover.frame = rectValue.CGRectValue;
+        cover.tag = WeicoTextViewCoverTag;
+        cover.layer.cornerRadius = 5;
+        [self insertSubview:cover atIndex:0];
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -86,6 +100,14 @@
     for (UIView *child in self.subviews) {
         if (child.tag == WeicoTextViewCoverTag) [child removeFromSuperview];
     }
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    Special *special = [self specialWhenTouchingWithGGPoint:point];
+    if (special) {
+        return YES;
+    }
+    return NO;
 }
 
 @end

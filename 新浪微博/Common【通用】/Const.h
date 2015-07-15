@@ -73,6 +73,7 @@
 
 // 转发微博正文字体
 #define WeicoHighTextColor HJWColor(255, 126, 157)
+#define WeicoHighBGColor HJWColor(255, 180, 184)
 
 /** 表情相关 */
 // 表情的最大行数

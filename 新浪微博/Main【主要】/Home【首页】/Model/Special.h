@@ -14,5 +14,6 @@
 @property (nonatomic, copy) NSString *text;
 /** 这段特殊文字的范围 */
 @property (nonatomic, assign) NSRange range;
-
+/** 这段特殊文字的CGRects */
+@property (nonatomic, copy) NSArray *CGRects;
 @end

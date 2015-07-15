@@ -12,7 +12,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ - %@", self.text, NSStringFromRange(self.range)];
+    return [NSString stringWithFormat:@"text:%@ range%@ CGRects:%@", self.text, NSStringFromRange(self.range),self.CGRects];
 }
 
 @end
