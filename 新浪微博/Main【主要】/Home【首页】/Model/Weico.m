@@ -24,8 +24,6 @@
     return @{@"pic_urls" : [Photo class]};
 }
 
-
-
 /**
  *  普通文字 --> 属性文字
  *
@@ -227,7 +225,7 @@
     // 截串 NSString
     
     if ([source isEqualToString:@""] || [source hasPrefix:@"来自"]) {
-        _source = source;
+        _source = @"来自新浪微博";
     }
     else{
         NSRange range;
