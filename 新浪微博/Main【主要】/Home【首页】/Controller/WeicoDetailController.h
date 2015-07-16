@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WeicoDetailController : UIViewController
+@class Weico;
 
+@interface WeicoDetailController : UITableViewController
+@property (nonatomic, strong)  Weico* weico;
 @end

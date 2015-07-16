@@ -7,6 +7,8 @@
 //
 
 #import "WeicoDetailController.h"
+#import "WeicoCell.h"
+#import "WeicoFrame.h"
 
 @interface WeicoDetailController ()
 
@@ -17,21 +19,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"微博正文";
+    
+    
+//    // 创建微博详情控件
+//    WeicoDetailView *detailView = [[WeicoDetailView alloc] init];
+//    // 创建frame对象
+//    WeicoDetailFrame *detailFrame = [[WeicoDetailFrame alloc] init];
+//    detailFrame.status = self.weico;
+//    // 传递frame数据
+//    detailView.detailFrame = detailFrame;
+//    // 设置微博详情的高度
+//    detailView.height = detailFrame.frame.size.height;
+//    self.tableView.tableHeaderView = detailView;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
