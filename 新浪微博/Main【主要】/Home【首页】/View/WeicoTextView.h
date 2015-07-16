@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class Special;
+
 @interface WeicoTextView : UITextView
-@property (nonatomic, strong) UIViewController *parentVC;
 /** 所有的特殊字符串(里面存放着Special) */
 @property (nonatomic, strong) NSArray *specialsArray;
+
+@property (nonatomic, strong) Special* special ;
+
 @end
