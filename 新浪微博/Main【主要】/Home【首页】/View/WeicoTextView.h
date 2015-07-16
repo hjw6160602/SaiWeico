@@ -13,7 +13,8 @@
 @interface WeicoTextView : UITextView
 /** 所有的特殊字符串(里面存放着Special) */
 @property (nonatomic, strong) NSArray *specialsArray;
-
+@property (nonatomic, strong) NSMutableArray* rects ;
 @property (nonatomic, strong) Special* special ;
+@property (nonatomic) CGPoint currentPoint;
 
 @end

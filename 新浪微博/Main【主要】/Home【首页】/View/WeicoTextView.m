@@ -28,6 +28,7 @@
 - (void)setAttributedText:(NSAttributedString *)attributedText{
     [super setAttributedText:attributedText];
     self.specialsArray = [NSArray array];
+    self.rects = [NSMutableArray array];
     self.specialsArray = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
     if (self.specialsArray.count == 0) {
         //NSLog(@"特殊字符个数为0");
@@ -37,15 +38,65 @@
 
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
-    self.special = [self specialWhenTouchingWithGGPoint:point];
-    if (self.special) {
+    BOOL mustInitSpecialArrayRect = YES;
+    self.currentPoint = point;
+    for (Special* special in self.specialsArray) {
+        for (NSValue *rectValue in special.CGRects) {
+            if (rectValue) {
+                mustInitSpecialArrayRect = NO;
+                return YES;
+            }
+        }
+    }
+    if (mustInitSpecialArrayRect) {
+        [self initSpecialArrayRect];
         return YES;
     }
     return NO;
 }
 
+/**
+ *  初始化特殊字符数组
+ *  算出特殊字符串在整个TextView中所占的矩形框大小
+ *  神奇的事：NSArray *rects = [self selectionRectsForRange:self.selectedTextRange];
+ *  只可以在TextView监听到点击事件的时候，才会返回正确地Rect结果，
+ *  否则返回结果为：{inf,inf},{0,0}
+ */
+- (void)initSpecialArrayRect{
+    NSMutableArray *tempSpecials = [[NSMutableArray alloc]initWithCapacity:self.specialsArray.count];
+    for (Special *special in self.specialsArray) {
+        self.selectedRange = special.range;
+        // self.selectedRange --影响--> self.selectedTextRange
+        // 获得选中范围的矩形框
+        NSArray *selectionRects = [self selectionRectsForRange:self.selectedTextRange];
+        // 清空选中范围
+        self.selectedRange = NSMakeRange(0, 0);
+        NSMutableArray *tempRect = [NSMutableArray array];
+        for (UITextSelectionRect *selectionRect in selectionRects) {
+            CGRect rect = selectionRect.rect;
+            if (rect.size.width == 0 || rect.size.height == 0) {
+                //NSLog(@"Error:%@",NSStringFromCGRect(rect));
+                continue;
+            }
+            [tempRect addObject:[NSValue valueWithCGRect:rect]];
+        }
+        if (tempRect.count == 0) {
+            HJWLog(@"Error:没有得到 %@ %@的矩形框！",special.text,NSStringFromRange(special.range));
+            continue;
+        }
+        special.CGRects = [tempRect mutableCopy];
+        [self.rects addObjectsFromArray:special.CGRects];
+        [tempSpecials addObject:special];
+        
+    }
+    self.specialsArray = tempSpecials;
+    
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    HJWLog(@"touchesBegan");
+    self.special = [self TouchingWithGGPoint:self.currentPoint];
     // 触摸对象 的 触摸点
     for (NSValue *rectValue in self.special.CGRects) {
         UIView *cover = [[UIView alloc] init];
@@ -61,8 +112,7 @@
  *  @param 给我传入一个CGpoint
  *  @return 返回一个Special对象
  */
-- (Special *)specialWhenTouchingWithGGPoint:(CGPoint)point{
-    [self initSpecialArray];
+- (Special *)TouchingWithGGPoint:(CGPoint)point{
     for (Special *special in self.specialsArray) {
         for (NSValue *rectValue in special.CGRects) {
             if (CGRectContainsPoint(rectValue.CGRectValue, point)) { // 点中了某个特殊字符串
@@ -74,41 +124,6 @@
     return nil;
 }
 
-/**
- *  初始化特殊字符数组
- *  算出特殊字符串在整个TextView中所占的矩形框大小
- *  神奇的事：NSArray *rects = [self selectionRectsForRange:self.selectedTextRange];
- *  只可以在TextView监听到点击事件的时候，才会返回正确地Rect结果，
- *  否则返回结果为：{inf,inf},{0,0}
- */
-- (void)initSpecialArray{
-    NSMutableArray *tempSpecials = [[NSMutableArray alloc]initWithCapacity:self.specialsArray.count];
-    for (Special *special in self.specialsArray) {
-        self.selectedRange = special.range;
-        // self.selectedRange --影响--> self.selectedTextRange
-        // 获得选中范围的矩形框
-        NSArray *rects = [self selectionRectsForRange:self.selectedTextRange];
-        // 清空选中范围
-        self.selectedRange = NSMakeRange(0, 0);
-        NSMutableArray *tempRects= [NSMutableArray array];
-        for (UITextSelectionRect *selectionRect in rects) {
-            CGRect rect = selectionRect.rect;
-            if (rect.size.width == 0 || rect.size.height == 0) {
-                //NSLog(@"Error:%@",NSStringFromCGRect(rect));
-                continue;
-            }
-            [tempRects addObject:[NSValue valueWithCGRect:rect]];
-        }
-        if (tempRects.count == 0) {
-            NSLog(@"Error:没有得到 %@ %@的矩形框！",special.text,NSStringFromRange(special.range));
-            continue;
-        }
-        special.CGRects = [tempRects mutableCopy];
-        [tempSpecials addObject:special];
-        
-    }
-    self.specialsArray = tempSpecials;
-}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -124,6 +139,7 @@
     for (UIView *child in self.subviews) {
         if (child.tag == WeicoTextViewCoverTag) [child removeFromSuperview];
     }
+    NSLog(@"跳到百度页面");
 }
 
 @end
