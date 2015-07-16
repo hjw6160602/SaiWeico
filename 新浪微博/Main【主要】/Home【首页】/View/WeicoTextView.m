@@ -9,6 +9,8 @@
 #import "WeicoTextView.h"
 #import "Special.h"
 #import "Const.h"
+#import "webLinkController.h"
+#import "HomeController.h"
 
 #define WeicoTextViewCoverTag 2009
 
@@ -127,6 +129,8 @@
     });
 }
 
+extern HomeController *G_HomeController;
+
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // 当点击时间被打断的时候，就去掉特殊字符串后面的高亮背景
@@ -134,6 +138,7 @@
         if (child.tag == WeicoTextViewCoverTag) [child removeFromSuperview];
     }
     NSLog(@"跳到百度页面");
+    [G_HomeController.navigationController pushViewController:[webLinkController new] animated:YES];
 }
 
 @end

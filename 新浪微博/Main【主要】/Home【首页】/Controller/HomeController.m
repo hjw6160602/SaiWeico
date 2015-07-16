@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSMutableArray *weicoFrames;
 @end
 
+
+
 @implementation HomeController
 
 - (NSMutableArray *)weicoFrames
@@ -40,6 +42,9 @@
 }
 
 #pragma mark - ViewControllers
+
+HomeController *G_HomeController;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavi];
@@ -47,6 +52,7 @@
     [self initUserInfo];
     [self initLastWeicos];
     [self initControls];
+    G_HomeController = self;
     //获得未读数
     //NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(initUnreadCount) userInfo:nil repeats:YES];
     // 主线程也会抽时间处理一下timer（不管主线程是否正在其他事件）
