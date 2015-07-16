@@ -25,31 +25,30 @@
     return self;
 }
 
-- (void)setAttributedText:(NSAttributedString *)attributedText{
+-(void)setAttributedText:(NSAttributedString *)attributedText{
     [super setAttributedText:attributedText];
     self.specialsArray = [NSArray array];
-    self.rects = [NSMutableArray array];
     self.specialsArray = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
-    if (self.specialsArray.count == 0) {
-        //NSLog(@"特殊字符个数为0");
-        return;
-    }
 }
 
-
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+    if (self.specialsArray.count == 0) return NO;
+    
     BOOL mustInitSpecialArrayRect = YES;
-    self.currentPoint = point;
-    for (Special* special in self.specialsArray) {
+    for (Special *special in self.specialsArray) {
         for (NSValue *rectValue in special.CGRects) {
-            if (rectValue) {
+            if (rectValue) { // 点中了某个特殊字符串
                 mustInitSpecialArrayRect = NO;
-                return YES;
+                break;
             }
         }
+        break;
     }
     if (mustInitSpecialArrayRect) {
         [self initSpecialArrayRect];
+    }
+    self.special = [self TouchingWithGGPoint:point];
+    if (self.special) {
         return YES;
     }
     return NO;
@@ -85,27 +84,10 @@
             continue;
         }
         special.CGRects = [tempRect mutableCopy];
-        [self.rects addObjectsFromArray:special.CGRects];
         [tempSpecials addObject:special];
         
     }
     self.specialsArray = tempSpecials;
-    
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    HJWLog(@"touchesBegan");
-    self.special = [self TouchingWithGGPoint:self.currentPoint];
-    // 触摸对象 的 触摸点
-    for (NSValue *rectValue in self.special.CGRects) {
-        UIView *cover = [[UIView alloc] init];
-        cover.backgroundColor = WeicoHighBGColor;
-        cover.frame = rectValue.CGRectValue;
-        cover.tag = WeicoTextViewCoverTag;
-        cover.layer.cornerRadius = 5;
-        [self insertSubview:cover atIndex:0];
-    }
 }
 
 /**
@@ -124,6 +106,18 @@
     return nil;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    // 触摸对象 的 触摸点
+    for (NSValue *rectValue in self.special.CGRects) {
+        UIView *cover = [[UIView alloc] init];
+        cover.backgroundColor = WeicoHighBGColor;
+        cover.frame = rectValue.CGRectValue;
+        cover.tag = WeicoTextViewCoverTag;
+        cover.layer.cornerRadius = 5;
+        [self insertSubview:cover atIndex:0];
+    }
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
