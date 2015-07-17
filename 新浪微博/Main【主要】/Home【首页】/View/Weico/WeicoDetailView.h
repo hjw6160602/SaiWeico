@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class WeicoDetailFrame;
 
-@interface WeicoDetailView : UIView
+@interface WeicoDetailView : UIImageView
 
 @property (nonatomic, strong) WeicoDetailFrame *detailFrame;
 

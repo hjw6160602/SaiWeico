@@ -1,21 +1,19 @@
 //
-//  WeicoFrame.m
+//  WeicoOriginalFrame.m
 //  新浪微博
 //
-//  Created by shoule on 15/7/1.
+//  Created by shoule on 15/7/16.
 //  Copyright (c) 2015年 SaiDicaprio. All rights reserved.
 //
 
-#import "WeicoFrame.h"
-#import "Weico.h"
+#import "WeicoOriginalFrame.h"
 #import "WeicoPhotosView.h"
 #import "Const.h"
-#import <UIKit/UIKit.h>
+#import "Weico.h"
 
-@implementation WeicoFrame
+@implementation WeicoOriginalFrame
 
-- (void)setWeico:(Weico *)weico
-{
+- (void)setWeico:(Weico *)weico{
     _weico = weico;
     
     User *user = weico.user;
@@ -82,52 +80,6 @@
     CGFloat originalY = WeicoCellMargin;
     CGFloat originalW = cellW;
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
-    
-    CGFloat toolbarY = 0;
-    /* 被转发微博 */
-    if (weico.retweeted_status) {
-        Weico *retweeted_status = weico.retweeted_status;
-        
-        /** 被转发微博正文 */
-        CGFloat retweetContentX = WeicoCellMargin;
-        CGFloat retweetContentY = WeicoCellMargin;
-
-        CGSize retweetContentSize = [weico.retweetedAttributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-        self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContentSize};
-        
-        /** 被转发微博配图 */
-        CGFloat retweetH = 0;
-        if (retweeted_status.pic_urls.count) { // 转发微博有配图
-            CGFloat retweetPhotosX = retweetContentX;
-            CGFloat retweetPhotosY = CGRectGetMaxY(self.retweetContentLabelF) + WeicoCellMargin;
-            CGSize retweetPhotosSize = [WeicoPhotosView sizeWithCount:(int)retweeted_status.pic_urls.count];
-            self.retweetPhotoViewF = (CGRect){{retweetPhotosX, retweetPhotosY}, retweetPhotosSize};
-            
-            retweetH = CGRectGetMaxY(self.retweetPhotoViewF) +WeicoCellMargin;
-        } else { // 转发微博没有配图
-            retweetH = CGRectGetMaxY(self.retweetContentLabelF) + WeicoCellMargin;
-        }
-        
-        /** 被转发微博整体 */
-        CGFloat retweetX = 0;
-        CGFloat retweetY = CGRectGetMaxY(self.originalViewF);
-        CGFloat retweetW = cellW;
-        self.retweetViewF = CGRectMake(retweetX, retweetY, retweetW, retweetH);
-        
-        toolbarY = CGRectGetMaxY(self.retweetViewF);
-    } else {
-        toolbarY = CGRectGetMaxY(self.originalViewF);
-    }
-    
-    /** 工具条 */
-    CGFloat toolbarX = 0;
-    CGFloat toolbarW = cellW;
-    CGFloat toolbarH = 35;
-    self.toolbarF = CGRectMake(toolbarX, toolbarY, toolbarW, toolbarH);
-    
-    /* cell的高度 */
-    self.cellHeight = CGRectGetMaxY(self.toolbarF);
-
 }
 
 - (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font{

@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@class Weico;
+
+@class Weico, WeicoOriginalFrame, WeicoRetweetedFrame;
+
 @interface WeicoDetailFrame : NSObject
 
+@property (nonatomic, strong) WeicoOriginalFrame *OriginalFrame;
+@property (nonatomic, strong) WeicoRetweetedFrame *RetweetedFrame;
 /** 微博数据 */
 @property (nonatomic, strong) Weico *weico;
-
-/**
- *  自己的frame
- */
+/* 自己的frame*/
 @property (nonatomic, assign) CGRect frame;
 @end

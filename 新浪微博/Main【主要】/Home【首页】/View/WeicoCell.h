@@ -7,15 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WeicoFrame.h"
-#import "WeicoPhotosView.h"
-
 @class WeicoFrame;
 
 @interface WeicoCell : UITableViewCell
-
+@property (nonatomic, strong) WeicoFrame *weicoFrame ;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
-
-@property (nonatomic, strong) WeicoFrame *weicoFrame;
 
 @end
