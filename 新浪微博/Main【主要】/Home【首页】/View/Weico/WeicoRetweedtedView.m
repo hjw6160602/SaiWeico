@@ -35,7 +35,6 @@
         
         /** 转发微博整体 */
         UIView *retweetView = [[UIView alloc] init];
-        retweetView.backgroundColor = HJWColor(247, 247, 247);
         self.retweetView = retweetView;
         
         /** 转发微博正文 + 昵称 */
@@ -64,6 +63,7 @@
     
     // 1.正文（内容）
     self.textView.attributedText = retweetedWeico.attributedText;
+    
     self.textView.frame = retweetedFrame.retweetContentLabelF;
     
     // 2.配图相册

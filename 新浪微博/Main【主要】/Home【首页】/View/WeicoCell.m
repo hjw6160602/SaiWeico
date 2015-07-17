@@ -47,7 +47,7 @@
     _weicoFrame = weicoFrame;
     
     // 1.微博具体内容的frame数据
-    self.weicoView.frame = weicoFrame.frame;
+    self.weicoView.weicoFrame = weicoFrame;
 }
 
 @end

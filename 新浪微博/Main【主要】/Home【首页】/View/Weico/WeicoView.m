@@ -7,10 +7,13 @@
 //
 
 #import "WeicoView.h"
+#import "WeicoFrame.h"
 #import "WeicoDetailView.h"
+#import "WeicoToolBar.h"
 
 @interface WeicoView ()
 @property (nonatomic, strong) WeicoDetailView *detailView;
+@property (nonatomic, strong) WeicoToolBar *toolBar;
 @end
 
 @implementation WeicoView
@@ -18,7 +21,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) { // 初始化子控件
+    if (self) {
         self.userInteractionEnabled = YES;
         
         // 2.添加Detail微博
@@ -26,6 +29,9 @@
         [self addSubview:detailView];
         self.detailView = detailView;
         
+        WeicoToolBar *toolBar = [[WeicoToolBar alloc]init];
+        [self addSubview:toolBar];
+        self.toolBar = toolBar;
     }
     return self;
 }
@@ -34,12 +40,14 @@
 - (void)setWeicoFrame:(WeicoFrame *)weicoFrame
 {
     _weicoFrame = weicoFrame;
-    // 1.微博具体内容的frame数据
-//    self.detailView.detailFrame = weicoFrame.detailF;
-//    
-//    // 2.底部工具条的frame数据
-//    self.toolbar.frame = weicoFrame.toolbarF;
-//    self.toolbar.weico = weicoFrame.weico;
+    self.frame = _weicoFrame.frame;
+    
+     //1.微博具体内容的frame数据
+    self.detailView.detailFrame = weicoFrame.detailF;
+    // 2.底部工具条的frame数据
+
+    self.toolBar.weico = weicoFrame.weico;
+    self.toolBar.frame = weicoFrame.toolbarF;
 }
 
 @end

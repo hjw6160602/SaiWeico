@@ -25,8 +25,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) { // 初始化子控件
-        self.userInteractionEnabled = YES;
-        self.image = [UIImage resizedImage:@"timeline_card_top_background"];
+//        self.userInteractionEnabled = YES;
+//        self.image = [UIImage resizedImage:@"timeline_card_top_background"];
         
         // 1.添加原创微博
         WeicoOriginalView *originalView = [[WeicoOriginalView alloc] init];
@@ -44,14 +44,14 @@
 - (void)setDetailFrame:(WeicoDetailFrame *)detailFrame
 {
     _detailFrame = detailFrame;
-    
     self.frame = detailFrame.frame;
-    
     // 1.原创微博的frame数据
     self.originalView.originalFrame = detailFrame.OriginalFrame;
     
     // 2.原创转发的frame数据
-    self.retweetedView.retweetedFrame = detailFrame.RetweetedFrame;
+    if (detailFrame.RetweetedFrame) {
+        self.retweetedView.retweetedFrame = detailFrame.RetweetedFrame;
+    }
 }
 
 @end

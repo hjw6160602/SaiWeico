@@ -44,10 +44,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.userInteractionEnabled = YES;
+        self.backgroundColor = WeicoHighTextColor;
         /** 原创微博整体 */
         UIView *originalView = [[UIView alloc] init];
         //originalView.y+=10;
-        originalView.backgroundColor = [UIColor whiteColor];
         self.originalView = originalView;
         
         /** 头像 */
@@ -90,7 +91,6 @@
         /** 正文 */
         WeicoTextView *contentTextView = [[WeicoTextView alloc] init];
         contentTextView.font = WeicoOrginalTextFont;
-        //contentTextView.numberOfLines = 0;
         [originalView addSubview:contentTextView];
         self.contentTextView = contentTextView;
     }
