@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class WeicoOriginalFrame;
+
 @interface WeicoOriginalView : UIView
-
-
+@property (nonatomic, strong) WeicoOriginalFrame *originalFrame;
 @end

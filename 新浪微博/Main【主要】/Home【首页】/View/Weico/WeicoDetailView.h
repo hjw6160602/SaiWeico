@@ -1,5 +1,5 @@
 //
-//  DetailController.h
+//  WeicoDetailView.h
 //  新浪微博
 //
 //  Created by shoule on 15/7/16.
@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Weico;
+@class WeicoDetailFrame;
 
-@interface DetailController : UITableViewController
-@property (nonatomic, strong) Weico *weico;
+@interface WeicoDetailView : UIView
+
+@property (nonatomic, strong) WeicoDetailFrame *detailFrame;
+
 @end
