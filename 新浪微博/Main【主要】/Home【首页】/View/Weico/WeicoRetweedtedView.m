@@ -16,8 +16,7 @@
 
 @interface WeicoRetweedtedView()
 /* 转发微博 */
-/** 转发微博整体 */
-@property (nonatomic, weak) UIView *retweetView;
+
 /** 转发微博正文 + 昵称 */
 @property (nonatomic, weak) WeicoTextView *textView;
 /** 转发配图 */
@@ -30,25 +29,19 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.userInteractionEnabled = YES;
-        self.image = [UIImage resizedImage:@"timeline_retweet_background"];
-        
-        /** 转发微博整体 */
-        UIView *retweetView = [[UIView alloc] init];
-        self.retweetView = retweetView;
-        
+        //self.image = [UIImage resizedImage:@"timeline_retweet_background"];
         /** 转发微博正文 + 昵称 */
         WeicoTextView *textView = [[WeicoTextView alloc] init];
         //retweetContentLabel.numberOfLines = 0;
         textView.font = WeicoRetweetedTextFont;
-        textView.textColor = HJWColor(51, 51, 51);
-        [retweetView addSubview:textView];
+        textView.textColor = HJWColor(200, 200, 200);
         self.textView = textView;
+        //[self addSubview:_textView];
         
         /** 转发微博配图 */
         WeicoPhotosView *photosView = [[WeicoPhotosView alloc] init];
-        [retweetView addSubview:photosView];
         self.photosView = photosView;
+        //[self addSubview:_photosView];
     }
     return self;
 }

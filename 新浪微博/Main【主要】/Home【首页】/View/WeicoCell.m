@@ -34,8 +34,8 @@
     if (self) {
         // 1.添加微博具体内容
         WeicoView *weicoView = [[WeicoView alloc] init];
-        [self.contentView addSubview:weicoView];
         self.weicoView = weicoView;
+        [self.contentView addSubview:_weicoView];
         
         // 3.cell的设置
         self.backgroundColor = [UIColor clearColor];

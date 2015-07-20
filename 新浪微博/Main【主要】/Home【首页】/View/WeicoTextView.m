@@ -31,9 +31,11 @@
     [super setAttributedText:attributedText];
     
     self.specialsArray = [NSArray array];
-
+//
+//    NSRangePointer rangePointer;
+//    rangePointer->location = 0;
+//    rangePointer->length = attributedText.length;
     self.specialsArray = [self.attributedText attribute:@"specials" atIndex:0 effectiveRange:NULL];
-
 }
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{

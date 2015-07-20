@@ -52,7 +52,7 @@
 #define WeicoCellMargin 10
 
 // cell的内边距
-#define WeicoCellInset 10
+#define WeicoCellInset 5
 
 // 原创微博昵称字体
 #define WeicoOrginalNameFont [UIFont systemFontOfSize:13]
@@ -74,6 +74,7 @@
 // 转发微博正文字体
 #define WeicoHighTextColor HJWColor(255, 126, 157)
 #define WeicoHighBGColor HJWColor(255, 180, 184)
+#define GLOBLE_BG HJWColor(245, 245, 245)
 
 /** 表情相关 */
 // 表情的最大行数

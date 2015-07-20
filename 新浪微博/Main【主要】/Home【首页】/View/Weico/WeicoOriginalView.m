@@ -21,7 +21,6 @@
 @interface WeicoOriginalView()
 /* 原创微博 */
 /** 原创微博整体 */
-@property (nonatomic, weak) UIView *originalView;
 /** 头像 */
 @property (nonatomic, weak) IconView *iconView;
 /** 会员图标 */
@@ -45,54 +44,50 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.userInteractionEnabled = YES;
-        self.backgroundColor = WeicoHighTextColor;
-        /** 原创微博整体 */
-        UIView *originalView = [[UIView alloc] init];
-        //originalView.y+=10;
-        self.originalView = originalView;
-        
+        self.backgroundColor = [UIColor whiteColor];
         /** 头像 */
         IconView *iconView = [[IconView alloc] init];
         
-        [originalView addSubview:iconView];
+        [self addSubview:iconView];
         self.iconView = iconView;
         
         /** 会员图标 */
         UIImageView *vipView = [[UIImageView alloc] init];
         vipView.contentMode = UIViewContentModeCenter;
-        [originalView addSubview:vipView];
+        [self addSubview:vipView];
         self.vipView = vipView;
         
         /** 配图 */
         WeicoPhotosView *photosView = [[WeicoPhotosView alloc] init];
-        [originalView addSubview:photosView];
+        [self addSubview:photosView];
         self.photosView = photosView;
         
         /** 昵称 */
         UILabel *nameLabel = [[UILabel alloc] init];
         nameLabel.font = WeicoOrginalNameFont;
-        [originalView addSubview:nameLabel];
+        [self addSubview:nameLabel];
         self.nameLabel = nameLabel;
         
         /** 时间 */
         UILabel *timeLabel = [[UILabel alloc] init];
         timeLabel.font = WeicoOrginalTimeFont;
         timeLabel.textColor = [UIColor lightGrayColor];
-        [originalView addSubview:timeLabel];
+        [self addSubview:timeLabel];
         self.timeLabel = timeLabel;
         
         /** 来源 */
         UILabel *sourceLabel = [[UILabel alloc] init];
         sourceLabel.font = WeicoOrginalSourceFont;
         sourceLabel.textColor = [UIColor lightGrayColor];
-        [originalView addSubview:sourceLabel];
+        [self addSubview:sourceLabel];
         self.sourceLabel = sourceLabel;
         
         /** 正文 */
         WeicoTextView *contentTextView = [[WeicoTextView alloc] init];
         contentTextView.font = WeicoOrginalTextFont;
-        [originalView addSubview:contentTextView];
+        [self addSubview:contentTextView];
         self.contentTextView = contentTextView;
+        
     }
     return self;
 }
@@ -103,9 +98,8 @@
     
     Weico *weico = originalFrame.weico;
     User *user = weico.user;
-    
-    /** 原创微博整体 */
-    self.originalView.frame = originalFrame.originalViewF;
+
+    self.frame = originalFrame.originalViewF;
     
     /** 头像 */
     self.iconView.frame = originalFrame.iconViewF;
@@ -158,5 +152,6 @@
     /** 正文 */
     self.contentTextView.attributedText = weico.attributedText;
     self.contentTextView.frame = originalFrame.contentLabelF;
+    
 }
 @end

@@ -77,7 +77,7 @@
     
     /** 原创微博整体 */
     CGFloat originalX = 0;
-    CGFloat originalY = WeicoCellMargin;
+    CGFloat originalY = 5;
     CGFloat originalW = cellW;
     self.originalViewF = CGRectMake(originalX, originalY, originalW, originalH);
 }

@@ -35,7 +35,8 @@
         self.RetweetedFrame = retweetedFrame;
         
         h = CGRectGetMaxY(retweetedFrame.retweetViewF);
-    } else {
+    }
+    else {
         h = CGRectGetMaxY(originalFrame.originalViewF);
     }
     

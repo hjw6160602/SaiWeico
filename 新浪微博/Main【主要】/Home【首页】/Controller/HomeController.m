@@ -278,8 +278,8 @@ HomeController *G_HomeController;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailController *detailVC = [[DetailController alloc]init];
-//    WeicoFrame *frame = self.weicoFrames[indexPath.row];
-//    detailVC.weico = frame.weico;
+    WeicoFrame *frame = self.weicoFrames[indexPath.row];
+    detailVC.weico = frame.weico;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

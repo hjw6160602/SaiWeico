@@ -17,16 +17,21 @@
     _retweetedWeico = retweetedWeico;
     
     /** 被转发微博正文 */
-    CGFloat retweetContentX = WeicoCellMargin;
-    CGFloat retweetContentY = WeicoCellMargin;
-    CGFloat maxW = SCREEN_WIDTH - 2 * WeicoCellMargin;
-    CGSize retweetContentSize = [retweetedWeico.retweetedAttributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
-    self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContentSize};
+//    CGFloat retweetContentX = WeicoCellMargin;
+//    CGFloat retweetContentY = WeicoCellMargin;
+//    CGFloat maxW = SCREEN_WIDTH - 2 * WeicoCellMargin;
+//    CGSize retweetContentSize = [retweetedWeico.retweetedAttributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+    CGFloat textX = WeicoCellMargin;
+    CGFloat textY = WeicoCellMargin * 0.5;
+    CGFloat maxW = SCREEN_WIDTH - 2 * textX;
+    CGSize maxSize = CGSizeMake(maxW, MAXFLOAT);
+    CGSize textSize = [retweetedWeico.attributedText boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+    self.retweetContentLabelF = (CGRect){{textX, textY}, textSize};
     
     /** 被转发微博配图 */
     CGFloat retweetH = 0;
     if (retweetedWeico.pic_urls.count) { // 转发微博有配图
-        CGFloat retweetPhotosX = retweetContentX;
+        CGFloat retweetPhotosX = textX;
         CGFloat retweetPhotosY = CGRectGetMaxY(self.retweetContentLabelF) + WeicoCellMargin;
         CGSize retweetPhotosSize = [WeicoPhotosView sizeWithCount:(int)retweetedWeico.pic_urls.count];
         self.retweetPhotoViewF = (CGRect){{retweetPhotosX, retweetPhotosY}, retweetPhotosSize};

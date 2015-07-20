@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"微博正文";
+    self.tableView.backgroundColor = GLOBLE_BG;
     
     // 创建微博详情控件
     WeicoDetailView *detailView = [[WeicoDetailView alloc] init];
@@ -30,8 +31,7 @@
     // 传递frame数据
     detailView.detailFrame = detailFrame;
     // 设置微博详情的高度
-    //detailView.height = detailFrame.frame.size.height;
-    detailView.height = 300;
+    detailView.height = detailFrame.frame.size.height;
     self.tableView.tableHeaderView = detailView;
     
 }

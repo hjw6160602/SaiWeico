@@ -30,13 +30,13 @@
         
         // 1.添加原创微博
         WeicoOriginalView *originalView = [[WeicoOriginalView alloc] init];
-        [self addSubview:originalView];
         self.originalView = originalView;
+        [self addSubview:_originalView];
         
         // 2.添加转发微博
         WeicoRetweedtedView *retweetedView = [[WeicoRetweedtedView alloc] init];
-        [self addSubview:retweetedView];
         self.retweetedView = retweetedView;
+        [self addSubview:_retweetedView];
     }
     return self;
 }
