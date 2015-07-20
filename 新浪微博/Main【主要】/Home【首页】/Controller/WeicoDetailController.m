@@ -7,7 +7,7 @@
 //
 
 #import "WeicoDetailController.h"
-#import "WeicoView.h"
+#import "WeicoDetailView.h"
 #import "WeicoFrame.h"
 #import "UIView+Extension.h"
 #import "Const.h"
@@ -19,12 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initControls];
+    
+}
+
+- (void)initControls{
+    self.title = @"微博正文";
     self.tableView.backgroundColor = GLOBE_BG;
     // 创建微博详情控件
-    WeicoView *detailView = [[WeicoView alloc] init];
+    WeicoDetailView *detailView = [[WeicoDetailView alloc] init];
     // 创建frame对象
     detailView.weicoFrame = self.weicoFrame;
-
+    
     // 设置微博详情的高度
     detailView.frame = CGRectMake(0, 0, SCREEN_WIDTH, _weicoFrame.cellHeight);
     self.tableView.tableHeaderView = detailView;
@@ -36,12 +42,27 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
-}
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 50;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *topBar = [[[NSBundle mainBundle]loadNibNamed:@"CmtTopBar" owner:self options:nil]firstObject];
+    //    topBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 50);
+    //    topBar.backgroundColor = WeicoHighBGColor;
+    return topBar;
+    
 }
 
 /*
@@ -97,5 +118,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 @end

@@ -49,7 +49,8 @@
 		7886486B1B5CC82A00C4B5A8 /* WeicoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788648641B5CC82A00C4B5A8 /* WeicoTextView.m */; };
 		7886486C1B5CC82A00C4B5A8 /* WeicoToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 788648671B5CC82A00C4B5A8 /* WeicoToolBar.m */; };
 		7886486F1B5CCACC00C4B5A8 /* WeicoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886486E1B5CCACC00C4B5A8 /* WeicoDetailController.m */; };
-		788648721B5CCC3F00C4B5A8 /* WeicoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788648711B5CCC3F00C4B5A8 /* WeicoView.m */; };
+		788648791B5CDB4C00C4B5A8 /* CmtTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788648761B5CDB4C00C4B5A8 /* CmtTopBar.xib */; };
+		7886487A1B5CDB4C00C4B5A8 /* WeicoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788648781B5CDB4C00C4B5A8 /* WeicoDetailView.m */; };
 		7888B8D61B4D065B0030B4A7 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8C81B4D065B0030B4A7 /* MJPhoto.m */; };
 		7888B8D71B4D065B0030B4A7 /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */; };
 		7888B8D81B4D065B0030B4A7 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8CB1B4D065B0030B4A7 /* MJPhotoBrowser.m */; };
@@ -215,8 +216,9 @@
 		788648671B5CC82A00C4B5A8 /* WeicoToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoToolBar.m; sourceTree = "<group>"; };
 		7886486D1B5CCACC00C4B5A8 /* WeicoDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoDetailController.h; sourceTree = "<group>"; };
 		7886486E1B5CCACC00C4B5A8 /* WeicoDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoDetailController.m; sourceTree = "<group>"; };
-		788648701B5CCC3F00C4B5A8 /* WeicoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoView.h; sourceTree = "<group>"; };
-		788648711B5CCC3F00C4B5A8 /* WeicoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoView.m; sourceTree = "<group>"; };
+		788648761B5CDB4C00C4B5A8 /* CmtTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CmtTopBar.xib; sourceTree = "<group>"; };
+		788648771B5CDB4C00C4B5A8 /* WeicoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoDetailView.h; sourceTree = "<group>"; };
+		788648781B5CDB4C00C4B5A8 /* WeicoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoDetailView.m; sourceTree = "<group>"; };
 		7888B8C71B4D065B0030B4A7 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
 		7888B8C81B4D065B0030B4A7 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
 		7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
@@ -658,12 +660,11 @@
 		788648591B5CC82A00C4B5A8 /* Weico【微博】 */ = {
 			isa = PBXGroup;
 			children = (
-				788648701B5CCC3F00C4B5A8 /* WeicoView.h */,
-				788648711B5CCC3F00C4B5A8 /* WeicoView.m */,
 				7886485A1B5CC82A00C4B5A8 /* Icon【头像】 */,
-				7886485D1B5CC82A00C4B5A8 /* Photo【图片】 */,
 				788648621B5CC82A00C4B5A8 /* Text【文字】 */,
+				7886485D1B5CC82A00C4B5A8 /* Photo【图片】 */,
 				788648651B5CC82A00C4B5A8 /* TooBar【工具栏】 */,
+				788648751B5CDB4C00C4B5A8 /* Detail【正文】 */,
 			);
 			path = "Weico【微博】";
 			sourceTree = "<group>";
@@ -704,6 +705,16 @@
 				788648671B5CC82A00C4B5A8 /* WeicoToolBar.m */,
 			);
 			path = "TooBar【工具栏】";
+			sourceTree = "<group>";
+		};
+		788648751B5CDB4C00C4B5A8 /* Detail【正文】 */ = {
+			isa = PBXGroup;
+			children = (
+				788648761B5CDB4C00C4B5A8 /* CmtTopBar.xib */,
+				788648771B5CDB4C00C4B5A8 /* WeicoDetailView.h */,
+				788648781B5CDB4C00C4B5A8 /* WeicoDetailView.m */,
+			);
+			path = "Detail【正文】";
 			sourceTree = "<group>";
 		};
 		7888B8C61B4D065B0030B4A7 /* MJPhotoBrowser */ = {
@@ -1072,6 +1083,7 @@
 				78F5F5C41B535E4F00F6A701 /* emoji in Resources */,
 				781C15C61B3B92280036E850 /* Images.xcassets in Resources */,
 				78F5F5C31B535E4F00F6A701 /* default in Resources */,
+				788648791B5CDB4C00C4B5A8 /* CmtTopBar.xib in Resources */,
 				781C16501B3BD6EE0036E850 /* MBProgressHUD.bundle in Resources */,
 				78931EA61B566DB50039EB4D /* webLinkController.xib in Resources */,
 				781C16351B3BA9CB0036E850 /* OAuth.storyboard in Resources */,
@@ -1099,7 +1111,6 @@
 				781C16121B3B9A1C0036E850 /* NSObject+HJWMember.m in Sources */,
 				7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */,
 				78A4A38A1B4FAEEA00EA24E9 /* WeicoController.m in Sources */,
-				788648721B5CCC3F00C4B5A8 /* WeicoView.m in Sources */,
 				78EA0C571B4277C900D7F994 /* User.m in Sources */,
 				78E8FF111B462320003D29E7 /* MJRefreshConst.m in Sources */,
 				7886486A1B5CC82A00C4B5A8 /* WeicoPhotoView.m in Sources */,
@@ -1131,6 +1142,7 @@
 				781C162F1B3BA8C60036E850 /* AFSecurityPolicy.m in Sources */,
 				7879D7021B551178006BAFF0 /* TextPart.m in Sources */,
 				78EA0C531B42773D00D7F994 /* HomeController.m in Sources */,
+				7886487A1B5CDB4C00C4B5A8 /* WeicoDetailView.m in Sources */,
 				781C15F11B3B999B0036E850 /* NavigationController.m in Sources */,
 				781C160A1B3B9A1C0036E850 /* HJWFoundation.m in Sources */,
 				7888B8D61B4D065B0030B4A7 /* MJPhoto.m in Sources */,

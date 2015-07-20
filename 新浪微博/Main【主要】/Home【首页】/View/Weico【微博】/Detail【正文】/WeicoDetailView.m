@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 SaiDicaprio. All rights reserved.
 //
 
-#import "WeicoView.h"
+#import "WeicoDetailView.h"
 #import "WeicoTextView.h"
 #import "IconView.h"
 #import "WeicoPhotosView.h"
@@ -16,7 +16,7 @@
 #import "Const.h"
 #import "NSString+Extension.h"
 
-@interface WeicoView()
+@interface WeicoDetailView()
 
 /* 原创微博 */
 /** 原创微博整体 */
@@ -48,14 +48,13 @@
 @property (nonatomic, weak) WeicoToolBar *toolbar;
 @end
 
-@implementation WeicoView
+@implementation WeicoDetailView
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         [self initOriginal];
         [self initRepost];
-        [self initToolBar];
     }
     return self;
 }
@@ -227,6 +226,7 @@
         } else {
             self.retweetPhotosView.hidden = YES;
         }
+        [self initToolBar];
     } else {
         self.retweetView.hidden = YES;
     }

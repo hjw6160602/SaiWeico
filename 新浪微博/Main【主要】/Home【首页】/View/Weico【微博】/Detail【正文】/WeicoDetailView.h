@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @class WeicoFrame;
 
-@interface WeicoView : UIView
+@interface WeicoDetailView : UIView
 @property (nonatomic, strong) WeicoFrame *weicoFrame;
 @end
