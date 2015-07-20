@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class WeicoFrame;
 
 @interface WeicoDetailController : UITableViewController
-
+@property (nonatomic, strong) WeicoFrame *weicoFrame ;
 @end

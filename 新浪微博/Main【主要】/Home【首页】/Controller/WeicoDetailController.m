@@ -7,6 +7,9 @@
 //
 
 #import "WeicoDetailController.h"
+#import "WeicoView.h"
+#import "WeicoFrame.h"
+#import "UIView+Extension.h"
 #import "Const.h"
 @interface WeicoDetailController ()
 
@@ -17,8 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.backgroundColor = GLOBE_BG;
-    
-    
+    // 创建微博详情控件
+    WeicoView *detailView = [[WeicoView alloc] init];
+    // 创建frame对象
+    detailView.weicoFrame = self.weicoFrame;
+
+    // 设置微博详情的高度
+    detailView.frame = CGRectMake(0, 0, SCREEN_WIDTH, _weicoFrame.cellHeight);
+    self.tableView.tableHeaderView = detailView;
 }
 
 - (void)didReceiveMemoryWarning {
