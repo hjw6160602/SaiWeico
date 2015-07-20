@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"百度";
     NSURL *URL = [[NSURL alloc]initWithString:@"http://www.baidu.com"];
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:URL];
     [self.webView loadRequest:request];

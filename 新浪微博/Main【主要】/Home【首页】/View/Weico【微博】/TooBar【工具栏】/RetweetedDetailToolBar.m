@@ -1,20 +1,18 @@
 //
-//  WeicoToolBar.m
+//  RetweetedDetailToolBar.m
 //  新浪微博
 //
-//  Created by shoule on 15/7/1.
+//  Created by shoule on 15/7/20.
 //  Copyright (c) 2015年 SaiDicaprio. All rights reserved.
 //
 
-#import "WeicoToolBar.h"
+#import "RetweetedDetailToolBar.h"
 #import "Weico.h"
 #import "UIView+Extension.h"
 
-@interface WeicoToolBar()
+@interface RetweetedDetailToolBar()
 /** 里面存放所有的按钮 */
 @property (nonatomic, strong) NSMutableArray *btns;
-/** 里面存放所有的分割线 */
-@property (nonatomic, strong) NSMutableArray *dividers;
 
 @property (nonatomic, weak) UIButton *repostBtn;
 @property (nonatomic, weak) UIButton *commentBtn;
@@ -22,7 +20,7 @@
 
 @end
 
-@implementation WeicoToolBar
+@implementation RetweetedDetailToolBar
 
 - (NSMutableArray *)btns
 {
@@ -30,14 +28,6 @@
         self.btns = [NSMutableArray array];
     }
     return _btns;
-}
-
-- (NSMutableArray *)dividers
-{
-    if (!_dividers) {
-        self.dividers = [NSMutableArray array];
-    }
-    return _dividers;
 }
 
 + (instancetype)toolbar
@@ -49,31 +39,15 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timeline_card_bottom_background"]];
+        self.backgroundColor = [UIColor clearColor];
         
         // 添加按钮
         self.repostBtn = [self setupBtn:@"转发" icon:@"timeline_icon_retweet"];
         self.commentBtn = [self setupBtn:@"评论" icon:@"timeline_icon_comment"];
         self.attitudeBtn = [self setupBtn:@"赞" icon:@"timeline_icon_unlike"];
-        
-        // 添加分割线
-        [self setupDivider];
-        [self setupDivider];
     }
     return self;
 }
-/**
- * 添加分割线
- */
-- (void)setupDivider
-{
-    UIImageView *divider = [[UIImageView alloc] init];
-    divider.image = [UIImage imageNamed:@"timeline_card_bottom_line"];
-    [self addSubview:divider];
-    
-    [self.dividers addObject:divider];
-}
-
 /**
  * 初始化一个按钮
  * @param title : 按钮文字
@@ -110,16 +84,6 @@
         btn.x = i * btnW;
         btn.height = btnH;
     }
-    
-    // 设置分割线的frame
-    NSUInteger dividerCount = self.dividers.count;
-    for (int i = 0; i<dividerCount; i++) {
-        UIImageView *divider = self.dividers[i];
-        divider.width = 1;
-        divider.height = btnH;
-        divider.x = (i + 1) * btnW;
-        divider.y = 0;
-    }
 }
 
 - (void)setWeico:(Weico *)weico
@@ -151,5 +115,6 @@
     }
     [btn setTitle:title forState:UIControlStateNormal];
 }
+
 
 @end

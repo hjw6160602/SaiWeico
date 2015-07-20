@@ -10,7 +10,7 @@
 #import "WeicoTextView.h"
 #import "IconView.h"
 #import "WeicoPhotosView.h"
-#import "WeicoToolBar.h"
+#import "RetweetedDetailToolBar.h"
 #import "Weico.h"
 #import "WeicoFrame.h"
 #import "Const.h"
@@ -45,7 +45,7 @@
 @property (nonatomic, weak) WeicoPhotosView *retweetPhotosView;
 
 /** 工具条 */
-@property (nonatomic, weak) WeicoToolBar *toolbar;
+@property (nonatomic, weak) RetweetedDetailToolBar *toolbar;
 @end
 
 @implementation WeicoDetailView
@@ -114,7 +114,7 @@
 - (void)initRepost{
     /** 转发微博整体 */
     UIView *retweetView = [[UIView alloc] init];
-    retweetView.backgroundColor = HJWColor(247, 247, 247);
+    retweetView.backgroundColor = GLOBE_BG;
     [self addSubview:retweetView];
     self.retweetView = retweetView;
     
@@ -130,12 +130,6 @@
     WeicoPhotosView *retweetPhotosView = [[WeicoPhotosView alloc] init];
     [retweetView addSubview:retweetPhotosView];
     self.retweetPhotosView = retweetPhotosView;
-}
-
-- (void)initToolBar{
-    WeicoToolBar *toolbar = [WeicoToolBar toolbar];
-    [self addSubview:toolbar];
-    self.toolbar = toolbar;
 }
 
 /*  WeicoFrame的set方法  */
@@ -232,8 +226,20 @@
     }
     
     /** 工具条 */
-    self.toolbar.frame = weicoFrame.toolbarF;
+    CGRect rect = weicoFrame.toolbarF;
+    CGFloat x = SCREEN_WIDTH/2;
+    CGFloat y = rect.origin.y-10;
+    CGFloat toobarW = x;
+    CGFloat toobarH = WeicoToolBarHeight;
+    
+    self.toolbar.frame = CGRectMake(x, y, toobarW, toobarH);
     self.toolbar.weico = weico;
+}
+
+- (void)initToolBar{
+    RetweetedDetailToolBar *toolbar = [RetweetedDetailToolBar toolbar];
+    [self addSubview:toolbar];
+    self.toolbar = toolbar;
 }
 
 @end

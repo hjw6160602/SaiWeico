@@ -46,13 +46,14 @@
 #define AppKey @"1566588143"
 #define AppSecret @"dafb97bdaecbcfd993f7d81b4edd5603"
 
-
 // cell的计算参数
 // cell之间的间距
 #define WeicoCellMargin 10
 
 // cell的内边距
 #define WeicoCellInset 10
+// 主页工具条高度
+#define WeicoToolBarHeight 35
 
 // 原创微博昵称字体
 #define WeicoOrginalNameFont [UIFont systemFontOfSize:13]

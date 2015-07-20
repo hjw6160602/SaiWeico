@@ -51,6 +51,8 @@
 		7886486F1B5CCACC00C4B5A8 /* WeicoDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886486E1B5CCACC00C4B5A8 /* WeicoDetailController.m */; };
 		788648791B5CDB4C00C4B5A8 /* CmtTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788648761B5CDB4C00C4B5A8 /* CmtTopBar.xib */; };
 		7886487A1B5CDB4C00C4B5A8 /* WeicoDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788648781B5CDB4C00C4B5A8 /* WeicoDetailView.m */; };
+		7886487D1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886487C1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m */; };
+		7886487F1B5CEEFE00C4B5A8 /* ContentTB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7886487E1B5CEEFE00C4B5A8 /* ContentTB.xib */; };
 		7888B8D61B4D065B0030B4A7 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8C81B4D065B0030B4A7 /* MJPhoto.m */; };
 		7888B8D71B4D065B0030B4A7 /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */; };
 		7888B8D81B4D065B0030B4A7 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8CB1B4D065B0030B4A7 /* MJPhotoBrowser.m */; };
@@ -219,6 +221,9 @@
 		788648761B5CDB4C00C4B5A8 /* CmtTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CmtTopBar.xib; sourceTree = "<group>"; };
 		788648771B5CDB4C00C4B5A8 /* WeicoDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoDetailView.h; sourceTree = "<group>"; };
 		788648781B5CDB4C00C4B5A8 /* WeicoDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoDetailView.m; sourceTree = "<group>"; };
+		7886487B1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetweetedDetailToolBar.h; sourceTree = "<group>"; };
+		7886487C1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetweetedDetailToolBar.m; sourceTree = "<group>"; };
+		7886487E1B5CEEFE00C4B5A8 /* ContentTB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentTB.xib; sourceTree = "<group>"; };
 		7888B8C71B4D065B0030B4A7 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
 		7888B8C81B4D065B0030B4A7 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
 		7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
@@ -703,6 +708,9 @@
 			children = (
 				788648661B5CC82A00C4B5A8 /* WeicoToolBar.h */,
 				788648671B5CC82A00C4B5A8 /* WeicoToolBar.m */,
+				7886487B1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.h */,
+				7886487C1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m */,
+				7886487E1B5CEEFE00C4B5A8 /* ContentTB.xib */,
 			);
 			path = "TooBar【工具栏】";
 			sourceTree = "<group>";
@@ -1080,6 +1088,7 @@
 			files = (
 				78F5F5C51B535E4F00F6A701 /* lxh in Resources */,
 				7888B8D71B4D065B0030B4A7 /* MJPhotoBrowser.bundle in Resources */,
+				7886487F1B5CEEFE00C4B5A8 /* ContentTB.xib in Resources */,
 				78F5F5C41B535E4F00F6A701 /* emoji in Resources */,
 				781C15C61B3B92280036E850 /* Images.xcassets in Resources */,
 				78F5F5C31B535E4F00F6A701 /* default in Resources */,
@@ -1160,6 +1169,7 @@
 				781C160B1B3B9A1C0036E850 /* HJWIvar.m in Sources */,
 				78E8FF131B462320003D29E7 /* MJRefreshGifFooter.m in Sources */,
 				7895FFF31B452A1100982C95 /* NSDate+Extension.m in Sources */,
+				7886487D1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m in Sources */,
 				781C160E1B3B9A1C0036E850 /* HJWType.m in Sources */,
 				78EA0C4C1B42757800D7F994 /* UIImage+WebP.m in Sources */,
 				78EA0C451B42757800D7F994 /* SDWebImageDownloader.m in Sources */,
