@@ -105,8 +105,7 @@
 
 - (void)getCmtRequest{
     CommentParam *param = [[CommentParam alloc]init];
-    param.idstr = self.weico.idstr;
-    
+    param.id = self.weico.idstr;
     Comment *cmt = [self.comments firstObject];
     param.since_id = cmt.idstr;
     
@@ -118,6 +117,7 @@
         // 累加评论数据
         NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, result.comments.count)];
         [self.comments insertObjects:result.comments atIndexes:set];
+        
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         
@@ -138,6 +138,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
     Comment *cmt = self.comments[indexPath.row];
+    
     cell.textLabel.text = cmt.text;
     return cell;
 }

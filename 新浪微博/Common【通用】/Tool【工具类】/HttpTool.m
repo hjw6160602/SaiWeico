@@ -17,8 +17,7 @@
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
     // 2.发送GET请求
-    [mgr GET:url parameters:params
-     success:^(AFHTTPRequestOperation *operation, id responseObj) {
+    [mgr GET:url parameters:params success:^(AFHTTPRequestOperation *operation, id responseObj) {
          if (success) {
              success(responseObj);
          }
