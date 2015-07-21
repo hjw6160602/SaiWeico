@@ -53,7 +53,6 @@
 		7886487F1B5CEEFE00C4B5A8 /* ContentTB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7886487E1B5CEEFE00C4B5A8 /* ContentTB.xib */; };
 		788866A11B5DE56400287310 /* Weico.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888669E1B5DE56400287310 /* Weico.m */; };
 		788866A21B5DE56400287310 /* WeicoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866A01B5DE56400287310 /* WeicoFrame.m */; };
-		788866A51B5DE5AB00287310 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866A41B5DE5AB00287310 /* Comment.m */; };
 		788866B61B5DE87200287310 /* CommentParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866AE1B5DE87200287310 /* CommentParam.m */; };
 		788866B71B5DE87200287310 /* CommentResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866B01B5DE87200287310 /* CommentResult.m */; };
 		788866B81B5DE87200287310 /* Emotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866B31B5DE87200287310 /* Emotion.m */; };
@@ -63,6 +62,10 @@
 		788866C41B5DF1DE00287310 /* BaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866C11B5DF1DE00287310 /* BaseTool.m */; };
 		788866C51B5DF1DE00287310 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866C31B5DF1DE00287310 /* HttpTool.m */; };
 		788866C81B5DF2CE00287310 /* WeicoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866C71B5DF2CE00287310 /* WeicoTool.m */; };
+		788866CB1B5E12C600287310 /* BaseParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866CA1B5E12C600287310 /* BaseParam.m */; };
+		788866CE1B5E138800287310 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866CD1B5E138800287310 /* Comment.m */; };
+		788866D21B5E1BC400287310 /* RepostParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866D11B5E1BC400287310 /* RepostParam.m */; };
+		788866D51B5E1C2B00287310 /* RepostResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 788866D41B5E1C2B00287310 /* RepostResult.m */; };
 		7888B8D61B4D065B0030B4A7 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8C81B4D065B0030B4A7 /* MJPhoto.m */; };
 		7888B8D71B4D065B0030B4A7 /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */; };
 		7888B8D81B4D065B0030B4A7 /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8CB1B4D065B0030B4A7 /* MJPhotoBrowser.m */; };
@@ -232,8 +235,6 @@
 		7888669E1B5DE56400287310 /* Weico.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weico.m; sourceTree = "<group>"; };
 		7888669F1B5DE56400287310 /* WeicoFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoFrame.h; sourceTree = "<group>"; };
 		788866A01B5DE56400287310 /* WeicoFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoFrame.m; sourceTree = "<group>"; };
-		788866A31B5DE5AB00287310 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
-		788866A41B5DE5AB00287310 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		788866AD1B5DE87200287310 /* CommentParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentParam.h; sourceTree = "<group>"; };
 		788866AE1B5DE87200287310 /* CommentParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentParam.m; sourceTree = "<group>"; };
 		788866AF1B5DE87200287310 /* CommentResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentResult.h; sourceTree = "<group>"; };
@@ -251,6 +252,14 @@
 		788866C31B5DF1DE00287310 /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
 		788866C61B5DF2CE00287310 /* WeicoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoTool.h; sourceTree = "<group>"; };
 		788866C71B5DF2CE00287310 /* WeicoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoTool.m; sourceTree = "<group>"; };
+		788866C91B5E12C600287310 /* BaseParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseParam.h; sourceTree = "<group>"; };
+		788866CA1B5E12C600287310 /* BaseParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseParam.m; sourceTree = "<group>"; };
+		788866CC1B5E138800287310 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		788866CD1B5E138800287310 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		788866D01B5E1BC400287310 /* RepostParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepostParam.h; sourceTree = "<group>"; };
+		788866D11B5E1BC400287310 /* RepostParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepostParam.m; sourceTree = "<group>"; };
+		788866D31B5E1C2B00287310 /* RepostResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepostResult.h; sourceTree = "<group>"; };
+		788866D41B5E1C2B00287310 /* RepostResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepostResult.m; sourceTree = "<group>"; };
 		7888B8C71B4D065B0030B4A7 /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
 		7888B8C81B4D065B0030B4A7 /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
 		7888B8C91B4D065B0030B4A7 /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
@@ -755,6 +764,8 @@
 				788866AE1B5DE87200287310 /* CommentParam.m */,
 				788866AF1B5DE87200287310 /* CommentResult.h */,
 				788866B01B5DE87200287310 /* CommentResult.m */,
+				788866CC1B5E138800287310 /* Comment.h */,
+				788866CD1B5E138800287310 /* Comment.m */,
 			);
 			path = "Comment【评论】";
 			sourceTree = "<group>";
@@ -778,6 +789,17 @@
 				788866BD1B5DEBF300287310 /* WeicoDetailTopTB.xib */,
 			);
 			path = "CmtTB【工具条】";
+			sourceTree = "<group>";
+		};
+		788866CF1B5E1B9E00287310 /* Repost【转发】 */ = {
+			isa = PBXGroup;
+			children = (
+				788866D01B5E1BC400287310 /* RepostParam.h */,
+				788866D11B5E1BC400287310 /* RepostParam.m */,
+				788866D31B5E1C2B00287310 /* RepostResult.h */,
+				788866D41B5E1C2B00287310 /* RepostResult.m */,
+			);
+			path = "Repost【转发】";
 			sourceTree = "<group>";
 		};
 		7888B8C61B4D065B0030B4A7 /* MJPhotoBrowser */ = {
@@ -824,7 +846,10 @@
 			isa = PBXGroup;
 			children = (
 				788866AC1B5DE87200287310 /* Comment【评论】 */,
+				788866CF1B5E1B9E00287310 /* Repost【转发】 */,
 				788866B11B5DE87200287310 /* Emotion【表情】 */,
+				788866C91B5E12C600287310 /* BaseParam.h */,
+				788866CA1B5E12C600287310 /* BaseParam.m */,
 			);
 			path = "Model【模型】";
 			sourceTree = "<group>";
@@ -983,8 +1008,6 @@
 				7879D7011B551178006BAFF0 /* TextPart.m */,
 				78931E9F1B560F5C0039EB4D /* Special.h */,
 				78931EA01B560F5C0039EB4D /* Special.m */,
-				788866A31B5DE5AB00287310 /* Comment.h */,
-				788866A41B5DE5AB00287310 /* Comment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1185,6 +1208,7 @@
 				78A4A38A1B4FAEEA00EA24E9 /* WeicoController.m in Sources */,
 				78EA0C571B4277C900D7F994 /* User.m in Sources */,
 				78E8FF111B462320003D29E7 /* MJRefreshConst.m in Sources */,
+				788866D51B5E1C2B00287310 /* RepostResult.m in Sources */,
 				7886486A1B5CC82A00C4B5A8 /* WeicoPhotoView.m in Sources */,
 				781C160D1B3B9A1C0036E850 /* HJWMethod.m in Sources */,
 				781C160C1B3B9A1C0036E850 /* HJWMember.m in Sources */,
@@ -1239,12 +1263,12 @@
 				7886487D1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m in Sources */,
 				781C160E1B3B9A1C0036E850 /* HJWType.m in Sources */,
 				78EA0C4C1B42757800D7F994 /* UIImage+WebP.m in Sources */,
-				788866A51B5DE5AB00287310 /* Comment.m in Sources */,
 				78EA0C451B42757800D7F994 /* SDWebImageDownloader.m in Sources */,
 				781C16101B3B9A1C0036E850 /* NSObject+HJWCoding.m in Sources */,
 				78FD8A351B3D5B770010447B /* Foundation+Log.m in Sources */,
 				781C162B1B3BA8C60036E850 /* AFHTTPRequestOperation.m in Sources */,
 				78DCCB381B4393D10061AB3F /* WeicoCell.m in Sources */,
+				788866CE1B5E138800287310 /* Comment.m in Sources */,
 				788866A11B5DE56400287310 /* Weico.m in Sources */,
 				78EA0C4B1B42757800D7F994 /* UIImage+MultiFormat.m in Sources */,
 				78E8FF191B462320003D29E7 /* UIScrollView+MJRefresh.m in Sources */,
@@ -1264,10 +1288,12 @@
 				781C162D1B3BA8C60036E850 /* AFHTTPSessionManager.m in Sources */,
 				78EA0C1D1B4260DB00D7F994 /* HJWTitleButton.m in Sources */,
 				788866C81B5DF2CE00287310 /* WeicoTool.m in Sources */,
+				788866D21B5E1BC400287310 /* RepostParam.m in Sources */,
 				78EA0C491B42757800D7F994 /* UIButton+WebCache.m in Sources */,
 				781C16381B3BBE940036E850 /* TabBarController.m in Sources */,
 				78EA0C481B42757800D7F994 /* SDWebImagePrefetcher.m in Sources */,
 				78EA0C4F1B42757800D7F994 /* UIView+WebCacheOperation.m in Sources */,
+				788866CB1B5E12C600287310 /* BaseParam.m in Sources */,
 				788866B81B5DE87200287310 /* Emotion.m in Sources */,
 				78FD8A3A1B3D5D140010447B /* UIBarButtonItem+Extension.m in Sources */,
 				78E8FF101B462320003D29E7 /* MJRefreshComponent.m in Sources */,

@@ -7,7 +7,11 @@
 //
 
 #import "CommentResult.h"
+#import "Comment.h"
 
 @implementation CommentResult
-
+- (NSDictionary *)objectClassInArray
+{
+    return @{@"comments" : [Comment class]};
+}
 @end

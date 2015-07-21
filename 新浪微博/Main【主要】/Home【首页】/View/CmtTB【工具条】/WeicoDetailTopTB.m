@@ -105,5 +105,6 @@
         defaultTitle = [NSString stringWithFormat:@"0 %@", defaultTitle];
     }
     [button setTitle:defaultTitle forState:UIControlStateNormal];
+    [button setTitle:defaultTitle forState:UIControlStateSelected];
 }
 @end
