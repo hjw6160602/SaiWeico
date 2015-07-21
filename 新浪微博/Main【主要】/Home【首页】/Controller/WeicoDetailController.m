@@ -11,12 +11,40 @@
 #import "WeicoFrame.h"
 #import "Weico.h"
 #import "UIView+Extension.h"
+#import "WeicoDetailTopTB.h"
+#import "CommentResult.h"
+#import "AFNetworking.h"
+#import "CommentParam.h"
+#import "WeicoTool.h"
+#import "Comment.h"
 #import "Const.h"
-@interface WeicoDetailController ()
+
+@interface WeicoDetailController () <WeicoDetailTopTBDelegate>
 @property (nonatomic, strong) UIView *bottomTB;
+@property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) WeicoDetailTopTB *topTB;
+@property (nonatomic, strong) Weico *weico;
 @end
 
 @implementation WeicoDetailController
+
+- (NSMutableArray *)comments
+{
+    if (_comments == nil) {
+        self.comments = [NSMutableArray array];
+    }
+    return _comments;
+}
+
+- (WeicoDetailTopTB *)topTB
+{
+    if (!_topTB) {
+        self.topTB = [WeicoDetailTopTB toolbar];
+        self.topTB.weico = self.weico;
+        self.topTB.delegate = self;
+    }
+    return _topTB;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,8 +64,10 @@
 - (void)initControls{
     self.title = @"微博正文";
     self.tableView.backgroundColor = GLOBE_BG;
+    self.weico = self.weicoFrame.weico;
     //self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 64);
     self.tableView.rowHeight = 60.0f;
+    
     // 创建微博详情控件
     WeicoDetailView *detailView = [[WeicoDetailView alloc] init];
     // 创建frame对象
@@ -52,39 +82,74 @@
         detailView.frame = self.weicoFrame.originalViewF;
     }
     self.tableView.tableHeaderView = detailView;
+    
     self.bottomTB = [[[NSBundle mainBundle]loadNibNamed:@"ContentTB" owner:self options:nil]firstObject];
     self.bottomTB.frame = CGRectMake(0, SCREEN_HEIGHT-50, SCREEN_WIDTH, 50);
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     [keyWindow addSubview:self.bottomTB];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark - 顶部工具条的代理
+- (void)topTB:(WeicoDetailTopTB *)topTB didSelectedButton:(WeicoDetailTBBtnType)buttonType
+{
+    switch (buttonType) {
+        case WeicoDetailTopTBButtonTypeComment: // 评论
+            [self getCmtRequest];
+            break;
+            
+        case WeicoDetailTopTBButtonTypeRetweeted: // 转发
+            //[self loadRetweeteds];
+            break;
+    }
+}
+
+- (void)getCmtRequest{
+    CommentParam *param = [[CommentParam alloc]init];
+    param.idstr = self.weico.idstr;
+    
+    Comment *cmt = [self.comments firstObject];
+    param.since_id = cmt.idstr;
+    
+    [WeicoTool commentsWithParam:param success:^(CommentResult *result) {
+        // 评论总数
+        self.weico.comments_count = result.total_number;
+        self.topTB.weico= self.weico;
+        
+        // 累加评论数据
+        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, result.comments.count)];
+        [self.comments insertObjects:result.comments atIndexes:set];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - Table view data source
-
-#pragma mark - Table view data source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.comments.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *ID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    }
+    Comment *cmt = self.comments[indexPath.row];
+    cell.textLabel.text = cmt.text;
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 50;
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.topTB;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *topBar = [[[NSBundle mainBundle]loadNibNamed:@"CmtTopBar" owner:self options:nil]firstObject];
-    //    topBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 50);
-    //    topBar.backgroundColor = WeicoHighBGColor;
-    return topBar;
-    
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return self.topTB.height;
 }
 
 - (void)viewDidLayoutSubviews
@@ -110,39 +175,4 @@
     }
     
 }
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 @end

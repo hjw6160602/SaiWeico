@@ -20,5 +20,7 @@
 #define GET_REMIND_UNREAD           @"https://rm.api.weibo.com/2/remind/unread_count.json"
 /** 发送微博接口 */
 #define POST_WEICO                  @"https://api.weibo.com/2/statuses/update.json"
+/** 获取某微博的评论 */
+#define GET_COMMENT                 @"https://api.weibo.com/2/comments/show.json"
 
 #endif
