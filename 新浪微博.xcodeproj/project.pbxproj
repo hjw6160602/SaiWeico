@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780516E61B72023E00520534 /* HomeWeicoParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 780516E31B72023E00520534 /* HomeWeicoParam.m */; };
+		780516E71B72023E00520534 /* HomeWeicoResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 780516E51B72023E00520534 /* HomeWeicoResult.m */; };
+		780516ED1B7204FE00520534 /* SendWeicoParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 780516EA1B7204FE00520534 /* SendWeicoParam.m */; };
+		780516EE1B7204FE00520534 /* SendWeicoResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 780516EC1B7204FE00520534 /* SendWeicoResult.m */; };
 		780AFA8C1B3CED900001A583 /* AccountTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 780AFA8B1B3CED900001A583 /* AccountTool.m */; };
 		781C15BB1B3B92280036E850 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 781C15BA1B3B92280036E850 /* main.m */; };
 		781C15C61B3B92280036E850 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 781C15C51B3B92280036E850 /* Images.xcassets */; };
@@ -145,6 +149,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		780516E21B72023E00520534 /* HomeWeicoParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeWeicoParam.h; sourceTree = "<group>"; };
+		780516E31B72023E00520534 /* HomeWeicoParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeWeicoParam.m; sourceTree = "<group>"; };
+		780516E41B72023E00520534 /* HomeWeicoResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeWeicoResult.h; sourceTree = "<group>"; };
+		780516E51B72023E00520534 /* HomeWeicoResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeWeicoResult.m; sourceTree = "<group>"; };
+		780516E91B7204FE00520534 /* SendWeicoParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendWeicoParam.h; sourceTree = "<group>"; };
+		780516EA1B7204FE00520534 /* SendWeicoParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendWeicoParam.m; sourceTree = "<group>"; };
+		780516EB1B7204FE00520534 /* SendWeicoResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendWeicoResult.h; sourceTree = "<group>"; };
+		780516EC1B7204FE00520534 /* SendWeicoResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendWeicoResult.m; sourceTree = "<group>"; };
 		780AFA8A1B3CED900001A583 /* AccountTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTool.h; sourceTree = "<group>"; };
 		780AFA8B1B3CED900001A583 /* AccountTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTool.m; sourceTree = "<group>"; };
 		781C15B51B3B92280036E850 /* 新浪微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "新浪微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +421,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		780516E11B72023E00520534 /* HomeWeico【首页微博】 */ = {
+			isa = PBXGroup;
+			children = (
+				780516E21B72023E00520534 /* HomeWeicoParam.h */,
+				780516E31B72023E00520534 /* HomeWeicoParam.m */,
+				780516E41B72023E00520534 /* HomeWeicoResult.h */,
+				780516E51B72023E00520534 /* HomeWeicoResult.m */,
+			);
+			path = "HomeWeico【首页微博】";
+			sourceTree = "<group>";
+		};
+		780516E81B7204FE00520534 /* SendWeico【发微博】 */ = {
+			isa = PBXGroup;
+			children = (
+				780516E91B7204FE00520534 /* SendWeicoParam.h */,
+				780516EA1B7204FE00520534 /* SendWeicoParam.m */,
+				780516EB1B7204FE00520534 /* SendWeicoResult.h */,
+				780516EC1B7204FE00520534 /* SendWeicoResult.m */,
+			);
+			path = "SendWeico【发微博】";
+			sourceTree = "<group>";
+		};
 		780AFA891B3CED6E0001A583 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -845,6 +879,8 @@
 		78A4A3911B4FC57E00EA24E9 /* Model【模型】 */ = {
 			isa = PBXGroup;
 			children = (
+				780516E11B72023E00520534 /* HomeWeico【首页微博】 */,
+				780516E81B7204FE00520534 /* SendWeico【发微博】 */,
 				788866AC1B5DE87200287310 /* Comment【评论】 */,
 				788866CF1B5E1B9E00287310 /* Repost【转发】 */,
 				788866B11B5DE87200287310 /* Emotion【表情】 */,
@@ -1134,7 +1170,7 @@
 		781C15AD1B3B92280036E850 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = SaiDicaprio;
 				TargetAttributes = {
 					781C15B41B3B92280036E850 = {
@@ -1217,6 +1253,7 @@
 				788866C41B5DF1DE00287310 /* BaseTool.m in Sources */,
 				781C16301B3BA8C60036E850 /* AFURLConnectionOperation.m in Sources */,
 				78FAFD5F1B4E786F00B4A01C /* ProfileController.m in Sources */,
+				780516ED1B7204FE00520534 /* SendWeicoParam.m in Sources */,
 				788866C51B5DF1DE00287310 /* HttpTool.m in Sources */,
 				781C160F1B3B9A1C0036E850 /* HJWTypeEncoding.m in Sources */,
 				78A4A39D1B4FC6AC00EA24E9 /* UIImage+Extension.m in Sources */,
@@ -1270,9 +1307,11 @@
 				78DCCB381B4393D10061AB3F /* WeicoCell.m in Sources */,
 				788866CE1B5E138800287310 /* Comment.m in Sources */,
 				788866A11B5DE56400287310 /* Weico.m in Sources */,
+				780516E71B72023E00520534 /* HomeWeicoResult.m in Sources */,
 				78EA0C4B1B42757800D7F994 /* UIImage+MultiFormat.m in Sources */,
 				78E8FF191B462320003D29E7 /* UIScrollView+MJRefresh.m in Sources */,
 				78EA0C441B42757800D7F994 /* SDWebImageDecoder.m in Sources */,
+				780516E61B72023E00520534 /* HomeWeicoParam.m in Sources */,
 				788648681B5CC82A00C4B5A8 /* IconView.m in Sources */,
 				7886486B1B5CC82A00C4B5A8 /* WeicoTextView.m in Sources */,
 				78E8FF121B462320003D29E7 /* MJRefreshFooter.m in Sources */,
@@ -1308,6 +1347,7 @@
 				78DCCB431B43B1830061AB3F /* TabBar.m in Sources */,
 				7888B8DC1B4D065B0030B4A7 /* MJPhotoView.m in Sources */,
 				78EA0C431B42757800D7F994 /* SDWebImageCompat.m in Sources */,
+				780516EE1B7204FE00520534 /* SendWeicoResult.m in Sources */,
 				78EA0C421B42757800D7F994 /* SDImageCache.m in Sources */,
 				7886486F1B5CCACC00C4B5A8 /* WeicoDetailController.m in Sources */,
 				788648691B5CC82A00C4B5A8 /* WeicoPhotosView.m in Sources */,
@@ -1355,6 +1395,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1427,6 +1468,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bestcake.001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ae9beb09-a62a-4f4a-9209-05f7b4fd5b3f";
 			};
@@ -1443,6 +1485,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bestcake.001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "81238481-5bad-4288-99b3-a8d557ad92f7";
 			};
@@ -1464,6 +1507,7 @@
 				);
 				INFOPLIST_FILE = "新浪微博Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/新浪微博.app/新浪微博";
@@ -1482,6 +1526,7 @@
 				);
 				INFOPLIST_FILE = "新浪微博Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SaiDicaprio.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/新浪微博.app/新浪微博";

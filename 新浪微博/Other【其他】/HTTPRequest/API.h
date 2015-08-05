@@ -22,5 +22,11 @@
 #define POST_WEICO                  @"https://api.weibo.com/2/statuses/update.json"
 /** 获取某微博的评论 */
 #define GET_COMMENT                 @"https://api.weibo.com/2/comments/show.json"
+/** 获取某微博的评论 */
+#define GET_HOME_WEICO              @"https://api.weibo.com/2/statuses/home_timeline.json"
+/** 获取某微博的评论 */
+#define POST_SEND_WEICO             @"https://api.weibo.com/2/statuses/update.json"
+
+
 
 #endif

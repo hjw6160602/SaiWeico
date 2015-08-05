@@ -25,6 +25,7 @@
 
 @implementation WeicoDetailTopTB
 
+
 + (instancetype)toolbar
 {
     return [[[NSBundle mainBundle] loadNibNamed:@"WeicoDetailTopTB" owner:nil options:nil] lastObject];
@@ -107,4 +108,5 @@
     [button setTitle:defaultTitle forState:UIControlStateNormal];
     [button setTitle:defaultTitle forState:UIControlStateSelected];
 }
+
 @end

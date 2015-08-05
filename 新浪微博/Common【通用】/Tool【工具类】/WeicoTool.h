@@ -9,12 +9,13 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseTool.h"
-//#import "HomeWeicoParam.h"
-//#import "HomeWeicoResult.h"
-//#import "SendWeicoParam.h"
-//#import "SendWeicoResult.h"
+#import "HomeWeicoParam.h"
+#import "HomeWeicoResult.h"
+#import "SendWeicoParam.h"
+#import "SendWeicoResult.h"
 
 @class CommentParam,CommentResult;
+@class SendWeicoParam,SendWeicoResult;
 
 @interface WeicoTool : BaseTool
 
@@ -25,7 +26,7 @@
  *  @param success 请求成功后的回调（请将请求成功后想做的事情写到这个block中）
  *  @param failure 请求失败后的回调（请将请求失败后想做的事情写到这个block中）
  */
-//+ (void)homeStatusesWithParam:(HMHomeStatusesParam *)param success:(void (^)(HMHomeStatusesResult *result))success failure:(void (^)(NSError *error))failure;
++ (void)homeWeicoWithParam:(HomeWeicoParam *)param success:(void (^)(HomeWeicoResult *result))success failure:(void (^)(NSError *error))failure;
 
 /**
  *  发没有图片的微博
@@ -34,7 +35,7 @@
  *  @param success 请求成功后的回调（请将请求成功后想做的事情写到这个block中）
  *  @param failure 请求失败后的回调（请将请求失败后想做的事情写到这个block中）
  */
-//+ (void)sendStatusWithParam:(HMSendStatusParam *)param success:(void (^)(HMSendStatusResult *result))success failure:(void (^)(NSError *error))failure;
++ (void)sendWeicoWithParam:(SendWeicoParam *)param success:(void (^)(SendWeicoResult *result))success failure:(void (^)(NSError *error))failure;
 
 /**
  *  加载评论数据

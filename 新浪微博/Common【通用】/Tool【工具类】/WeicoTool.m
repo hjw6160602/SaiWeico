@@ -14,15 +14,15 @@
 
 @implementation WeicoTool
 
-//+ (void)homeStatusesWithParam:(HMHomeStatusesParam *)param success:(void (^)(HMHomeStatusesResult *))success failure:(void (^)(NSError *))failure
-//{
-//    [self getWithUrl:@"https://api.weibo.com/2/statuses/home_timeline.json" param:param resultClass:[HMHomeStatusesResult class] success:success failure:failure];
-//}
-//
-//+ (void)sendStatusWithParam:(HMSendStatusParam *)param success:(void (^)(HMSendStatusResult *))success failure:(void (^)(NSError *))failure
-//{
-//    [self postWithUrl:@"https://api.weibo.com/2/statuses/update.json" param:param resultClass:[HMSendStatusResult class] success:success failure:failure];
-//}
++ (void)homeWeicoWithParam:(HomeWeicoParam *)param success:(void (^)(HomeWeicoResult *))success failure:(void (^)(NSError *))failure
+{
+    [self getWithUrl:GET_HOME_WEICO param:param resultClass:[HomeWeicoResult class] success:success failure:failure];
+}
+
++ (void)sendWeicoWithParam:(SendWeicoParam *)param success:(void (^)(SendWeicoResult *))success failure:(void (^)(NSError *))failure
+{
+    [self postWithUrl:POST_SEND_WEICO param:param resultClass:[SendWeicoResult class] success:success failure:failure];
+}
 
 + (void)commentsWithParam:(CommentParam *)param success:(void (^)(CommentResult *))success failure:(void (^)(NSError *))failure
 {

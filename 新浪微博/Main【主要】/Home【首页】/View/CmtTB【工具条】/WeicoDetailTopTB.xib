@@ -71,7 +71,7 @@
                 <outlet property="commentButton" destination="MFy-2L-LK5" id="sQK-Tt-eLi"/>
                 <outlet property="retweetedButton" destination="fj8-yK-7sI" id="NNb-p7-9Ea"/>
             </connections>
-            <point key="canvasLocation" x="330" y="443.5"/>
+            <point key="canvasLocation" x="447" y="676.5"/>
         </view>
     </objects>
     <resources>
