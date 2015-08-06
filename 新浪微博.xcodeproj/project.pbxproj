@@ -43,6 +43,8 @@
 		781C16501B3BD6EE0036E850 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 781C164C1B3BD6EE0036E850 /* MBProgressHUD.bundle */; };
 		781C16511B3BD6EE0036E850 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 781C164E1B3BD6EE0036E850 /* MBProgressHUD.m */; };
 		781C16541B3BD8480036E850 /* MBProgressHUD+HJW.m in Sources */ = {isa = PBXBuildFile; fileRef = 781C16531B3BD8480036E850 /* MBProgressHUD+HJW.m */; };
+		7855AA871B73277E00F34298 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7855AA851B73277E00F34298 /* CommentCell.m */; };
+		7855AA881B73277E00F34298 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7855AA861B73277E00F34298 /* CommentCell.xib */; };
 		7879D7021B551178006BAFF0 /* TextPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 7879D7011B551178006BAFF0 /* TextPart.m */; };
 		788648681B5CC82A00C4B5A8 /* IconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886485C1B5CC82A00C4B5A8 /* IconView.m */; };
 		788648691B5CC82A00C4B5A8 /* WeicoPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7886485F1B5CC82A00C4B5A8 /* WeicoPhotosView.m */; };
@@ -209,6 +211,9 @@
 		781C16521B3BD8480036E850 /* MBProgressHUD+HJW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HJW.h"; sourceTree = "<group>"; };
 		781C16531B3BD8480036E850 /* MBProgressHUD+HJW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HJW.m"; sourceTree = "<group>"; };
 		782E36871B53BE3E003C84AB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "新浪微博/Info.plist"; sourceTree = SOURCE_ROOT; };
+		7855AA841B73277E00F34298 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		7855AA851B73277E00F34298 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		7855AA861B73277E00F34298 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		7879D7001B551178006BAFF0 /* TextPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextPart.h; sourceTree = "<group>"; };
 		7879D7011B551178006BAFF0 /* TextPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextPart.m; sourceTree = "<group>"; };
 		7886485B1B5CC82A00C4B5A8 /* IconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconView.h; sourceTree = "<group>"; };
@@ -677,9 +682,20 @@
 			name = Framework;
 			sourceTree = "<group>";
 		};
+		7855AA831B7323E700F34298 /* Comment【评论】 */ = {
+			isa = PBXGroup;
+			children = (
+				7855AA841B73277E00F34298 /* CommentCell.h */,
+				7855AA851B73277E00F34298 /* CommentCell.m */,
+				7855AA861B73277E00F34298 /* CommentCell.xib */,
+			);
+			path = "Comment【评论】";
+			sourceTree = "<group>";
+		};
 		788648591B5CC82A00C4B5A8 /* Weico【微博】 */ = {
 			isa = PBXGroup;
 			children = (
+				7855AA831B7323E700F34298 /* Comment【评论】 */,
 				7886485A1B5CC82A00C4B5A8 /* Icon【头像】 */,
 				788648621B5CC82A00C4B5A8 /* Text【文字】 */,
 				7886485D1B5CC82A00C4B5A8 /* Photo【图片】 */,
@@ -1156,6 +1172,7 @@
 				781C16351B3BA9CB0036E850 /* OAuth.storyboard in Resources */,
 				78E8FF0F1B462320003D29E7 /* MJRefresh.bundle in Resources */,
 				781C15ED1B3B97B00036E850 /* Main.storyboard in Resources */,
+				7855AA881B73277E00F34298 /* CommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,6 +1246,7 @@
 				7886487D1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m in Sources */,
 				781C160E1B3B9A1C0036E850 /* HJWType.m in Sources */,
 				78EA0C4C1B42757800D7F994 /* UIImage+WebP.m in Sources */,
+				7855AA871B73277E00F34298 /* CommentCell.m in Sources */,
 				78EA0C451B42757800D7F994 /* SDWebImageDownloader.m in Sources */,
 				781C16101B3B9A1C0036E850 /* NSObject+HJWCoding.m in Sources */,
 				78FD8A351B3D5B770010447B /* Foundation+Log.m in Sources */,

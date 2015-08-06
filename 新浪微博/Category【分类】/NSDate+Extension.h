@@ -21,4 +21,10 @@
  *  判断某个时间是否为今天
  */
 - (BOOL)isToday;
+
+/**
+ *  传入服务器时间，返回显示时间
+ */
++ (NSString *)showTimeWithCreateTime:(NSString *)created_at;
+
 @end

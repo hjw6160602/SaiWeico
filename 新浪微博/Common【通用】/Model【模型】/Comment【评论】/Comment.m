@@ -7,7 +7,15 @@
 //
 
 #import "Comment.h"
+#import "NSDate+Extension.h"
 
 @implementation Comment
+
+/**	show_time	评论显示时间 get方法*/
+- (NSString *)show_time
+{
+    return [NSDate showTimeWithCreateTime:_created_at];
+}
+
 
 @end

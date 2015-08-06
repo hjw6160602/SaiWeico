@@ -16,6 +16,7 @@
 #import "AFNetworking.h"
 #import "CommentParam.h"
 #import "WeicoTool.h"
+#import "CommentCell.h"
 #import "Comment.h"
 #import "Const.h"
 
@@ -132,16 +133,22 @@
     return self.comments.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 140.0f;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *ID = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
-    Comment *cmt = self.comments[indexPath.row];
     
-    cell.textLabel.text = cmt.text;
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    if (!cell) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"CommentCell" owner:nil options:nil]lastObject];
+       
+    }
+    cell.comment = self.comments[indexPath.row];
+    
     return cell;
 }
 

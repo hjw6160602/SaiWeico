@@ -238,6 +238,7 @@
         weico.retweeted_status.text = retweet_text;
         self.retweetContentTextView.attributedText = weico.retweetedAttributedText;
         self.retweetContentTextView.frame = weicoFrame.retweetContentLabelF;
+
         
         /** 被转发的微博配图 */
         if (retweeted_weico.pic_urls.count) {
@@ -250,7 +251,7 @@
     } else {
         self.retweetView.hidden = YES;
     }
-    
+
     /** 工具条 */
     self.toolbar.frame = weicoFrame.toolbarF;
     self.toolbar.weico = weico;
