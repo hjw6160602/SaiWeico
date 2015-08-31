@@ -20,6 +20,8 @@
 #import "WeicoCell.h"
 #import "MJRefresh.h"
 #import "WeicoDetailController.h"
+#import "WeicoTool.h"
+#import "HomeWeicoParam.h"
 #import "API.h"
 
 @interface HomeController ()<UITableViewDataSource,UITableViewDelegate>
@@ -163,39 +165,22 @@ HomeController *G_HomeController;
 
 - (void)loadNewWeico{
     [self.tableView.header beginRefreshing];
-    
-    // 1.请求管理者
-    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-    
-    // 2.拼接请求参数
-    Account *account = [AccountTool account];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"access_token"] = account.access_token;
-    //params[@"count"] = @20;
-    
-    // 取出最前面的微博（最新的微博，ID最大的微博）
+    HomeWeicoParam *homeParam = [[HomeWeicoParam alloc]init];
     WeicoFrame *firstWeicoF = [self.weicoFrames firstObject];
-    if (firstWeicoF) {
-        // 若指定此参数，则返回ID比since_id大的微博（即比since_id时间晚的微博），默认为0
-        params[@"since_id"] = firstWeicoF.weico.idstr;
-        
-    }
-
-    // 3.发送请求
-    [mgr GET:GET_FRIENDS_TIMELINE_WEICO parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-        
-        // 取得"微博字典"数组
+    homeParam.since_id = [NSNumber numberWithInteger:[firstWeicoF.weico.idstr integerValue]];
+    homeParam.count = [NSNumber numberWithInt:25];
+    [WeicoTool homeWeicoWithParam:homeParam success:^(HomeWeicoResult *result) {
+         //取得"微博字典"数组
         // 将 "微博字典"数组 转为 "微博模型"数组
-        NSArray *newWeico = [Weico objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        NSArray *newWeico = result.statuses;
         if (newWeico.count != 0) {
             // 将 Weico数组 转为 weicoFrame数组
             NSArray *newFrames = [self weicoFramesWithWeicos:newWeico];
-            
+
             // 将最新的微博数据，添加到总数组的最前面
             NSRange range = NSMakeRange(0, newFrames.count);
             NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
             [self.weicoFrames insertObjects:newFrames atIndexes:set];
-            
             [self ArchiveToFile];
         }
         // 显示最新微博的数量
@@ -204,7 +189,7 @@ HomeController *G_HomeController;
         [self.tableView.header endRefreshing];
         // 刷新表格
         [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSError *error) {
         HJWLog(@"请求失败-%@", error);
         [self.tableView.header endRefreshing];
     }];
@@ -234,7 +219,7 @@ HomeController *G_HomeController;
     }
     
     // 3.发送请求
-    [mgr GET:GET_FRIENDS_TIMELINE_WEICO parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+    [mgr GET:GET_HOME_WEICO parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
         // 将 "微博字典"数组 转为 "微博模型"数组
         NSArray *newWeico = [Weico objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
         NSArray *newFrames = [self weicoFramesWithWeicos:newWeico];

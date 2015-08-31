@@ -11,6 +11,7 @@
 #import "AccountTool.h"
 #import "HJWExtension.h"
 #import "TextView.h"
+#import "EmotionKeybord.h"
 #import "Const.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD+HJW.h"
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButtonItem;
 @property (strong,nonatomic) TextView *textView;
-
+@property (nonatomic, strong) EmotionKeybord *emotionKeybord;
 @end
 
 @implementation WeicoController
@@ -73,6 +74,10 @@
     
     // 监听通知
     [HJWNotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
+    self.emotionKeybord = [[EmotionKeybord alloc]init];
+    self.emotionKeybord.width = self.view.width;
+    self.emotionKeybord.height = 216;
+    textView.inputView = self.emotionKeybord;
 }
 
 - (IBAction)cancel:(id)sender {

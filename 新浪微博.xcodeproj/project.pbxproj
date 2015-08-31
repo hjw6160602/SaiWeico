@@ -92,6 +92,9 @@
 		78A4A3A51B4FC90600EA24E9 /* EmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3A41B4FC90600EA24E9 /* EmotionTool.m */; };
 		78A4A3AC1B4FCD5C00EA24E9 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A4A3AB1B4FCD5C00EA24E9 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		78A4A3AE1B4FCFDA00EA24E9 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A4A3AD1B4FCFDA00EA24E9 /* libicucore.dylib */; };
+		78A625381B93F36D005B84C0 /* EmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A625371B93F36D005B84C0 /* EmotionListView.m */; };
+		78A6253B1B93F3AC005B84C0 /* EmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A6253A1B93F3AC005B84C0 /* EmotionTabBar.m */; };
+		78A6253E1B93F3BF005B84C0 /* EmotionKeybord.m in Sources */ = {isa = PBXBuildFile; fileRef = 78A6253D1B93F3BF005B84C0 /* EmotionKeybord.m */; };
 		78DCCB381B4393D10061AB3F /* WeicoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB361B4393D10061AB3F /* WeicoCell.m */; };
 		78DCCB431B43B1830061AB3F /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB421B43B1830061AB3F /* TabBar.m */; };
 		78DCCB4D1B43D4BD0061AB3F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DCCB4C1B43D4BD0061AB3F /* Photo.m */; };
@@ -302,6 +305,12 @@
 		78A4A3AA1B4FCD5C00EA24E9 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		78A4A3AB1B4FCD5C00EA24E9 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		78A4A3AD1B4FCFDA00EA24E9 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		78A625361B93F36D005B84C0 /* EmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmotionListView.h; path = "新浪微博/Main【主要】/Message【讯息】/EmotionListView.h"; sourceTree = SOURCE_ROOT; };
+		78A625371B93F36D005B84C0 /* EmotionListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EmotionListView.m; path = "新浪微博/Main【主要】/Message【讯息】/EmotionListView.m"; sourceTree = SOURCE_ROOT; };
+		78A625391B93F3AC005B84C0 /* EmotionTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionTabBar.h; sourceTree = "<group>"; };
+		78A6253A1B93F3AC005B84C0 /* EmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionTabBar.m; sourceTree = "<group>"; };
+		78A6253C1B93F3BF005B84C0 /* EmotionKeybord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionKeybord.h; sourceTree = "<group>"; };
+		78A6253D1B93F3BF005B84C0 /* EmotionKeybord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionKeybord.m; sourceTree = "<group>"; };
 		78DCCB351B4393D10061AB3F /* WeicoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeicoCell.h; sourceTree = "<group>"; };
 		78DCCB361B4393D10061AB3F /* WeicoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeicoCell.m; sourceTree = "<group>"; };
 		78DCCB411B43B1830061AB3F /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
@@ -848,6 +857,12 @@
 			children = (
 				78A4A38B1B4FAFBF00EA24E9 /* ComposeBar.h */,
 				78A4A38C1B4FAFBF00EA24E9 /* ComposeBar.m */,
+				78A625361B93F36D005B84C0 /* EmotionListView.h */,
+				78A625371B93F36D005B84C0 /* EmotionListView.m */,
+				78A625391B93F3AC005B84C0 /* EmotionTabBar.h */,
+				78A6253A1B93F3AC005B84C0 /* EmotionTabBar.m */,
+				78A6253C1B93F3BF005B84C0 /* EmotionKeybord.h */,
+				78A6253D1B93F3BF005B84C0 /* EmotionKeybord.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1183,6 +1198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78A6253B1B93F3AC005B84C0 /* EmotionTabBar.m in Sources */,
 				78EA0C4D1B42757800D7F994 /* UIImageView+HighlightedWebCache.m in Sources */,
 				78931EA51B566DB50039EB4D /* webLinkController.m in Sources */,
 				781C16121B3B9A1C0036E850 /* NSObject+HJWMember.m in Sources */,
@@ -1245,6 +1261,7 @@
 				788866BE1B5DEBF300287310 /* WeicoDetailTopTB.m in Sources */,
 				7886487D1B5CEA5B00C4B5A8 /* RetweetedDetailToolBar.m in Sources */,
 				781C160E1B3B9A1C0036E850 /* HJWType.m in Sources */,
+				78A625381B93F36D005B84C0 /* EmotionListView.m in Sources */,
 				78EA0C4C1B42757800D7F994 /* UIImage+WebP.m in Sources */,
 				7855AA871B73277E00F34298 /* CommentCell.m in Sources */,
 				78EA0C451B42757800D7F994 /* SDWebImageDownloader.m in Sources */,
@@ -1289,6 +1306,7 @@
 				78FAFD621B4E78E900B4A01C /* HeadView.m in Sources */,
 				781C16331B3BA8C60036E850 /* AFURLSessionManager.m in Sources */,
 				78E8FF151B462320003D29E7 /* MJRefreshHeader.m in Sources */,
+				78A6253E1B93F3BF005B84C0 /* EmotionKeybord.m in Sources */,
 				781C16441B3BD21E0036E850 /* OAuthViewController.m in Sources */,
 				78E8FF171B462320003D29E7 /* MJRefreshLegendHeader.m in Sources */,
 				78DCCB431B43B1830061AB3F /* TabBar.m in Sources */,
