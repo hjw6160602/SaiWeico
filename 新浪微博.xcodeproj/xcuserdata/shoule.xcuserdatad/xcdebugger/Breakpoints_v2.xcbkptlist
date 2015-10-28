@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Main&#x3010;&#x4e3b;&#x8981;&#x3011;/Home&#x3010;&#x9996;&#x9875;&#x3011;/Controller/HomeController.m"
-            timestampString = "467196747.055635"
+            timestampString = "467705432.636517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-initUserInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Main&#x3010;&#x4e3b;&#x8981;&#x3011;/Home&#x3010;&#x9996;&#x9875;&#x3011;/Controller/HomeController.m"
-            timestampString = "467196809.176439"
+            timestampString = "467705432.636517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-initUserInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Main&#x3010;&#x4e3b;&#x8981;&#x3011;/Home&#x3010;&#x9996;&#x9875;&#x3011;/Controller/HomeController.m"
-            timestampString = "467196812.63292"
+            timestampString = "467705432.636517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

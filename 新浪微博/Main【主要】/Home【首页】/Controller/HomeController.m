@@ -31,12 +31,9 @@
 @property (nonatomic, strong) NSMutableArray *weicoFrames;
 @end
 
-
-
 @implementation HomeController
 
-- (NSMutableArray *)weicoFrames
-{
+- (NSMutableArray *)weicoFrames{
     if (!_weicoFrames) {
         self.weicoFrames = [NSMutableArray array];
     }
@@ -128,14 +125,16 @@ HomeController *G_HomeController;
   * 导致循环加载
  */
 - (void)initControls{
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = HJWColor(240, 240, 240);
+    
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         [weakSelf loadNewWeico];
     }];
 }
 
-- (void)initUnreadCount
-{
+- (void)initUnreadCount{
     // 1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
@@ -198,8 +197,7 @@ HomeController *G_HomeController;
 /**
  *  加载更多的微博数据
  */
-- (void)loadMoreWeico
-{
+- (void)loadMoreWeico{
     // 1.请求管理者
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
@@ -236,23 +234,22 @@ HomeController *G_HomeController;
 
 #pragma mark - TableView Data Source
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSLog(@"微博总数：%d",(int)self.weicoFrames.count);
     return self.weicoFrames.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     // 获得cell
     WeicoCell *cell = [WeicoCell cellWithTableView:tableView];
     // 给cell传递模型数据
     cell.weicoFrame = self.weicoFrames[indexPath.row];
     return cell;
 }
+
 #pragma mark - TableView Delegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     WeicoFrame *frame = self.weicoFrames[indexPath.row];
     //NSLog(@"%d",index);
     if (frame.cellHeight) {
@@ -298,8 +295,7 @@ HomeController *G_HomeController;
  *  显示最新微博的数量
  *  @param count 最新微博的数量
  */
-- (void)showNewWeicoCount:(NSUInteger)count
-{
+- (void)showNewWeicoCount:(NSUInteger)count{
     // 刷新成功(清空图标数字)
     self.tabBarItem.badgeValue = nil;
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
