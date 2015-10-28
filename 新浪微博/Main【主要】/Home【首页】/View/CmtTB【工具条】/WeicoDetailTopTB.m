@@ -14,7 +14,7 @@
 
 @interface WeicoDetailTopTB()
 /** 三角形 */
-@property (weak, nonatomic) IBOutlet UIImageView *arrowView;
+@property (weak, nonatomic) IBOutlet UIView *arrowView;
 @property (weak, nonatomic) IBOutlet UIButton *retweetedButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIButton *attitudeButton;

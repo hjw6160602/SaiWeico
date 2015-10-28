@@ -8,6 +8,7 @@
 
 #import "CommentCell.h"
 #import "UIImageView+WebCache.h"
+#import "UIView+Extension.h"
 #import "User.h"
 #import "IconView.h"
 
@@ -22,10 +23,13 @@
 
 @implementation CommentCell
 
+
 - (void)setComment:(Comment *)comment{
     _comment = comment;
     [self.IconImage sd_setImageWithURL:[NSURL URLWithString:self.comment.user.profile_image_url]
                       placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.IconImage.layer.cornerRadius = self.IconImage.width/2;
+    
     self.nameLabel.text = self.comment.user.name;
     self.timeLabel.text = self.comment.show_time;
     self.TextLabel.text = self.comment.text;

@@ -65,6 +65,7 @@
 - (void)initControls{
     self.title = @"微博正文";
     self.tableView.backgroundColor = GLOBE_BG;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 55, 0);
     self.weico = self.weicoFrame.weico;
     //self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 64);
     self.tableView.rowHeight = 60.0f;

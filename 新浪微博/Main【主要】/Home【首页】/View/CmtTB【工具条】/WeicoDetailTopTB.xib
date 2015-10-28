@@ -57,16 +57,17 @@
                     <rect key="frame" x="83" y="18" width="1" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="statusdetail_comment_top_arrow" id="iqE-iD-Bnr" userLabel="三角形箭头">
-                    <rect key="frame" x="159" y="38" width="12" height="7"/>
+                <view contentMode="scaleToFill" id="Vvb-4Z-mmP">
+                    <rect key="frame" x="95" y="42" width="60" height="3"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
+                    <color key="backgroundColor" red="1" green="0.53683979929384351" blue="0.12647358768682299" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="arrowView" destination="iqE-iD-Bnr" id="nsT-0p-1Cu"/>
+                <outlet property="arrowView" destination="Vvb-4Z-mmP" id="7ad-ex-3Xs"/>
                 <outlet property="attitudeButton" destination="aT2-5a-8qU" id="oc4-uZ-XOe"/>
                 <outlet property="commentButton" destination="MFy-2L-LK5" id="sQK-Tt-eLi"/>
                 <outlet property="retweetedButton" destination="fj8-yK-7sI" id="NNb-p7-9Ea"/>
@@ -76,6 +77,5 @@
     </objects>
     <resources>
         <image name="statusdetail_comment_line" width="1" height="15"/>
-        <image name="statusdetail_comment_top_arrow" width="12" height="7"/>
     </resources>
 </document>
