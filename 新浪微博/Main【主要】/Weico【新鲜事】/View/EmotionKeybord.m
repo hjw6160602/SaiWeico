@@ -19,9 +19,11 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        // 1.表情内容
         self.ListView = [[EmotionListView alloc]init];
-        self.TabBar = [[EmotionTabBar alloc]init];
         [self addSubview:self.ListView];
+        // 2.TabBar
+        self.TabBar = [[EmotionTabBar alloc]init];
         [self addSubview:self.TabBar];
     }
     return self;
