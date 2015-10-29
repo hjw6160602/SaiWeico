@@ -93,6 +93,7 @@
         CGFloat retweetContentY = WeicoCellMargin;
 
         CGSize retweetContentSize = [weico.retweetedAttributedText boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+        
         self.retweetContentLabelF = (CGRect){{retweetContentX, retweetContentY}, retweetContentSize};
         
         /** 被转发微博配图 */

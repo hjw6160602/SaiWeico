@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-@class User,Weico,Comment;
+#import "User.h"
+#import "Weico.h"
+@class Comment;
 
 @interface Comment : NSObject
 
@@ -22,6 +24,10 @@
 
 /*text          string	评论的内容*/
 @property (nonatomic, strong) NSString * text;
+@property (nonatomic, strong) NSAttributedString *attributedText;
+
+/** 配图地址。多图时返回多图链接。无配图返回“[]” */
+@property (nonatomic, strong) NSArray *pic_urls;
 
 /*source        string	评论的来源*/
 @property (nonatomic, strong) NSString * source;

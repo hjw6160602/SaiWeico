@@ -12,13 +12,13 @@
 #import "UIView+Extension.h"
 
 @interface IconView()
+@property (nonatomic, weak) UIImageView *iconImg;
 @property (nonatomic, weak) UIImageView *verifiedView;
 @end
 
 @implementation IconView
 
-- (UIImageView *)verifiedView
-{
+- (UIImageView *)verifiedView{
     if (!_verifiedView) {
         UIImageView *verifiedView = [[UIImageView alloc] init];
         [self addSubview:verifiedView];
@@ -27,11 +27,19 @@
     return _verifiedView;
 }
 
+- (UIImageView *)iconImg{
+    if (!_iconImg) {
+        UIImageView *iconImg = [[UIImageView alloc] init];
+        [self addSubview:iconImg];
+        self.iconImg = iconImg;
+    }
+    return _iconImg;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
     }
     return self;
 }
@@ -41,8 +49,9 @@
     _user = user;
     
     // 1.下载图片
-    [self sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
-    
+    [self.iconImg sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url]
+                    placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+
     // 2.设置加V图片
     switch (user.verified_type) {
         case UserVerifiedPersonal: // 个人认证
@@ -71,10 +80,19 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    self.iconImg.frame = self.bounds;
+    self.iconImg.layer.cornerRadius = self.iconImg.width/2;
+    self.iconImg.layer.masksToBounds = YES;
+//    self.iconImg.layer.borderWidth = 2.0f;
+//    self.iconImg.layer.borderColor = [UIColor whiteColor].CGColor;
     
     self.verifiedView.size = self.verifiedView.image.size;
-    CGFloat scale = 0.6;
+    CGFloat scale = 0.8;
     self.verifiedView.x = self.width - self.verifiedView.width * scale;
     self.verifiedView.y = self.height - self.verifiedView.height * scale;
+    self.verifiedView.layer.cornerRadius = self.verifiedView.width/2;
+    self.iconImg.layer.masksToBounds = YES;
+    self.verifiedView.layer.borderWidth = 2.0f;
+    self.verifiedView.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 @end

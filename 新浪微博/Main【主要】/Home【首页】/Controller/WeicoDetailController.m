@@ -17,24 +17,27 @@
 #import "CommentParam.h"
 #import "WeicoTool.h"
 #import "CommentCell.h"
+#import "CommentFrame.h"
 #import "Comment.h"
 #import "Const.h"
 
 @interface WeicoDetailController () <WeicoDetailTopTBDelegate>
 @property (nonatomic, strong) UIView *bottomTB;
 @property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) NSMutableArray *commentFrames;
 @property (nonatomic, strong) WeicoDetailTopTB *topTB;
 @property (nonatomic, strong) Weico *weico;
 @end
 
 @implementation WeicoDetailController
 
-- (NSMutableArray *)comments
+
+- (NSMutableArray *)commentFrames
 {
-    if (_comments == nil) {
-        self.comments = [NSMutableArray array];
+    if (_commentFrames == nil) {
+        self.commentFrames = [NSMutableArray array];
     }
-    return _comments;
+    return _commentFrames;
 }
 
 - (WeicoDetailTopTB *)topTB
@@ -67,8 +70,6 @@
     self.tableView.backgroundColor = GLOBE_BG;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 55, 0);
     self.weico = self.weicoFrame.weico;
-    //self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 64);
-    self.tableView.rowHeight = 60.0f;
     
     // 创建微博详情控件
     WeicoDetailView *detailView = [[WeicoDetailView alloc] init];
@@ -115,9 +116,21 @@
         // 评论总数
         self.weico.comments_count = result.total_number;
         self.topTB.weico= self.weico;
+        NSArray *comments = result.comments;
+        if (comments.count != 0) {
+            // 将 comment数组 转为 commentFrame数组
+            NSArray *commentFrames = [self commentFramesWithComments:comments];
+            
+            // 将最新的评论数据，添加到总数组的最前面
+            NSRange range = NSMakeRange(0, comments.count);
+            NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:range];
+            [self.commentFrames insertObjects:commentFrames atIndexes:set];
+            
+        }
         // 累加评论数据
-        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, result.comments.count)];
-        [self.comments insertObjects:result.comments atIndexes:set];
+//        NSIndexSet *set = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, result.comments.count)];
+//        [self.comments insertObjects:result.comments atIndexes:set];
+        
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         
@@ -131,25 +144,26 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.comments.count;
+    return self.commentFrames.count;
 }
 
+#pragma mark - TableView Delegate
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 140.0f;
+    CommentFrame *frame = self.commentFrames[indexPath.row];
+    if (frame.cellHeight) {
+        return frame.cellHeight;
+    }
+    else return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"cell";
-    
-    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    
-    if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"CommentCell" owner:nil options:nil]lastObject];
-       
-    }
-    cell.comment = self.comments[indexPath.row];
-    
+    // 获得cell
+    CommentCell *cell = [CommentCell cellWithTableView:tableView];
+
+    // 给cell传递模型数据
+    cell.commentFrame = self.commentFrames[indexPath.row];
     return cell;
 }
 
@@ -186,4 +200,19 @@
     }
     
 }
+
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (NSMutableArray *)commentFramesWithComments:(NSArray *)comments{
+    NSMutableArray *frames = [NSMutableArray array];
+    for (Comment *comment in comments) {
+        CommentFrame *f = [[CommentFrame alloc] init];
+        f.comment = comment;
+        [frames addObject:f];
+    }
+    return frames;
+}
+
 @end
