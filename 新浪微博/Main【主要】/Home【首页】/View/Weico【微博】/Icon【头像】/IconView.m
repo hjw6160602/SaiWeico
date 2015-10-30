@@ -92,7 +92,7 @@
     self.verifiedView.y = self.height - self.verifiedView.height * scale;
     self.verifiedView.layer.cornerRadius = self.verifiedView.width/2;
     self.iconImg.layer.masksToBounds = YES;
-    self.verifiedView.layer.borderWidth = 2.0f;
+    self.verifiedView.layer.borderWidth = 1.5f;
     self.verifiedView.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 @end
