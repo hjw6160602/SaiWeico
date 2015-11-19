@@ -147,5 +147,37 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Common&#x3010;&#x901a;&#x7528;&#x3011;/View&#x3010;&#x89c6;&#x56fe;&#x3011;/TextView.m"
+            timestampString = "468219826.896671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-setPlaceholder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x65b0;&#x6d6a;&#x5fae;&#x535a;/Main&#x3010;&#x4e3b;&#x8981;&#x3011;/Home&#x3010;&#x9996;&#x9875;&#x3011;/Model/Weico&#x3010;&#x5fae;&#x535a;&#x3011;/Weico.m"
+            timestampString = "468416320.685505"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-initWithCoder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

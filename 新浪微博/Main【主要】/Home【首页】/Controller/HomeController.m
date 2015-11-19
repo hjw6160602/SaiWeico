@@ -126,8 +126,8 @@ HomeController *G_HomeController;
  */
 - (void)initControls{
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = HJWColor(240, 240, 240);
-    
+    self.tableView.backgroundColor = HJWColor(250, 250, 250);
+//    self.tableView sets;
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         [weakSelf loadNewWeico];
@@ -233,24 +233,27 @@ HomeController *G_HomeController;
 }
 
 #pragma mark - TableView Data Source
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     NSLog(@"微博总数：%d",(int)self.weicoFrames.count);
     return self.weicoFrames.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     // 获得cell
     WeicoCell *cell = [WeicoCell cellWithTableView:tableView];
     // 给cell传递模型数据
-    cell.weicoFrame = self.weicoFrames[indexPath.row];
+    cell.weicoFrame = self.weicoFrames[indexPath.section];
     return cell;
 }
 
 #pragma mark - TableView Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WeicoFrame *frame = self.weicoFrames[indexPath.row];
+    WeicoFrame *frame = self.weicoFrames[indexPath.section];
     //NSLog(@"%d",index);
     if (frame.cellHeight) {
         return frame.cellHeight;
