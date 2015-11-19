@@ -22,6 +22,8 @@
 #import "WeicoDetailController.h"
 #import "WeicoTool.h"
 #import "HomeWeicoParam.h"
+#import "Const.h"
+#import "SingleData.h"
 #import "API.h"
 
 @interface HomeController ()<UITableViewDataSource,UITableViewDelegate>
@@ -42,8 +44,6 @@
 
 #pragma mark - ViewControllers
 
-HomeController *G_HomeController;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavi];
@@ -51,7 +51,7 @@ HomeController *G_HomeController;
     [self initUserInfo];
     [self initLastWeicos];
     [self initControls];
-    G_HomeController = self;
+    SINGLE.homeController = self;
     //获得未读数
     //NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(initUnreadCount) userInfo:nil repeats:YES];
     // 主线程也会抽时间处理一下timer（不管主线程是否正在其他事件）
@@ -126,8 +126,8 @@ HomeController *G_HomeController;
  */
 - (void)initControls{
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = HJWColor(250, 250, 250);
-//    self.tableView sets;
+    self.tableView.backgroundColor = HJWColor(245, 245, 245);
+    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         [weakSelf loadNewWeico];

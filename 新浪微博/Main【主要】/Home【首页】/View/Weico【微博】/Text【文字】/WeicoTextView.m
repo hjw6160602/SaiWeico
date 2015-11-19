@@ -10,7 +10,7 @@
 #import "Special.h"
 #import "Const.h"
 #import "webLinkController.h"
-#import "HomeController.h"
+#import "SingleData.h"
 
 #define WeicoTextViewCoverTag 2009
 
@@ -129,7 +129,7 @@
     });
 }
 
-extern HomeController *G_HomeController;
+//extern HomeController *G_HomeController;
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -138,7 +138,7 @@ extern HomeController *G_HomeController;
         if (child.tag == WeicoTextViewCoverTag) [child removeFromSuperview];
     }
     NSLog(@"跳到百度页面");
-    [G_HomeController.navigationController pushViewController:[webLinkController new] animated:YES];
+    [SINGLE.homeController.navigationController pushViewController:[webLinkController new] animated:YES];
 }
 
 @end

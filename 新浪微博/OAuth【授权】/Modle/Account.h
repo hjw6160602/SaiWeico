@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Singleton.h"
 
 @interface Account : NSObject<NSCoding>
+singleton_interface(Account);
 
 /**　string	用于调用access_token，接口获取授权后的access token。*/
 @property (nonatomic, copy) NSString *access_token;

@@ -20,6 +20,7 @@
 #define HJWLog(...)
 #endif
 
+#define SINGLE [SingleData sharedSingleData]
 // 通知中心
 #define HJWNotificationCenter [NSNotificationCenter defaultCenter]
 
@@ -56,7 +57,7 @@
 #define WeicoToolBarHeight 35
 
 // 原创微博昵称字体
-#define WeicoOrginalNameFont [UIFont systemFontOfSize:13]
+#define WeicoOrginalNameFont [UIFont systemFontOfSize:14]
 // 原创微博时间字体
 #define WeicoOrginalTimeFont [UIFont systemFontOfSize:11]
 // 原创微博来源字体

@@ -114,7 +114,7 @@
     /** 时间 */
     UILabel *timeLabel = [[UILabel alloc] init];
     timeLabel.font = WeicoOrginalTimeFont;
-    timeLabel.textColor = [UIColor lightGrayColor];
+    timeLabel.textColor = [UIColor orangeColor];
     [originalView addSubview:timeLabel];
     self.timeLabel = timeLabel;
     
@@ -183,10 +183,10 @@
         NSString *vipName = [NSString stringWithFormat:@"common_icon_membership_level%d", user.mbrank];
         self.vipView.image = [UIImage imageNamed:vipName];
         
-        self.nameLabel.textColor = [UIColor orangeColor];
+        self.nameLabel.textColor = HJWColor(244, 97, 20);
     } else {
         
-        self.nameLabel.textColor = WEICO_CONTENT_COLOR;
+        self.nameLabel.textColor = HJWColor(244, 97, 20);
         self.vipView.hidden = YES;
     }
     

@@ -10,9 +10,11 @@
 
 @implementation Account
 
+singleton_implementation(Account);
+
 + (instancetype)accountWithDict:(NSDictionary *)dict
 {
-    Account *account = [[self alloc] init];
+    Account *account = [self sharedAccount];
     account.access_token = dict[@"access_token"];
     account.uid = dict[@"uid"];
     account.expires_in = dict[@"expires_in"];

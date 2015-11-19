@@ -78,6 +78,7 @@
 		7888B8DB1B4D065B0030B4A7 /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D11B4D065B0030B4A7 /* MJPhotoToolbar.m */; };
 		7888B8DC1B4D065B0030B4A7 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D31B4D065B0030B4A7 /* MJPhotoView.m */; };
 		7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D51B4D065B0030B4A7 /* SDWebImageManager+MJ.m */; };
+		789132821BFDAC94001AEC38 /* SingleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 789132811BFDAC94001AEC38 /* SingleData.m */; };
 		78931EA11B560F5C0039EB4D /* Special.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931EA01B560F5C0039EB4D /* Special.m */; };
 		78931EA51B566DB50039EB4D /* webLinkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931EA31B566DB50039EB4D /* webLinkController.m */; };
 		78931EA61B566DB50039EB4D /* webLinkController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78931EA41B566DB50039EB4D /* webLinkController.xib */; };
@@ -280,6 +281,9 @@
 		7888B8D31B4D065B0030B4A7 /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
 		7888B8D41B4D065B0030B4A7 /* SDWebImageManager+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImageManager+MJ.h"; sourceTree = "<group>"; };
 		7888B8D51B4D065B0030B4A7 /* SDWebImageManager+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImageManager+MJ.m"; sourceTree = "<group>"; };
+		7891327F1BFDAA05001AEC38 /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		789132801BFDAC94001AEC38 /* SingleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleData.h; sourceTree = "<group>"; };
+		789132811BFDAC94001AEC38 /* SingleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleData.m; sourceTree = "<group>"; };
 		78931E9F1B560F5C0039EB4D /* Special.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special.h; sourceTree = "<group>"; };
 		78931EA01B560F5C0039EB4D /* Special.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special.m; sourceTree = "<group>"; };
 		78931EA21B566DB50039EB4D /* webLinkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webLinkController.h; sourceTree = "<group>"; };
@@ -845,6 +849,16 @@
 			path = MJPhotoBrowser;
 			sourceTree = "<group>";
 		};
+		789132771BFDA9DF001AEC38 /* Singleton【单例】 */ = {
+			isa = PBXGroup;
+			children = (
+				7891327F1BFDAA05001AEC38 /* Singleton.h */,
+				789132801BFDAC94001AEC38 /* SingleData.h */,
+				789132811BFDAC94001AEC38 /* SingleData.m */,
+			);
+			path = "Singleton【单例】";
+			sourceTree = "<group>";
+		};
 		78A4A3861B4FAEEA00EA24E9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +886,7 @@
 		78A4A3911B4FC57E00EA24E9 /* Model【模型】 */ = {
 			isa = PBXGroup;
 			children = (
+				789132771BFDA9DF001AEC38 /* Singleton【单例】 */,
 				780516E11B72023E00520534 /* HomeWeico【首页微博】 */,
 				780516E81B7204FE00520534 /* SendWeico【发微博】 */,
 				788866AC1B5DE87200287310 /* Comment【评论】 */,
@@ -1314,6 +1329,7 @@
 				7888B8DC1B4D065B0030B4A7 /* MJPhotoView.m in Sources */,
 				78EA0C431B42757800D7F994 /* SDWebImageCompat.m in Sources */,
 				789537D81BE0C14C00B1E6AE /* CommentFrame.m in Sources */,
+				789132821BFDAC94001AEC38 /* SingleData.m in Sources */,
 				780516EE1B7204FE00520534 /* SendWeicoResult.m in Sources */,
 				78EA0C421B42757800D7F994 /* SDImageCache.m in Sources */,
 				7886486F1B5CCACC00C4B5A8 /* WeicoDetailController.m in Sources */,
