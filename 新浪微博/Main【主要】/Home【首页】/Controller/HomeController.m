@@ -20,6 +20,7 @@
 #import "WeicoCell.h"
 #import "MJRefresh.h"
 #import "WeicoDetailController.h"
+#import "PersonalHomeController.h"
 #import "WeicoTool.h"
 #import "HomeWeicoParam.h"
 #import "Const.h"
@@ -128,6 +129,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = HJWColor(245, 245, 245);
     self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
+//    self.tableView.delaysContentTouches = NO;
+    
     __weak typeof(self) weakSelf = self;
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         [weakSelf loadNewWeico];
@@ -247,6 +250,16 @@
     WeicoCell *cell = [WeicoCell cellWithTableView:tableView];
     // 给cell传递模型数据
     cell.weicoFrame = self.weicoFrames[indexPath.section];
+//    // 对scrollview把延迟触摸设置为NO即可
+//    for (id obj in cell.subviews)
+//    {
+//        if ([NSStringFromClass([obj class])isEqualToString:@"UITableViewCellScrollView"])
+//        {
+//            UIScrollView *scroll = (UIScrollView *) obj;
+//            scroll.delaysContentTouches =NO;
+//            break;
+//        }
+//    }
     return cell;
 }
 
@@ -262,6 +275,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     WeicoDetailController *detailVC = [[WeicoDetailController alloc]init];
     detailVC.weicoFrame = self.weicoFrames[indexPath.row];
     [self.navigationController pushViewController:detailVC animated:YES];
@@ -342,7 +356,13 @@
     
     // 如果某个动画执行完毕后，又要回到动画执行前的状态，建议使用transform来做动画
 }
+
 #pragma mark - Target Selector
+- (void)goPersonalHomePage{
+    PersonalHomeController *PersonalHomeVC = [PersonalHomeController new];
+    [SINGLE.homeController.navigationController pushViewController:PersonalHomeVC animated:YES];
+}
+
 - (void)searchFriend{}
 - (void)POP{ }
 - (void)titleClick:(UIButton*)sender {}

@@ -18,7 +18,9 @@
 #import "UIView+Extension.h"
 #import "Const.h"
 #import "IconView.h"
+#import "SingleData.h"
 #import "WeicoTextView.h"
+#import "PersonalHomeController.h"
 
 @interface WeicoCell()
 /* 原创微博 */
@@ -76,6 +78,7 @@
         [self initOriginal];
         [self initRepost];
         [self initToolBar];
+        
     }
     return self;
 }
@@ -256,6 +259,25 @@
     self.toolbar.frame = weicoFrame.toolbarF;
     self.toolbar.weico = weico;
     
+    /** 添加手势 */
+    // 添加手势监听器（一个手势监听器 只能 监听对应的一个view）
+    UITapGestureRecognizer *recognizer1 = [[UITapGestureRecognizer alloc] init];
+    [recognizer1 addTarget:self action:@selector(goPersonalHomePage:)];
+    
+    UITapGestureRecognizer *recognizer2 = [[UITapGestureRecognizer alloc] init];
+    [recognizer2 addTarget:self action:@selector(goPersonalHomePage:)];
+    
+    UITapGestureRecognizer *recognizer3 = [[UITapGestureRecognizer alloc] init];
+    [recognizer3 addTarget:self action:@selector(goPersonalHomePage:)];
+    
+    [self.iconView addGestureRecognizer:recognizer1];
+    [self.nameLabel addGestureRecognizer:recognizer2];
+    [self.vipView addGestureRecognizer:recognizer3];
+}
+
+- (void)goPersonalHomePage:(id)sender{
+    PersonalHomeController *PersonalHomeVC = [PersonalHomeController new];
+    [SINGLE.homeController.navigationController pushViewController:PersonalHomeVC animated:YES];
 }
 
 @end

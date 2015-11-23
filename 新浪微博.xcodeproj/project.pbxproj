@@ -79,6 +79,7 @@
 		7888B8DC1B4D065B0030B4A7 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D31B4D065B0030B4A7 /* MJPhotoView.m */; };
 		7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7888B8D51B4D065B0030B4A7 /* SDWebImageManager+MJ.m */; };
 		789132821BFDAC94001AEC38 /* SingleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 789132811BFDAC94001AEC38 /* SingleData.m */; };
+		789132851BFDB4DF001AEC38 /* PersonalHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 789132841BFDB4DF001AEC38 /* PersonalHomeController.m */; };
 		78931EA11B560F5C0039EB4D /* Special.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931EA01B560F5C0039EB4D /* Special.m */; };
 		78931EA51B566DB50039EB4D /* webLinkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78931EA31B566DB50039EB4D /* webLinkController.m */; };
 		78931EA61B566DB50039EB4D /* webLinkController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78931EA41B566DB50039EB4D /* webLinkController.xib */; };
@@ -284,6 +285,8 @@
 		7891327F1BFDAA05001AEC38 /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		789132801BFDAC94001AEC38 /* SingleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleData.h; sourceTree = "<group>"; };
 		789132811BFDAC94001AEC38 /* SingleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleData.m; sourceTree = "<group>"; };
+		789132831BFDB4DF001AEC38 /* PersonalHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalHomeController.h; sourceTree = "<group>"; };
+		789132841BFDB4DF001AEC38 /* PersonalHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalHomeController.m; sourceTree = "<group>"; };
 		78931E9F1B560F5C0039EB4D /* Special.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Special.h; sourceTree = "<group>"; };
 		78931EA01B560F5C0039EB4D /* Special.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Special.m; sourceTree = "<group>"; };
 		78931EA21B566DB50039EB4D /* webLinkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = webLinkController.h; sourceTree = "<group>"; };
@@ -1036,6 +1039,8 @@
 				78931EA21B566DB50039EB4D /* webLinkController.h */,
 				78931EA31B566DB50039EB4D /* webLinkController.m */,
 				78931EA41B566DB50039EB4D /* webLinkController.xib */,
+				789132831BFDB4DF001AEC38 /* PersonalHomeController.h */,
+				789132841BFDB4DF001AEC38 /* PersonalHomeController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1220,6 +1225,7 @@
 				781C16121B3B9A1C0036E850 /* NSObject+HJWMember.m in Sources */,
 				7888B8DD1B4D065B0030B4A7 /* SDWebImageManager+MJ.m in Sources */,
 				78A4A38A1B4FAEEA00EA24E9 /* WeicoController.m in Sources */,
+				789132851BFDB4DF001AEC38 /* PersonalHomeController.m in Sources */,
 				78EA0C571B4277C900D7F994 /* User.m in Sources */,
 				78E8FF111B462320003D29E7 /* MJRefreshConst.m in Sources */,
 				788866D51B5E1C2B00287310 /* RepostResult.m in Sources */,
