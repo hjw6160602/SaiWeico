@@ -6,8 +6,17 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "new_feature_4@2x.png"
+      "filename" : "new_feature_4@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "subtype" : "retina4",
+      "scale" : "1x"
     },
     {
       "idiom" : "iphone",
@@ -17,6 +26,7 @@
     },
     {
       "idiom" : "iphone",
+      "subtype" : "retina4",
       "scale" : "3x"
     }
   ],
