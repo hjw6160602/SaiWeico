@@ -9,12 +9,12 @@
 #import "WeicoController.h"
 #import "UIView+Extension.h"
 #import "AccountTool.h"
-#import "HJWExtension.h"
+@import MJExtension;
 #import "TextView.h"
 #import "EmotionKeybord.h"
 #import "Const.h"
-#import "AFNetworking.h"
-#import "MBProgressHUD+HJW.h"
+@import AFNetworking;
+//#import "MBProgressHUD+HJW.h"
 #import "API.h"
 
 @interface WeicoController ()
@@ -90,6 +90,7 @@
     /**	access_token true string*/
     
     // 1.请求管理者
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager shared]
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
     // 2.拼接请求参数

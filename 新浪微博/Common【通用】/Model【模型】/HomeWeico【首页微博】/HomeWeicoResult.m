@@ -7,7 +7,7 @@
 //
 
 #import "HomeWeicoResult.h"
-#import "HJWExtension.h"
+@import MJExtension;
 #import "Weico.h"
 
 @implementation HomeWeicoResult

@@ -7,9 +7,9 @@
 //
 
 #import "OAuthViewController.h"
-#import "MBProgressHUD+HJW.h"
-#import "AFNetworking.h"
-#import "HJWExtension.h"
+//#import "MBProgressHUD+HJW.h"
+@import AFNetworking;
+@import MJExtension;
 #import "Account.h"
 #import "AccountTool.h"
 #import "UIWindow+Extension.h"

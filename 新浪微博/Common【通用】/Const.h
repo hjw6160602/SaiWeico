@@ -93,4 +93,8 @@
 // 通知里面取出表情用的key
 #define SelectedEmotion @"SelectedEmotion"
 
+// 全局颜色
+#define HJW_GLOBLE_BG [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:0.3]
+
+
 #endif

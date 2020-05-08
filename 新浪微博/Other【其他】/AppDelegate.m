@@ -78,6 +78,6 @@
     [Manager cancelAll];
     
     // 2.清除内存中的所有图片
-    [Manager.imageCache clearMemory];
+//    [Manager.imageCache clearMemory];
 }
 @end

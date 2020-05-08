@@ -9,7 +9,7 @@
 #import "User.h"
 #import "WeicoCell.h"
 #import "WeicoFrame.h"
-#import "HJWExtension.h"
+@import MJExtension;
 #import "WeicoFrame.h"
 #import "Photo.h"
 #import "WeicoToolBar.h"

@@ -8,8 +8,8 @@
 
 #import "HomeController.h"
 #import "AccountTool.h"
-#import "AFNetworking.h"
-#import "HJWExtension.h"
+@import AFNetworking;
+@import MJExtension;
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
 #import "HJWTitleButton.h"
@@ -95,7 +95,7 @@
         UIButton *titleButton = (UIButton *)self.navigationItem.titleView;
         [responseObject writeToFile:@"tempWeico.plist" atomically:YES];
         // 设置名字
-        User *user = [User objectWithKeyValues:responseObject];
+        User *user = [User mj_objectWithKeyValues:responseObject];
         [titleButton setTitle:user.name forState:UIControlStateNormal];
         
         // 存储昵称到沙盒中

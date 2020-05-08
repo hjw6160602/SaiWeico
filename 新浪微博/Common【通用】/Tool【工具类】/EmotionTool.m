@@ -9,7 +9,8 @@
 
 #import "EmotionTool.h"
 #import "Emotion.h"
-#import "HJWExtension.h"
+
+@import MJExtension;
 
 @implementation EmotionTool
 
@@ -30,7 +31,7 @@ static NSMutableArray *_recentEmotions;
         
         NSString *plist = [[NSBundle mainBundle] pathForResource:@"default/info.plist" ofType:nil];
         
-        _defaultEmotions = [Emotion objectArrayWithFile:plist];
+        _defaultEmotions = [Emotion mj_objectArrayWithFile:plist];
     }
     
     return _defaultEmotions;
@@ -41,7 +42,7 @@ static NSMutableArray *_recentEmotions;
 {
     if (!_emojiEmotions) {
         NSString *plist = [[NSBundle mainBundle] pathForResource:@"emoji/info.plist" ofType:nil];
-        _emojiEmotions = [Emotion objectArrayWithFile:plist];
+        _emojiEmotions = [Emotion mj_objectArrayWithFile:plist];
     }
     
     return _emojiEmotions;
@@ -51,7 +52,7 @@ static NSMutableArray *_recentEmotions;
 {
     if (!_lxhEmotions) {
         NSString *plist = [[NSBundle mainBundle] pathForResource:@"lxh/info.plist" ofType:nil];
-        _lxhEmotions = [Emotion objectArrayWithFile:plist];
+        _lxhEmotions = [Emotion mj_objectArrayWithFile:plist];
     }
     
     return _lxhEmotions;

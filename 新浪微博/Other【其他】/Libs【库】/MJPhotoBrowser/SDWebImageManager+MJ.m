@@ -6,16 +6,16 @@
 //  Copyright (c) 2013年 itcast. All rights reserved.
 //
 
-#import "SDWebImageManager+MJ.h"
+@import SDWebImage;
 
 @implementation SDWebImageManager (MJ)
-+ (void)downloadWithURL:(NSURL *)url
-{
-    // cmp不能为空
-    [[self sharedManager] downloadImageWithURL:url
-                                       options:SDWebImageLowPriority|SDWebImageRetryFailed
-                                      progress:nil
-                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,NSURL *imageURL) {
-                                     }];
-}
+//+ (void)downloadWithURL:(NSURL *)url
+//{
+//    // cmp不能为空
+//    [[self sharedManager] downloadImageWithURL:url
+//                                       options:SDWebImageLowPriority|SDWebImageRetryFailed
+//                                      progress:nil
+//                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished,NSURL *imageURL) {
+//                                     }];
+//}
 @end

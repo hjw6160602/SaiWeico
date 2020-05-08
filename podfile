@@ -1,0 +1,16 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, "8.0"
+
+use_frameworks!
+inhibit_all_warnings!
+
+target '新浪微博' do
+	  pod 'LookinServer', :configurations => ['Debug']
+    pod 'AFNetworking'
+    pod 'Masonry'
+    pod 'MJRefresh'
+    pod 'MJExtension'
+    pod 'MBProgressHUD'
+    pod 'ReactiveCocoa','~> 2.5'
+    pod 'SDWebImage'
+end

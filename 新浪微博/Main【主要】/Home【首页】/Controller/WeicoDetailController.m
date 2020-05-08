@@ -13,7 +13,7 @@
 #import "UIView+Extension.h"
 #import "WeicoDetailTopTB.h"
 #import "CommentResult.h"
-#import "AFNetworking.h"
+@import AFNetworking;
 #import "CommentParam.h"
 #import "WeicoTool.h"
 #import "CommentCell.h"

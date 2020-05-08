@@ -8,7 +8,8 @@
 
 #import "NavigationController.h"
 #import "UIBarButtonItem+Extension.h"
-#import "HJWExtension.h"
+#import "Const.h"
+@import MJExtension;
 
 @implementation NavigationController
 
